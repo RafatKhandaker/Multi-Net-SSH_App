@@ -12,6 +12,24 @@
     </item>
     <item
         is-multidex="true"
+        jar="/Users/RedDragon/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/25.1.1/support-annotations-25.1.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="b59b6ee8d6ecc03e672d253800430343493a6ed8">
+        <dex dex="/Users/RedDragon/Desktop/temp/Remote-Connection-Master_App/app/build/intermediates/transforms/dex/debug/folders/1000/10/support-annotations-25.1.1_1061ded891b136289d0afed79767c8de92630b0c/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/RedDragon/Desktop/temp/Remote-Connection-Master_App/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/25.1.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="0fb891e8f0cfba0513043a7bb357513d229ca2cd">
+        <dex dex="/Users/RedDragon/Desktop/temp/Remote-Connection-Master_App/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-core-utils-25.1.1_5784810d9254b647fa50cc094d8845d51befd741/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
         jar="/Users/RedDragon/Desktop/temp/Remote-Connection-Master_App/app/build/intermediates/exploded-aar/com.android.support/support-compat/25.1.1/jars/classes.jar"
         jumboMode="true"
         optimize="true"
@@ -30,6 +48,24 @@
     </item>
     <item
         is-multidex="true"
+        jar="/Users/RedDragon/Desktop/temp/Remote-Connection-Master_App/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/25.1.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="c03bf57f358aa10d253f21989e93bcf6014b3b17">
+        <dex dex="/Users/RedDragon/Desktop/temp/Remote-Connection-Master_App/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-vector-drawable-25.1.1_389dd9eb75b5e89981b7b64f0ddbba44a50e35d8/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/RedDragon/Desktop/temp/Remote-Connection-Master_App/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="001ad124d9348e710d6d6de9c242856c6228f558">
+        <dex dex="/Users/RedDragon/Desktop/temp/Remote-Connection-Master_App/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_b20c519f0f5e7c78c20cd2009facbbb43bcc0b56/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
         jar="/Users/RedDragon/Desktop/temp/Remote-Connection-Master_App/app/build/intermediates/exploded-aar/com.android.support/transition/25.1.1/jars/classes.jar"
         jumboMode="true"
         optimize="true"
@@ -45,6 +81,42 @@
         revision="25.0.2"
         sha1="e2719c102dca3a7a5b02ce07f769362da6ddb4ab">
         <dex dex="/Users/RedDragon/Desktop/temp/Remote-Connection-Master_App/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-fragment-25.1.1_44a8d51d451d17d499e50962e63e55119f3578bb/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/RedDragon/.gradle/caches/modules-2/files-2.1/com.jakewharton/butterknife-annotations/8.4.0/ea392375cf9ff59234a82e7928a204215ccc98cd/butterknife-annotations-8.4.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="ea392375cf9ff59234a82e7928a204215ccc98cd">
+        <dex dex="/Users/RedDragon/Desktop/temp/Remote-Connection-Master_App/app/build/intermediates/transforms/dex/debug/folders/1000/10/butterknife-annotations-8.4.0_62f73414b72e65c1570da28745d82eb09590b1c7/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/RedDragon/Desktop/temp/Remote-Connection-Master_App/app/build/intermediates/exploded-aar/com.jakewharton/butterknife/8.4.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="a07818a1ecabdb149998823429cce555af4b9cba">
+        <dex dex="/Users/RedDragon/Desktop/temp/Remote-Connection-Master_App/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.jakewharton-butterknife-8.4.0_12ec759af20647e41bbf18d6ea9bf684a80cbe29/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/RedDragon/Desktop/temp/Remote-Connection-Master_App/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/25.1.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="3e04ac8ca644ea7baddf6fdcf72e15c79e9df94a">
+        <dex dex="/Users/RedDragon/Desktop/temp/Remote-Connection-Master_App/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-core-ui-25.1.1_ba614e1161c07362631367dbbc41baeb1ed0aac2/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/RedDragon/Desktop/temp/Remote-Connection-Master_App/app/build/intermediates/exploded-aar/com.android.support/support-v4/25.1.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="/Users/RedDragon/Desktop/temp/Remote-Connection-Master_App/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-v4-25.1.1_e770e1bacd6179d4385046f23de7c91fd583f5a2/classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -90,78 +162,6 @@
         revision="25.0.2"
         sha1="cd7951e04cfb9a8bf008d544a478d9a8d8192d38">
         <dex dex="/Users/RedDragon/Desktop/temp/Remote-Connection-Master_App/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-design-25.1.1_9e6293dd9a2db9c12eba83c1db1259116da222c9/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/RedDragon/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/25.1.1/support-annotations-25.1.1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="b59b6ee8d6ecc03e672d253800430343493a6ed8">
-        <dex dex="/Users/RedDragon/Desktop/temp/Remote-Connection-Master_App/app/build/intermediates/transforms/dex/debug/folders/1000/10/support-annotations-25.1.1_1061ded891b136289d0afed79767c8de92630b0c/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/RedDragon/Desktop/temp/Remote-Connection-Master_App/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/25.1.1/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="0fb891e8f0cfba0513043a7bb357513d229ca2cd">
-        <dex dex="/Users/RedDragon/Desktop/temp/Remote-Connection-Master_App/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-core-utils-25.1.1_5784810d9254b647fa50cc094d8845d51befd741/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/RedDragon/Desktop/temp/Remote-Connection-Master_App/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/25.1.1/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="c03bf57f358aa10d253f21989e93bcf6014b3b17">
-        <dex dex="/Users/RedDragon/Desktop/temp/Remote-Connection-Master_App/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-vector-drawable-25.1.1_389dd9eb75b5e89981b7b64f0ddbba44a50e35d8/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/RedDragon/Desktop/temp/Remote-Connection-Master_App/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="66fa52e4407937001a53b08ed71be3a97f594ed2">
-        <dex dex="/Users/RedDragon/Desktop/temp/Remote-Connection-Master_App/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_b20c519f0f5e7c78c20cd2009facbbb43bcc0b56/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/RedDragon/.gradle/caches/modules-2/files-2.1/com.jakewharton/butterknife-annotations/8.4.0/ea392375cf9ff59234a82e7928a204215ccc98cd/butterknife-annotations-8.4.0.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="ea392375cf9ff59234a82e7928a204215ccc98cd">
-        <dex dex="/Users/RedDragon/Desktop/temp/Remote-Connection-Master_App/app/build/intermediates/transforms/dex/debug/folders/1000/10/butterknife-annotations-8.4.0_62f73414b72e65c1570da28745d82eb09590b1c7/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/RedDragon/Desktop/temp/Remote-Connection-Master_App/app/build/intermediates/exploded-aar/com.jakewharton/butterknife/8.4.0/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="a07818a1ecabdb149998823429cce555af4b9cba">
-        <dex dex="/Users/RedDragon/Desktop/temp/Remote-Connection-Master_App/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.jakewharton-butterknife-8.4.0_12ec759af20647e41bbf18d6ea9bf684a80cbe29/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/RedDragon/Desktop/temp/Remote-Connection-Master_App/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/25.1.1/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="3e04ac8ca644ea7baddf6fdcf72e15c79e9df94a">
-        <dex dex="/Users/RedDragon/Desktop/temp/Remote-Connection-Master_App/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-core-ui-25.1.1_ba614e1161c07362631367dbbc41baeb1ed0aac2/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/RedDragon/Desktop/temp/Remote-Connection-Master_App/app/build/intermediates/exploded-aar/com.android.support/support-v4/25.1.1/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
-        <dex dex="/Users/RedDragon/Desktop/temp/Remote-Connection-Master_App/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-v4-25.1.1_e770e1bacd6179d4385046f23de7c91fd583f5a2/classes.dex" />
     </item>
 
 </items>

@@ -1,6 +1,8 @@
 package com.example.reddragon.remote_connection_master_app;
 
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -9,6 +11,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.LinearLayout;
+import android.widget.Toolbar;
 
 import com.example.reddragon.remote_connection_master_app.View.ConSettingsView;
 import com.example.reddragon.remote_connection_master_app.View.ConsoleView;
@@ -30,10 +33,15 @@ private LinearLayout console;
 private static final Fragment CONNECTION_SETTINGS = new ConSettingsView();
 private static final ConsoleView CONSOLE = new ConsoleView();
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
+        setActionBar(myToolbar);
 
         connectionSettings = new LinearLayout(this);
         console = new LinearLayout(this);
@@ -54,16 +62,13 @@ private static final ConsoleView CONSOLE = new ConsoleView();
 
             case R.id.settings_menu:
                 launchContainer(CONNECTION_SETTINGS);
-
                 return true;
 
             case R.id.console_menu:
                 launchContainer(CONSOLE);
-
                 return true;
 
             default:
-
                 return super.onOptionsItemSelected(item);
         }
     }
