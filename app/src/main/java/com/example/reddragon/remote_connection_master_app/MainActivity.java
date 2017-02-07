@@ -38,6 +38,7 @@ private static final ConsoleView CONSOLE = new ConsoleView();
         connectionSettings = new LinearLayout(this);
         console = new LinearLayout(this);
 
+
     }
 
     @Override
