@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:id="@+id/settings"
+    <item android:id="@+id/settings_menu"
         android:title="Settings"        />
         <!--android:icon="@drawable/settings.png"-->
 
 
-    <item android:id="@+id/console"
+    <item android:id="@+id/console_menu"
         android:title="Console"        />
         <!--android:icon="@drawable/console.png"-->
 
