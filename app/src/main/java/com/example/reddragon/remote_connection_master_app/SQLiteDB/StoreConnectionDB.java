@@ -17,12 +17,17 @@ public class StoreConnectionDB extends SQLiteOpenHelper {
 
         private static final String DATABASE_NAME = "Stored_Connections.db";
         private static final String TABLE_NAME = "connecton_table";
-        private static final String COL_1 = "";
-        private static final String COL_2 = "";
-        private static final String COL_3 = "";
-        private static final String COL_4 = "";
 
-        private static final int DATABASE_VERSION = 2;
+        private static final String COL_1 = "ID";
+        private static final String COL_2 = "IP";
+        private static final String COL_3 = "NAME";
+        private static final String COL_4 = "TYPE";
+        private static final String COL_5 = "PORT";
+        private static final String COL_6 = "KEY";
+        private static final String COL_7 = "PASSWORD";
+        private static final String COL_8 = "USERNAME";
+
+        private static final int DATABASE_VERSION = 1;
 
 
     public StoreConnectionDB(Context context) {
