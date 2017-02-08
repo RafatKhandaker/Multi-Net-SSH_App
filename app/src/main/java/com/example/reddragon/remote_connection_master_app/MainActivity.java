@@ -54,22 +54,21 @@ private static final ConsoleView CONSOLE = new ConsoleView();
         setContentView(R.layout.activity_main);
 
         /**  not complete, needs better thread handling.. eventually will overload UI thread**/
+
         // create Settings button
         settingsButton = (ImageButton)findViewById(R.id.settings_button);
         connectionSettings = new LinearLayout(this);
         console = new LinearLayout(this);
+
         // instantiate database
         preConDatabase = new StoreConnectionDB(this);
+
         // instantiate recycler
         preConnectRecycler = (RecyclerView)findViewById(R.id.main_recycler);
         recyclerLayoutManager = new LinearLayoutManager(this);
         recyclerAdapter = new MainContainerAdapter();
 
-
-
         openOnClickSettings(settingsButton);
-
-
 
     }
 
