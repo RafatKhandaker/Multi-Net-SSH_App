@@ -1,4 +1,4 @@
-package com.example.reddragon.remote_connection_master_app.View;
+package com.example.reddragon.remote_connection_master_app.View.FrameFragments;
 
 
 import android.support.v4.app.Fragment;

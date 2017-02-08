@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -15,8 +16,9 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 
 import com.example.reddragon.remote_connection_master_app.SQLiteDB.StoreConnectionDB;
-import com.example.reddragon.remote_connection_master_app.View.ConSettingsView;
-import com.example.reddragon.remote_connection_master_app.View.ConsoleView;
+import com.example.reddragon.remote_connection_master_app.View.FrameFragments.ConSettingsView;
+import com.example.reddragon.remote_connection_master_app.View.FrameFragments.ConsoleView;
+import com.example.reddragon.remote_connection_master_app.View.MainContainerAdapter;
 
 /**------------------------------------------------------------------------------------------------->
  * Plan: Everything is written around the android UI thread as the central core of the application /
@@ -32,7 +34,11 @@ public class MainActivity extends FragmentActivity {
 private LinearLayout connectionSettings;
 private LinearLayout console;
 private ImageButton settingsButton;
+
 private static RecyclerView preConnectRecycler;
+private static RecyclerView.Adapter recyclerAdapter;
+private static RecyclerView.LayoutManager recyclerLayoutManager;
+
 private static StoreConnectionDB preConDatabase;
 
 private static final Fragment CONNECTION_SETTINGS = new ConSettingsView();
@@ -47,14 +53,23 @@ private static final ConsoleView CONSOLE = new ConsoleView();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        /**  not complete, needs better thread handling.. eventually will overload UI thread**/
+        // create Settings button
         settingsButton = (ImageButton)findViewById(R.id.settings_button);
-        preConnectRecycler = (RecyclerView)findViewById(R.id.main_recycler);
+        connectionSettings = new LinearLayout(this);
+        console = new LinearLayout(this);
+        // instantiate database
         preConDatabase = new StoreConnectionDB(this);
+        // instantiate recycler
+        preConnectRecycler = (RecyclerView)findViewById(R.id.main_recycler);
+        recyclerLayoutManager = new LinearLayoutManager(this);
+        recyclerAdapter = new MainContainerAdapter();
+
+
 
         openOnClickSettings(settingsButton);
 
-        connectionSettings = new LinearLayout(this);
-        console = new LinearLayout(this);
+
 
     }
 
