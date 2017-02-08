@@ -10,8 +10,9 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
-import android.widget.Toolbar;
 
 import com.example.reddragon.remote_connection_master_app.View.ConSettingsView;
 import com.example.reddragon.remote_connection_master_app.View.ConsoleView;
@@ -29,6 +30,7 @@ public class MainActivity extends FragmentActivity {
 
 private LinearLayout connectionSettings;
 private LinearLayout console;
+private ImageButton settingsButton;
 
 private static final Fragment CONNECTION_SETTINGS = new ConSettingsView();
 private static final ConsoleView CONSOLE = new ConsoleView();
@@ -40,12 +42,12 @@ private static final ConsoleView CONSOLE = new ConsoleView();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
-        setActionBar(myToolbar);
+        settingsButton = (ImageButton)findViewById(R.id.settings_button);
+
+        openOnClickSettings(settingsButton);
 
         connectionSettings = new LinearLayout(this);
         console = new LinearLayout(this);
-
 
     }
 
@@ -71,6 +73,20 @@ private static final ConsoleView CONSOLE = new ConsoleView();
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    @Override
+    public void openOptionsMenu() {
+        super.openOptionsMenu();
+    }
+
+    private void openOnClickSettings(View view){
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openOptionsMenu();
+            }
+        });
     }
 
     private void launchContainer(Fragment fragment){
