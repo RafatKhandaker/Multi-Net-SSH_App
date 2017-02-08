@@ -47,12 +47,19 @@ public class StoreConnectionDB extends SQLiteOpenHelper {
         onCreate(sqLiteDatabase);
     }
 
-    public boolean insertData( String col2, String col3, String col4){
+    public boolean insertData( String ip, String name, String type, String port, String key,
+                               String password, String username){
+
         sqLiteDatabase = this.getWritableDatabase();
         contentValues = new ContentValues();
-        contentValues.put(COL_2, col2);
-        contentValues.put(COL_3, col3);
-        contentValues.put(COL_4, col4);
+
+        contentValues.put(COL_2, ip);
+        contentValues.put(COL_3, name);
+        contentValues.put(COL_4, type);
+        contentValues.put(COL_5, port);
+        contentValues.put(COL_6, key);
+        contentValues.put(COL_7, password);
+        contentValues.put(COL_8, username);
 
         long result = sqLiteDatabase.insert(TABLE_NAME, null, contentValues);
 
@@ -63,30 +70,6 @@ public class StoreConnectionDB extends SQLiteOpenHelper {
         sqLiteDatabase = this.getWritableDatabase();
         return sqLiteDatabase.rawQuery("select * from "+TABLE_NAME,null); }
 
-
-    //-----------------------keep methods for enhancements and reference ------------------------------
-    public Cursor getCol2(){
-        sqLiteDatabase = this.getWritableDatabase();
-        return sqLiteDatabase.rawQuery("select () from "+TABLE_NAME, null); }
-
-    public Cursor getCol3(){
-        sqLiteDatabase = this.getWritableDatabase();
-        return sqLiteDatabase.rawQuery("select () from " +TABLE_NAME, null);
-    }
-
-
-    public boolean updateData(String id, String col2, String col3, String col4){
-        sqLiteDatabase = this.getWritableDatabase();
-        contentValues = new ContentValues();
-        contentValues.put(COL_1, id);
-        contentValues.put(COL_2, col2);
-        contentValues.put(COL_3, col3);
-        contentValues.put(COL_4, col4);
-
-        sqLiteDatabase.update(TABLE_NAME, contentValues, "ID = ?", new String[]{ id } );
-
-        return true;
-    }
 
     public Integer deleteData(String id){
         sqLiteDatabase = this.getWritableDatabase();
