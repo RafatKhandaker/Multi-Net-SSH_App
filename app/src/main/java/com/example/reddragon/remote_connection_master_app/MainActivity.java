@@ -1,5 +1,6 @@
 package com.example.reddragon.remote_connection_master_app;
 
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -13,6 +14,7 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 
+import com.example.reddragon.remote_connection_master_app.SQLiteDB.StoreConnectionDB;
 import com.example.reddragon.remote_connection_master_app.View.ConSettingsView;
 import com.example.reddragon.remote_connection_master_app.View.ConsoleView;
 
@@ -30,10 +32,14 @@ public class MainActivity extends FragmentActivity {
 private LinearLayout connectionSettings;
 private LinearLayout console;
 private ImageButton settingsButton;
-private static RecyclerView previousConnectRecycler;
+private static RecyclerView preConnectRecycler;
+private static StoreConnectionDB preConDatabase;
 
 private static final Fragment CONNECTION_SETTINGS = new ConSettingsView();
 private static final ConsoleView CONSOLE = new ConsoleView();
+
+    private Cursor res;
+    private StringBuffer bufferValue;
 
 
     @Override
@@ -42,7 +48,8 @@ private static final ConsoleView CONSOLE = new ConsoleView();
         setContentView(R.layout.activity_main);
 
         settingsButton = (ImageButton)findViewById(R.id.settings_button);
-        previousConnectRecycler = (RecyclerView)findViewById(R.id.main_recycler);
+        preConnectRecycler = (RecyclerView)findViewById(R.id.main_recycler);
+        preConDatabase = new StoreConnectionDB(this);
 
         openOnClickSettings(settingsButton);
 
@@ -98,6 +105,16 @@ private static final ConsoleView CONSOLE = new ConsoleView();
         FragmentTransaction fragTrans = fragMan.beginTransaction();
         fragTrans.add(R.id.mainframe_container, fragment);
         fragTrans.commit();
+    }
+
+    private void loadSavedData(){
+        res = preConDatabase.getAllData();
+        if(res.getCount() != 0) {
+            bufferValue = new StringBuffer();
+            while (res.moveToNext()) {
+               // load the data individual from SQLite
+            }
+        }
     }
 
 
