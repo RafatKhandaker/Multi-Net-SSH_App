@@ -1,12 +1,11 @@
 package com.example.reddragon.remote_connection_master_app;
 
-import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -31,11 +30,11 @@ public class MainActivity extends FragmentActivity {
 private LinearLayout connectionSettings;
 private LinearLayout console;
 private ImageButton settingsButton;
+private static RecyclerView previousConnectRecycler;
 
 private static final Fragment CONNECTION_SETTINGS = new ConSettingsView();
 private static final ConsoleView CONSOLE = new ConsoleView();
 
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +42,7 @@ private static final ConsoleView CONSOLE = new ConsoleView();
         setContentView(R.layout.activity_main);
 
         settingsButton = (ImageButton)findViewById(R.id.settings_button);
+        previousConnectRecycler = (RecyclerView)findViewById(R.id.main_recycler);
 
         openOnClickSettings(settingsButton);
 
@@ -87,6 +87,10 @@ private static final ConsoleView CONSOLE = new ConsoleView();
                 openOptionsMenu();
             }
         });
+    }
+
+    private void initiateRecycler(RecyclerView recycler){
+
     }
 
     private void launchContainer(Fragment fragment){
