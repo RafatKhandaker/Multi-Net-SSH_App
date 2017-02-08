@@ -37,7 +37,7 @@ public class StoreConnectionDB extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         sqLiteDatabase.execSQL("create table " +TABLE_NAME+ " (ID INTEGER PRIMARY KEY AUTOINCREMENT" +
-                ")");
+                "IP TEXT, NAME TEXT, TYPE TEXT, PORT INTEGER, KEY TEXT, PASSWORD TEXT, USERNAME TEXT)");
 
     }
 
