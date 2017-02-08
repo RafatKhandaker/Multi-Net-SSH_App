@@ -67,6 +67,7 @@ private static final ConsoleView CONSOLE = new ConsoleView();
         preConnectRecycler = (RecyclerView)findViewById(R.id.main_recycler);
         recyclerLayoutManager = new LinearLayoutManager(this);
         recyclerAdapter = new MainContainerAdapter();
+        preConnectRecycler.setAdapter(recyclerAdapter);
 
         openOnClickSettings(settingsButton);
 
@@ -110,9 +111,6 @@ private static final ConsoleView CONSOLE = new ConsoleView();
         });
     }
 
-    private void initiateRecycler(RecyclerView recycler){
-
-    }
 
     private void launchContainer(Fragment fragment){
         FragmentManager fragMan = getSupportFragmentManager();
