@@ -35,6 +35,7 @@ private LinearLayout connectionSettings;
 private LinearLayout console;
 private ImageButton settingsButton;
 
+// setting up Immutable objects for thread handling
 private static RecyclerView preConnectRecycler;
 private static RecyclerView.Adapter recyclerAdapter;
 private static RecyclerView.LayoutManager recyclerLayoutManager;
@@ -63,10 +64,11 @@ private static final ConsoleView CONSOLE = new ConsoleView();
         // instantiate database
         preConDatabase = new StoreConnectionDB(this);
 
-        // instantiate recycler
+        // initiate recycler
         preConnectRecycler = (RecyclerView)findViewById(R.id.main_recycler);
         recyclerLayoutManager = new LinearLayoutManager(this);
         recyclerAdapter = new MainContainerAdapter();
+        preConnectRecycler.setLayoutManager(recyclerLayoutManager);
         preConnectRecycler.setAdapter(recyclerAdapter);
 
         openOnClickSettings(settingsButton);
