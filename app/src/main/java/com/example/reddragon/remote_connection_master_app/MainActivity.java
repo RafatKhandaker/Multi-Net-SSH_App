@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -71,7 +72,7 @@ private static final ConsoleView CONSOLE = new ConsoleView();
         preConnectRecycler.setLayoutManager(recyclerLayoutManager);
         preConnectRecycler.setAdapter(recyclerAdapter);
 
-        openOnClickSettings(settingsButton);
+        // initiate menu
 
     }
 
@@ -99,18 +100,13 @@ private static final ConsoleView CONSOLE = new ConsoleView();
         }
     }
 
-    @Override
-    public void openOptionsMenu() {
-        super.openOptionsMenu();
-    }
 
-    private void openOnClickSettings(View view){
-        view.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openOptionsMenu();
-            }
-        });
+    private void showPopup(View v){
+        PopupMenu popup = new PopupMenu(this, v);
+        MenuInflater inflater = popup.getMenuInflater();
+        inflater.inflate(R.menu.menu, popup.getMenu());
+        popup.show();
+
     }
 
 
