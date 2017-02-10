@@ -15,6 +15,24 @@
     tools:context="com.example.reddragon.remote_connection_master_app.MainActivity"
     android:orientation="vertical">
 
+    <android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/drawer_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <ListView
+            android:id="@+id/drawerList"
+            android:layout_width="240dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:background="#111111"
+            android:dividerHeight="1dp"
+            android:choiceMode="singleChoice"
+            android:divider="@android:color/white" />
+
+    </android.support.v4.widget.DrawerLayout>
+
+
     <android.support.v7.widget.Toolbar
         android:id="@+id/my_toolbar"
         android:layout_width="match_parent"
@@ -77,5 +95,6 @@
             android:layout_marginTop="54dp" />
 
     </RelativeLayout>
+
 
 </android.support.design.widget.CoordinatorLayout>

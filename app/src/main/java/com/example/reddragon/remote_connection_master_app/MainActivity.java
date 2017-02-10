@@ -6,6 +6,9 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
@@ -13,8 +16,10 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 
 import com.example.reddragon.remote_connection_master_app.SQLiteDB.StoreConnectionDB;
 import com.example.reddragon.remote_connection_master_app.View.FrameFragments.ConSettingsView;
@@ -40,7 +45,7 @@ private ImageView settingsButton;
 private static RecyclerView preConnectRecycler;
 private static RecyclerView.Adapter recyclerAdapter;
 private static RecyclerView.LayoutManager recyclerLayoutManager;
-
+private static DrawerLayout drawerLayout;
 private static StoreConnectionDB preConDatabase;
 
 private static final Fragment CONNECTION_SETTINGS = new ConSettingsView();
@@ -49,6 +54,10 @@ private static final ConsoleView CONSOLE = new ConsoleView();
     private Cursor res;
     private StringBuffer bufferValue;
 
+
+    private ActionBarDrawerToggle drawerToggle;
+    private ListView drawerList;
+    String[] andoridVeriosnArray;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,6 +83,14 @@ private static final ConsoleView CONSOLE = new ConsoleView();
 
         // initiate menu
         initiateSettingsClick(settingsButton);
+
+        //initiate profiles
+        drawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
+        drawerList = (ListView)findViewById(R.id.drawerList);
+        initiateSlidingDrawer();
+
+
+
     }
 
     @Override
@@ -115,6 +132,30 @@ private static final ConsoleView CONSOLE = new ConsoleView();
 
     }
 
+    private void initiateSlidingDrawer(){
+        drawerLayout.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START);
+
+        andoridVeriosnArray = new String[] { "root", "user1", "user2", "user3" };
+
+        drawerList.setAdapter(new ArrayAdapter<>(MainActivity.this,
+                R.layout.drawer_list_item, andoridVeriosnArray));
+
+//        drawerList.setOnItemClickListener(new DrawerItemClickListener());
+
+        drawerToggle = new ActionBarDrawerToggle(
+                this, drawerLayout, null, R.string.drawer_open, R.string.drawer_close)
+        {
+            public void onDrawerClosed(View view) {
+                invalidateOptionsMenu();
+            }
+
+            public void onDrawerOpened(View drawerView) {
+                invalidateOptionsMenu();
+            }
+        };
+        drawerLayout.setDrawerListener(drawerToggle);
+
+    }
 
     private void launchContainer(Fragment fragment){
         FragmentManager fragMan = getSupportFragmentManager();
