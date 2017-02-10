@@ -13,7 +13,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.example.reddragon.remote_connection_master_app.SQLiteDB.StoreConnectionDB;
@@ -34,7 +34,7 @@ public class MainActivity extends FragmentActivity {
 
 private LinearLayout connectionSettings;
 private LinearLayout console;
-private ImageButton settingsButton;
+private ImageView settingsButton;
 
 // setting up Immutable objects for thread handling
 private static RecyclerView preConnectRecycler;
@@ -58,7 +58,7 @@ private static final ConsoleView CONSOLE = new ConsoleView();
         /**  not complete, needs better thread handling.. eventually will overload UI thread**/
 
         // create Settings button
-        settingsButton = (ImageButton)findViewById(R.id.settings_button);
+        settingsButton = (ImageView)findViewById(R.id.settings_button);
         connectionSettings = new LinearLayout(this);
         console = new LinearLayout(this);
 
@@ -73,7 +73,7 @@ private static final ConsoleView CONSOLE = new ConsoleView();
         preConnectRecycler.setAdapter(recyclerAdapter);
 
         // initiate menu
-
+        initiateSettingsClick(settingsButton);
     }
 
     @Override
@@ -101,11 +101,17 @@ private static final ConsoleView CONSOLE = new ConsoleView();
     }
 
 
-    private void showPopup(View v){
-        PopupMenu popup = new PopupMenu(this, v);
-        MenuInflater inflater = popup.getMenuInflater();
-        inflater.inflate(R.menu.menu, popup.getMenu());
-        popup.show();
+    private void initiateSettingsClick(View v){
+        v.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                PopupMenu popup = new PopupMenu(MainActivity.this, settingsButton);
+                MenuInflater inflater = popup.getMenuInflater();
+                inflater.inflate(R.menu.menu, popup.getMenu());
+                popup.show();
+            }
+        });
+
 
     }
 
