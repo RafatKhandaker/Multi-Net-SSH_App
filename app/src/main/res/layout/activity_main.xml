@@ -27,9 +27,36 @@
         <ImageView
             android:layout_height="match_parent"
             android:layout_width="50dp"
+            android:id="@+id/profile_button"
+            android:onClick="onProfileClick"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/profile_icon"/>
+        <ImageView
+            android:layout_height="match_parent"
+            android:layout_width="50dp"
+            android:id="@+id/folder_button"
+            android:onClick="onFolderClick"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/ssh_private_folder"/>
+
+        <ImageView
+            android:layout_height="match_parent"
+            android:layout_width="50dp"
+            android:id="@+id/ssh_button"
+            android:onClick="onConsoleClick"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/ssh_icon"/>
+
+        <ImageView
+            android:layout_height="match_parent"
+            android:layout_width="50dp"
             android:id="@+id/settings_button"
-            android:layout_marginStart="300dp"
             android:onClick="showPopup"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
             android:background="@drawable/open_settings"/>
 
     </android.support.v7.widget.Toolbar>
