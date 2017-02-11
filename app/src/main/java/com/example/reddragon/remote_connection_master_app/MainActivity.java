@@ -3,7 +3,6 @@ package com.example.reddragon.remote_connection_master_app;
 import android.content.res.Configuration;
 import android.database.Cursor;
 import android.os.Bundle;
-import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -39,6 +38,7 @@ public class MainActivity extends FragmentActivity {
 private LinearLayout connectionSettings;
 private LinearLayout console;
 private ImageView settingsButton;
+private ImageView profileImageButton;
 
 // setting up Immutable objects for thread handling
 
@@ -47,9 +47,13 @@ private static StoreConnectionDB preConDatabase;
 
 private static final Fragment CONNECTION_SETTINGS = new ConSettingsView();
 private static final ConsoleView CONSOLE = new ConsoleView();
+private RecyclerClass recyclerClass = new RecyclerClass();
+
 
     private Cursor res;
     private StringBuffer bufferValue;
+
+    private static FragmentManager fragMan;
 
 
     private android.support.v4.app.ActionBarDrawerToggle drawerToggle;
@@ -72,7 +76,6 @@ private static final ConsoleView CONSOLE = new ConsoleView();
         preConDatabase = new StoreConnectionDB(this);
 
         // initiate recycler  * comment this section to test the sliding drawer
-        RecyclerClass recyclerClass = new RecyclerClass();
         launchContainer(recyclerClass);
 
         // initiate menu
@@ -81,8 +84,9 @@ private static final ConsoleView CONSOLE = new ConsoleView();
         //initiate profiles
         drawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
         drawerList = (ListView)findViewById(R.id.drawerList);
+        profileImageButton = (ImageView)findViewById(R.id.profile_button);
         initiateSlidingDrawer();
-
+        initiateTrayClickListener(profileImageButton, R.id.profile_button);
 
 
     }
@@ -97,6 +101,8 @@ private static final ConsoleView CONSOLE = new ConsoleView();
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
         // If the nav drawer is open, hide action items related to the content view
+        boolean drawerOpen = drawerLayout.isDrawerOpen(drawerList);
+        menu.findItem(R.id.mainframe_container).setVisible(!drawerOpen);
         return super.onPrepareOptionsMenu(menu);
     }
 
@@ -132,8 +138,25 @@ private static final ConsoleView CONSOLE = new ConsoleView();
     }
 
 
+    private void loadSavedData(){
+        res = preConDatabase.getAllData();
+        if(res.getCount() != 0) {
+            bufferValue = new StringBuffer();
+            while (res.moveToNext()) {
+                // load the data individual from SQLite
+            }
+        }
+    }
 
-    private void initiateSettingsClick(View v){
+    private void launchContainer(Fragment fragment){
+        fragMan = getSupportFragmentManager();
+        fragMan.beginTransaction()
+                .replace(R.id.mainframe_container, fragment)
+                .commit();
+
+    }
+
+    private void initiateSettingsClick(View v) {
         v.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -143,8 +166,18 @@ private static final ConsoleView CONSOLE = new ConsoleView();
                 popup.show();
             }
         });
+    }
 
-
+    private void initiateTrayClickListener(View v, int r){
+        switch(r){
+            case R.id.profile_button:
+              v.setOnClickListener(new View.OnClickListener() {
+                  @Override
+                  public void onClick(View v) {
+                      initiateDrawerToggle();
+                  }
+              });
+        }
     }
 
     private void initiateSlidingDrawer(){
@@ -157,53 +190,26 @@ private static final ConsoleView CONSOLE = new ConsoleView();
 
         drawerList.setOnItemClickListener(new DrawerItemClickListener());
 
-//        getActionBar().setDisplayHomeAsUpEnabled(true);
-//        getActionBar().setHomeButtonEnabled(true);
+        initiateDrawerToggle();
+    }
 
-
-        drawerToggle = new ActionBarDrawerToggle(
-                this, drawerLayout, R.drawable.profile_icon, R.string.drawer_open, R.string.drawer_close) {
-            public void onDrawerClosed(View view) {
-                invalidateOptionsMenu();
-            }
-
-            public void onDrawerOpened(View drawerView) {
-                invalidateOptionsMenu();
-            }
-        };
-
+    private void initiateDrawerToggle(){
         drawerToggle = new android.support.v4.app.ActionBarDrawerToggle(
                 this, drawerLayout, R.drawable.profile_icon, R.string.drawer_open, R.string.drawer_close
         ) {
             public void onDrawerClosed(View view) {
                 super.onDrawerClosed(view);
+                launchContainer(recyclerClass);
                 invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
             }
 
             public void onDrawerOpened(View drawerView) {
                 super.onDrawerOpened(drawerView);
+                drawerLayout.bringToFront();
                 invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
             }
         };
         drawerLayout.setDrawerListener(drawerToggle);
-
-    }
-
-    private void launchContainer(Fragment fragment){
-        FragmentManager fragMan = getSupportFragmentManager();
-         fragMan.beginTransaction()
-                .replace(R.id.mainframe_container, fragment)
-                .commit();
-    }
-
-    private void loadSavedData(){
-        res = preConDatabase.getAllData();
-        if(res.getCount() != 0) {
-            bufferValue = new StringBuffer();
-            while (res.moveToNext()) {
-               // load the data individual from SQLite
-            }
-        }
     }
 
     private class DrawerItemClickListener implements ListView.OnItemClickListener {
@@ -214,8 +220,5 @@ private static final ConsoleView CONSOLE = new ConsoleView();
 
         private void selectItem(){}
     }
-
-
-
 
 }
