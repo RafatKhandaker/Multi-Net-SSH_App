@@ -9,9 +9,7 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.PopupMenu;
-import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -25,7 +23,7 @@ import android.widget.ListView;
 import com.example.reddragon.remote_connection_master_app.SQLiteDB.StoreConnectionDB;
 import com.example.reddragon.remote_connection_master_app.View.FrameFragments.ConSettingsView;
 import com.example.reddragon.remote_connection_master_app.View.FrameFragments.ConsoleView;
-import com.example.reddragon.remote_connection_master_app.View.MainContainerAdapter;
+import com.example.reddragon.remote_connection_master_app.View.FrameFragments.RecyclerClass;
 
 /**------------------------------------------------------------------------------------------------->
  * Plan: Everything is written around the android UI thread as the central core of the application /
@@ -43,9 +41,7 @@ private LinearLayout console;
 private ImageView settingsButton;
 
 // setting up Immutable objects for thread handling
-private static RecyclerView preConnectRecycler;
-private static RecyclerView.Adapter recyclerAdapter;
-private static RecyclerView.LayoutManager recyclerLayoutManager;
+
 private static DrawerLayout drawerLayout;
 private static StoreConnectionDB preConDatabase;
 
@@ -75,12 +71,9 @@ private static final ConsoleView CONSOLE = new ConsoleView();
         // instantiate database
         preConDatabase = new StoreConnectionDB(this);
 
-        // initiate recycler
-        preConnectRecycler = (RecyclerView)findViewById(R.id.main_recycler);
-        recyclerLayoutManager = new LinearLayoutManager(this);
-        recyclerAdapter = new MainContainerAdapter();
-        preConnectRecycler.setLayoutManager(recyclerLayoutManager);
-        preConnectRecycler.setAdapter(recyclerAdapter);
+        // initiate recycler  * comment this section to test the sliding drawer
+        RecyclerClass recyclerClass = new RecyclerClass();
+        launchContainer(recyclerClass);
 
         // initiate menu
         initiateSettingsClick(settingsButton);
