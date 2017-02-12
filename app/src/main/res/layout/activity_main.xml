@@ -87,6 +87,14 @@
         android:layout_height="match_parent"
         android:paddingTop="10dp"
         android:id="@+id/mainframe_container">
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="5dp"
+            android:id="@+id/main_recycler"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="54dp" />
     </RelativeLayout>
 
 

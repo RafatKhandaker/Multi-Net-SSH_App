@@ -3,12 +3,15 @@ package com.example.reddragon.remote_connection_master_app;
 import android.content.res.Configuration;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.PopupMenu;
+import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -23,6 +26,7 @@ import com.example.reddragon.remote_connection_master_app.SQLiteDB.StoreConnecti
 import com.example.reddragon.remote_connection_master_app.View.FrameFragments.ConSettingsView;
 import com.example.reddragon.remote_connection_master_app.View.FrameFragments.ConsoleView;
 import com.example.reddragon.remote_connection_master_app.View.FrameFragments.RecyclerClass;
+import com.example.reddragon.remote_connection_master_app.View.MainContainerAdapter;
 
 /**------------------------------------------------------------------------------------------------->
  * Plan: Everything is written around the android UI thread as the central core of the application /
@@ -44,11 +48,14 @@ private ImageView profileImageButton;
 
 private static DrawerLayout drawerLayout;
 private static StoreConnectionDB preConDatabase;
+private CoordinatorLayout MainLayout;
 
 private static final Fragment CONNECTION_SETTINGS = new ConSettingsView();
 private static final ConsoleView CONSOLE = new ConsoleView();
+    private static android.support.v7.widget.RecyclerView preConnectRecycler;
+    private static android.support.v7.widget.RecyclerView.Adapter recyclerAdapter;
+    private static android.support.v7.widget.RecyclerView.LayoutManager recyclerLayoutManager;
 private RecyclerClass recyclerClass = new RecyclerClass();
-
 
     private Cursor res;
     private StringBuffer bufferValue;
@@ -66,7 +73,7 @@ private RecyclerClass recyclerClass = new RecyclerClass();
         setContentView(R.layout.activity_main);
 
         /**  not complete, needs better thread handling.. eventually will overload UI thread**/
-
+        MainLayout = (CoordinatorLayout)findViewById(R.id.activity_main);
         // create Settings button
         settingsButton = (ImageView)findViewById(R.id.settings_button);
         connectionSettings = new LinearLayout(this);
@@ -76,7 +83,8 @@ private RecyclerClass recyclerClass = new RecyclerClass();
         preConDatabase = new StoreConnectionDB(this);
 
         // initiate recycler  * comment this section to test the sliding drawer
-        launchContainer(recyclerClass);
+//        launchContainer(recyclerClass);
+        launchRecyclerSettings();
 
         // initiate menu
         initiateSettingsClick(settingsButton);
@@ -85,6 +93,7 @@ private RecyclerClass recyclerClass = new RecyclerClass();
         drawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
         drawerList = (ListView)findViewById(R.id.drawerList);
         profileImageButton = (ImageView)findViewById(R.id.profile_button);
+
         initiateSlidingDrawer();
         initiateTrayClickListener(profileImageButton, R.id.profile_button);
 
@@ -148,6 +157,15 @@ private RecyclerClass recyclerClass = new RecyclerClass();
         }
     }
 
+    private void launchRecyclerSettings(){
+        preConnectRecycler = (RecyclerView)findViewById(R.id.main_recycler);
+        recyclerLayoutManager = new LinearLayoutManager(this);
+        recyclerAdapter = new MainContainerAdapter();
+        preConnectRecycler.setLayoutManager(recyclerLayoutManager);
+        preConnectRecycler.setAdapter(recyclerAdapter);
+
+    }
+
     private void launchContainer(Fragment fragment){
         fragMan = getSupportFragmentManager();
         fragMan.beginTransaction()
@@ -174,7 +192,11 @@ private RecyclerClass recyclerClass = new RecyclerClass();
               v.setOnClickListener(new View.OnClickListener() {
                   @Override
                   public void onClick(View v) {
-                      initiateDrawerToggle();
+                      if(!drawerLayout.isDrawerOpen(drawerList)){
+                          drawerLayout.openDrawer(drawerList);
+                      }else if(drawerLayout.isDrawerOpen(drawerList)){
+                          drawerLayout.closeDrawer(drawerList);
+                      }
                   }
               });
         }
@@ -199,7 +221,7 @@ private RecyclerClass recyclerClass = new RecyclerClass();
         ) {
             public void onDrawerClosed(View view) {
                 super.onDrawerClosed(view);
-                launchContainer(recyclerClass);
+                MainLayout.bringToFront();
                 invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
             }
 
