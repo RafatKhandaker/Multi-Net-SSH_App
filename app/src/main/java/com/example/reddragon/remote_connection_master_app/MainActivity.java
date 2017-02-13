@@ -208,15 +208,11 @@ private RecyclerClass recyclerClass = new RecyclerClass();
         ) {
             public void onDrawerClosed(View view) {
                 super.onDrawerClosed(view);
-//                drawerLayout.invalidate();
-                preConnectRecycler.bringToFront();
                 invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
             }
 
             public void onDrawerOpened(View drawerView) {
                 super.onDrawerOpened(drawerView);
-                preConnectRecycler.invalidate();
-//                drawerLayout.bringToFront();
                 invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
             }
         };
