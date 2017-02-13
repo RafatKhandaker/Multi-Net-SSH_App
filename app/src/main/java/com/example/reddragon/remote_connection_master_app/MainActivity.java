@@ -3,15 +3,12 @@ package com.example.reddragon.remote_connection_master_app;
 import android.content.res.Configuration;
 import android.database.Cursor;
 import android.os.Bundle;
-import android.support.design.widget.CoordinatorLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.PopupMenu;
-import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -26,7 +23,6 @@ import com.example.reddragon.remote_connection_master_app.SQLiteDB.StoreConnecti
 import com.example.reddragon.remote_connection_master_app.View.FrameFragments.ConSettingsView;
 import com.example.reddragon.remote_connection_master_app.View.FrameFragments.ConsoleView;
 import com.example.reddragon.remote_connection_master_app.View.FrameFragments.RecyclerClass;
-import com.example.reddragon.remote_connection_master_app.View.MainContainerAdapter;
 
 /**------------------------------------------------------------------------------------------------->
  * Plan: Everything is written around the android UI thread as the central core of the application /
@@ -48,13 +44,14 @@ private ImageView profileImageButton;
 
 private static DrawerLayout drawerLayout;
 private static StoreConnectionDB preConDatabase;
-private CoordinatorLayout MainLayout;
 
 private static final Fragment CONNECTION_SETTINGS = new ConSettingsView();
 private static final ConsoleView CONSOLE = new ConsoleView();
-    private static android.support.v7.widget.RecyclerView preConnectRecycler;
-    private static android.support.v7.widget.RecyclerView.Adapter recyclerAdapter;
-    private static android.support.v7.widget.RecyclerView.LayoutManager recyclerLayoutManager;
+
+private android.support.v7.widget.RecyclerView preConnectRecycler;
+private android.support.v7.widget.RecyclerView.Adapter recyclerAdapter;
+private android.support.v7.widget.RecyclerView.LayoutManager recyclerLayoutManager;
+
 private RecyclerClass recyclerClass = new RecyclerClass();
 
     private Cursor res;
@@ -65,7 +62,7 @@ private RecyclerClass recyclerClass = new RecyclerClass();
 
     private android.support.v4.app.ActionBarDrawerToggle drawerToggle;
     private ListView drawerList;
-    String[] andoridVeriosnArray;
+    String[] userListArray;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,7 +70,7 @@ private RecyclerClass recyclerClass = new RecyclerClass();
         setContentView(R.layout.activity_main);
 
         /**  not complete, needs better thread handling.. eventually will overload UI thread**/
-        MainLayout = (CoordinatorLayout)findViewById(R.id.activity_main);
+
         // create Settings button
         settingsButton = (ImageView)findViewById(R.id.settings_button);
         connectionSettings = new LinearLayout(this);
@@ -83,8 +80,7 @@ private RecyclerClass recyclerClass = new RecyclerClass();
         preConDatabase = new StoreConnectionDB(this);
 
         // initiate recycler  * comment this section to test the sliding drawer
-//        launchContainer(recyclerClass);
-        launchRecyclerSettings();
+        launchContainer(recyclerClass);
 
         // initiate menu
         initiateSettingsClick(settingsButton);
@@ -157,21 +153,12 @@ private RecyclerClass recyclerClass = new RecyclerClass();
         }
     }
 
-    private void launchRecyclerSettings(){
-        preConnectRecycler = (RecyclerView)findViewById(R.id.main_recycler);
-        recyclerLayoutManager = new LinearLayoutManager(this);
-        recyclerAdapter = new MainContainerAdapter();
-        preConnectRecycler.setLayoutManager(recyclerLayoutManager);
-        preConnectRecycler.setAdapter(recyclerAdapter);
-
-    }
 
     private void launchContainer(Fragment fragment){
         fragMan = getSupportFragmentManager();
         fragMan.beginTransaction()
                 .replace(R.id.mainframe_container, fragment)
                 .commit();
-
     }
 
     private void initiateSettingsClick(View v) {
@@ -205,10 +192,10 @@ private RecyclerClass recyclerClass = new RecyclerClass();
     private void initiateSlidingDrawer(){
         drawerLayout.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START);
 
-        andoridVeriosnArray = new String[] { "root", "user1", "user2", "user3" };
+        userListArray = new String[] { "root", "user1", "user2", "user3" };
 
         drawerList.setAdapter(new ArrayAdapter<>(MainActivity.this,
-                R.layout.drawer_list_item, andoridVeriosnArray));
+                R.layout.drawer_list_item, userListArray));
 
         drawerList.setOnItemClickListener(new DrawerItemClickListener());
 
@@ -221,13 +208,15 @@ private RecyclerClass recyclerClass = new RecyclerClass();
         ) {
             public void onDrawerClosed(View view) {
                 super.onDrawerClosed(view);
-                MainLayout.bringToFront();
+//                drawerLayout.invalidate();
+                preConnectRecycler.bringToFront();
                 invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
             }
 
             public void onDrawerOpened(View drawerView) {
                 super.onDrawerOpened(drawerView);
-                drawerLayout.bringToFront();
+                preConnectRecycler.invalidate();
+//                drawerLayout.bringToFront();
                 invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
             }
         };

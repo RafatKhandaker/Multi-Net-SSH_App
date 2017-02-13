@@ -8,7 +8,6 @@ import android.view.View;
  */
 
 public class CardViewHolder extends RecyclerView.ViewHolder {
-
     public CardViewHolder(View itemView) {
         super(itemView);
     }

@@ -21,9 +21,9 @@ import com.example.reddragon.remote_connection_master_app.View.MainContainerAdap
 
 public class RecyclerClass extends Fragment {
 
-    private static android.support.v7.widget.RecyclerView preConnectRecycler;
-    private static android.support.v7.widget.RecyclerView.Adapter recyclerAdapter;
-    private static android.support.v7.widget.RecyclerView.LayoutManager recyclerLayoutManager;
+    public  android.support.v7.widget.RecyclerView preConnectRecycler;
+    public  android.support.v7.widget.RecyclerView.Adapter recyclerAdapter;
+    public  android.support.v7.widget.RecyclerView.LayoutManager recyclerLayoutManager;
 
     public RecyclerClass() {
     }
