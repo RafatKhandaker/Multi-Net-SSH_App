@@ -39,6 +39,8 @@ private LinearLayout connectionSettings;
 private LinearLayout console;
 private ImageView settingsButton;
 private ImageView profileImageButton;
+private ImageView consoleButton;
+private ImageView folderLockButton;
 
 // setting up Immutable objects for thread handling
 
@@ -48,9 +50,6 @@ private static StoreConnectionDB preConDatabase;
 private static final Fragment CONNECTION_SETTINGS = new ConSettingsView();
 private static final ConsoleView CONSOLE = new ConsoleView();
 
-private android.support.v7.widget.RecyclerView preConnectRecycler;
-private android.support.v7.widget.RecyclerView.Adapter recyclerAdapter;
-private android.support.v7.widget.RecyclerView.LayoutManager recyclerLayoutManager;
 
 private RecyclerClass recyclerClass = new RecyclerClass();
 
@@ -73,6 +72,9 @@ private RecyclerClass recyclerClass = new RecyclerClass();
 
         // create Settings button
         settingsButton = (ImageView)findViewById(R.id.settings_button);
+        consoleButton = (ImageView)findViewById(R.id.ssh_button);
+        folderLockButton = (ImageView)findViewById(R.id.folder_button);
+
         connectionSettings = new LinearLayout(this);
         console = new LinearLayout(this);
 
@@ -85,13 +87,16 @@ private RecyclerClass recyclerClass = new RecyclerClass();
         // initiate menu
         initiateSettingsClick(settingsButton);
 
-        //initiate profiles
+        //initiate slider on profile button
         drawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
         drawerList = (ListView)findViewById(R.id.drawerList);
         profileImageButton = (ImageView)findViewById(R.id.profile_button);
 
         initiateSlidingDrawer();
+
         initiateTrayClickListener(profileImageButton, R.id.profile_button);
+        initiateTrayClickListener(consoleButton, R.id.ssh_button);
+        initiateTrayClickListener(folderLockButton, R.id.folder_button);
 
 
     }
@@ -136,6 +141,12 @@ private RecyclerClass recyclerClass = new RecyclerClass();
     }
 
     @Override
+    public void onBackPressed() {
+//        super.onBackPressed();
+        launchContainer(recyclerClass);
+    }
+
+    @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
         // Pass any configuration change to the drawer toggls
@@ -175,6 +186,7 @@ private RecyclerClass recyclerClass = new RecyclerClass();
 
     private void initiateTrayClickListener(View v, int r){
         switch(r){
+
             case R.id.profile_button:
               v.setOnClickListener(new View.OnClickListener() {
                   @Override
@@ -182,11 +194,28 @@ private RecyclerClass recyclerClass = new RecyclerClass();
                       if(!drawerLayout.isDrawerOpen(drawerList)){
                           drawerLayout.openDrawer(drawerList);
                       }else if(drawerLayout.isDrawerOpen(drawerList)){
-                          drawerLayout.closeDrawer(drawerList);
-                      }
+                          drawerLayout.closeDrawer(drawerList);}
                   }
               });
+                break;
+            case R.id.folder_button:
+                v.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        launchContainer(CONNECTION_SETTINGS);
+                    }
+                });
+                break;
+            case R.id.ssh_button:
+                v.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        launchContainer(CONSOLE);
+                    }
+                });
+                break;
         }
+
     }
 
     private void initiateSlidingDrawer(){

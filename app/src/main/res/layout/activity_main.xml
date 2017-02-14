@@ -44,7 +44,6 @@
             android:layout_height="50dp"
             android:layout_width="50dp"
             android:id="@+id/ssh_button"
-            android:onClick="onConsoleClick"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:background="@drawable/ssh_icon"/>
