@@ -25,8 +25,7 @@ public class RecyclerClass extends Fragment {
     public  android.support.v7.widget.RecyclerView.Adapter recyclerAdapter;
     public  android.support.v7.widget.RecyclerView.LayoutManager recyclerLayoutManager;
 
-    public RecyclerClass() {
-    }
+    public RecyclerClass(){}
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Nullable
