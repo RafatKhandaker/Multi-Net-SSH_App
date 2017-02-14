@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:background="#FFFFFF"
+    android:background="@drawable/android_circuit_background"
     android:layout_height="match_parent">
 
     <TextView
@@ -31,7 +31,6 @@
     <android.support.v7.widget.RecyclerView
         android:layout_width="220dp"
         android:layout_height="220dp"
-        android:paddingLeft="15dp"
         android:layout_gravity="top"
         android:layout_marginTop="26dp"
         android:layout_marginStart="15dp"
