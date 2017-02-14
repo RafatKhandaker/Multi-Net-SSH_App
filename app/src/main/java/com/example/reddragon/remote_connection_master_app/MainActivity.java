@@ -16,7 +16,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import com.example.reddragon.remote_connection_master_app.SQLiteDB.StoreConnectionDB;
@@ -35,14 +34,12 @@ import com.example.reddragon.remote_connection_master_app.View.FrameFragments.Re
 
 public class MainActivity extends FragmentActivity {
 
-private LinearLayout connectionSettings;
-private LinearLayout console;
 private ImageView settingsButton;
 private ImageView profileImageButton;
 private ImageView consoleButton;
 private ImageView folderLockButton;
 
-// setting up Immutable objects for thread handling
+// setting up Immutable objects for possible thread handling
 
 private static DrawerLayout drawerLayout;
 private static StoreConnectionDB preConDatabase;
@@ -74,9 +71,6 @@ private RecyclerClass recyclerClass = new RecyclerClass();
         settingsButton = (ImageView)findViewById(R.id.settings_button);
         consoleButton = (ImageView)findViewById(R.id.ssh_button);
         folderLockButton = (ImageView)findViewById(R.id.folder_button);
-
-        connectionSettings = new LinearLayout(this);
-        console = new LinearLayout(this);
 
         // instantiate database
         preConDatabase = new StoreConnectionDB(this);
