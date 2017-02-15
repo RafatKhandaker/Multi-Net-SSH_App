@@ -10,6 +10,7 @@
         android:layout_height="50dp"
         android:hint="Enter User"
         android:layout_marginTop="5dp"
+        android:textColor="#00FF00"
         android:textColorHint="#00FFFF"
         android:background="#000000"
         android:textAlignment="center"/>
