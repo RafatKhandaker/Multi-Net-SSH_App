@@ -10,5 +10,8 @@
         android:title="Console"        />
         <!--android:icon="@drawable/console.png"-->
 
+    <item android:id="@+id/attack_menu"
+        android:title="Attack Mode"        />
+
 
 </menu>

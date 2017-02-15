@@ -122,6 +122,8 @@ private RecyclerClass recyclerClass = new RecyclerClass();
                 launchContainer(CONSOLE);
                 return true;
 
+            case R.id.attack_menu:  // incomplete idea for now
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
