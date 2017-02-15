@@ -23,6 +23,8 @@
         android:scrollbarAlwaysDrawHorizontalTrack="true"
         android:background="#000000"
         android:textColor="#00FF00"
+        android:hint="   Enter Command"
+        android:textColorHint="#00FFFF"
         android:padding="5dp"
         android:id="@+id/console_et"
         android:layout_below="@id/console_tv"

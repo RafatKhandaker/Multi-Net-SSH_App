@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/android_circuit_background">
+
+    <EditText
+        android:id="@+id/enter_user"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:hint="Enter User"
+        android:textColorHint="#00FFFF"
+        android:background="#000000"
+        android:textAlignment="center"/>
+
+    <android.support.v7.widget.AppCompatSpinner
+        android:id="@+id/user_list"
+        android:layout_toRightOf="@id/enter_user"
+        android:layout_width="120dp"
+        android:padding="10dp"
+        android:text="Select User From List"
+        android:layout_height="50dp"
+        android:background="#D3D3D3" />
+
+<TextView
+    android:id="@+id/rsa_display_view"
+    android:layout_below="@+id/enter_user"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:padding="5dp"
+    android:layout_marginTop="10dp"
+    android:background="#000000"
+    android:textColor="#00FF00"
+    android:hint="RSA Public Key"
+    android:textColorHint="#00FFFF"
+    android:textAlignment="center"/>
+
+    <Button
+        android:id="@+id/rsa_generate_btn"
+        android:layout_below="@id/rsa_display_view"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:text="Generate KEY"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_horizontal"/>
+
+    <EditText
+        android:id="@+id/add_command_et"
+        android:layout_below="@id/rsa_generate_btn"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#000000"
+        android:textColor="#00FF00"
+        android:textColorHint="#00FFFF"
+        android:hint="    Enter SSH Command" />
+    <Button
+        android:id="@+id/add_command_btn"
+        android:layout_below="@id/add_command_et"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:text="Add Command"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_horizontal"/>
+
+    <TextView
+        android:id="@+id/profile_command_tv"
+        android:layout_below="@id/add_command_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
+        android:text="COMMAND LIST"
+        android:textColor="#FFFFFF"
+        android:background="#000000"
+        android:textStyle="bold|italic"
+        android:textSize="15dp" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/profile_command_rv"
+        android:layout_below="@id/profile_command_tv"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        android:layout_margin="10dp"
+        android:background="#000000"/>
+
+    <Button
+        android:id="@+id/edit_list_btn"
+        android:layout_toRightOf="@id/profile_command_rv"
+        android:layout_below="@id/profile_command_tv"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_width="85dp"
+        android:layout_height="85dp"
+        android:text="Edit"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_horizontal"/>
+
+    <Button
+        android:id="@+id/remove_list_btn"
+        android:layout_toRightOf="@id/profile_command_rv"
+        android:layout_below="@id/edit_list_btn"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_width="85dp"
+        android:layout_height="85dp"
+        android:text="Remove"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_horizontal"/>
+
+    <Button
+        android:id="@+id/delete_profile_btn"
+        android:layout_below="@id/profile_command_rv"
+        android:layout_width="130dp"
+        android:layout_height="50dp"
+        android:text="Delete Profile"
+        android:layout_marginLeft="35dp"
+        android:layout_gravity="center_horizontal"/>
+
+    <Button
+        android:id="@+id/save_profile_btn"
+        android:layout_below="@id/profile_command_rv"
+        android:layout_width="130dp"
+        android:layout_height="50dp"
+        android:text="Save Profile"
+        android:layout_marginRight="35dp"
+        android:layout_alignParentRight="true"/>
+
+</RelativeLayout>
