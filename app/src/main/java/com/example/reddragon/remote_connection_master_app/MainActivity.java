@@ -19,7 +19,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 
 import com.example.reddragon.remote_connection_master_app.SQLiteDB.StoreConnectionDB;
-import com.example.reddragon.remote_connection_master_app.View.FrameFragments.ConSettingsView;
+import com.example.reddragon.remote_connection_master_app.View.FrameFragments.FolderProfileView;
 import com.example.reddragon.remote_connection_master_app.View.FrameFragments.ConsoleView;
 import com.example.reddragon.remote_connection_master_app.View.FrameFragments.RecyclerClass;
 
@@ -44,7 +44,7 @@ private ImageView folderLockButton;
 private static DrawerLayout drawerLayout;
 private static StoreConnectionDB preConDatabase;
 
-private static final Fragment CONNECTION_SETTINGS = new ConSettingsView();
+private static final Fragment CONNECTION_SETTINGS = new FolderProfileView();
 private static final ConsoleView CONSOLE = new ConsoleView();
 
 
