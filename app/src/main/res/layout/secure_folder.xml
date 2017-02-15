@@ -114,19 +114,23 @@
     <Button
         android:id="@+id/delete_profile_btn"
         android:layout_below="@id/profile_command_rv"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
+        android:layout_width="165dp"
+        android:layout_height="70dp"
         android:text="Delete Profile"
-        android:layout_marginLeft="35dp"
+        android:textColor="#FFFFFF"
+        android:background="#FF0000"
+        android:layout_marginLeft="20dp"
         android:layout_gravity="center_horizontal"/>
 
     <Button
         android:id="@+id/save_profile_btn"
         android:layout_below="@id/profile_command_rv"
-        android:layout_width="130dp"
-        android:layout_height="50dp"
+        android:layout_width="165dp"
+        android:layout_height="70dp"
         android:text="Save Profile"
-        android:layout_marginRight="35dp"
+        android:textColor="#FFFFFF"
+        android:background="#40d01f"
+        android:layout_marginRight="20dp"
         android:layout_alignParentRight="true"/>
 
 </RelativeLayout>
