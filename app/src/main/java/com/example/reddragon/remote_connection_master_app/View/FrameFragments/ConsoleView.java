@@ -10,7 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.reddragon.remote_connection_master_app.R;
-import com.example.reddragon.remote_connection_master_app.View.FrameFragments.FrameRecyclerAdapter.ConsoleListAdapter;
+import com.example.reddragon.remote_connection_master_app.View.FrameFragments.FrameRecyclerAdapter.ProfileListAdapter;
 
 
 /**
@@ -20,7 +20,7 @@ import com.example.reddragon.remote_connection_master_app.View.FrameFragments.Fr
 public class ConsoleView extends Fragment {
 
     private RecyclerView consoleListRV;
-    private ConsoleListAdapter consoleListAdapter;
+    private ProfileListAdapter profileListAdapter;
     private RecyclerView.LayoutManager conListLayMan;
 
     @Override
@@ -37,8 +37,8 @@ public class ConsoleView extends Fragment {
 
     private void initiateConListRV(){
         conListLayMan = new LinearLayoutManager(getContext());
-        consoleListAdapter = new ConsoleListAdapter();
+        profileListAdapter = new ProfileListAdapter();
         consoleListRV.setLayoutManager(conListLayMan);
-        consoleListRV.setAdapter(consoleListAdapter);
+        consoleListRV.setAdapter(profileListAdapter);
     }
 }

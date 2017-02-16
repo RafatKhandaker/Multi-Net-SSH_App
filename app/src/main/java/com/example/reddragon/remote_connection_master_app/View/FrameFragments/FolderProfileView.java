@@ -16,7 +16,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 
 import com.example.reddragon.remote_connection_master_app.R;
-import com.example.reddragon.remote_connection_master_app.View.FrameFragments.FrameRecyclerAdapter.ConsoleListAdapter;
+import com.example.reddragon.remote_connection_master_app.View.FrameFragments.FrameRecyclerAdapter.ProfileListAdapter;
 
 import java.security.KeyPair;
 import java.security.KeyPairGenerator;
@@ -31,7 +31,7 @@ public class FolderProfileView extends Fragment implements AdapterView.OnItemSel
     public static final CharSequence[] UserOption  = {"root","user1","user2","user3","user4"};
 
     private RecyclerView folderProfileRV;
-    private ConsoleListAdapter folderProfileAdapt;
+    private ProfileListAdapter folderProfileAdapt;
     private RecyclerView.LayoutManager foldProfLayMan;
     private Spinner cipherSpn;
     private Spinner userSpn;
@@ -120,7 +120,7 @@ public class FolderProfileView extends Fragment implements AdapterView.OnItemSel
     }
     private void initiateFolderListRV(){
         foldProfLayMan = new LinearLayoutManager(getContext());
-        folderProfileAdapt = new ConsoleListAdapter();
+        folderProfileAdapt = new ProfileListAdapter();
         folderProfileRV.setLayoutManager(foldProfLayMan);
         folderProfileRV.setAdapter(folderProfileAdapt);
     }
