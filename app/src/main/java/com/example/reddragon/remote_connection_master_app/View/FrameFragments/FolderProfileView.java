@@ -1,7 +1,6 @@
 package com.example.reddragon.remote_connection_master_app.View.FrameFragments;
 
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -26,7 +25,7 @@ import java.security.NoSuchAlgorithmException;
  * Created by RedDragon on 2/7/17.
  */
 
-public class FolderProfileView extends Fragment {
+public class FolderProfileView extends Fragment implements AdapterView.OnItemSelectedListener{
 
     private RecyclerView folderProfileRV;
     private ConsoleListAdapter folderProfileAdapt;
@@ -69,7 +68,20 @@ public class FolderProfileView extends Fragment {
         createKeyTest();
 
         spinner.getOnItemSelectedListener();
+
         return view;
+
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        // An item was selected. You can retrieve the selected item using
+        // parent.getItemAtPosition(pos)
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+        // Another interface callback
 
     }
 
@@ -98,20 +110,6 @@ public class FolderProfileView extends Fragment {
             Log.d("SSHLeyManager", "Public Key: " +publicKey);
         } catch (NoSuchAlgorithmException ex) {
             Log.e("SSHKeyManager", ex.toString());
-        }
-    }
-
-    private class SpinnerActivity extends Activity implements AdapterView.OnItemSelectedListener {
-
-
-        public void onItemSelected(AdapterView<?> parent, View view,
-                                   int pos, long id) {
-            // An item was selected. You can retrieve the selected item using
-            // parent.getItemAtPosition(pos)
-        }
-
-        public void onNothingSelected(AdapterView<?> parent) {
-            // Another interface callback
         }
     }
 
