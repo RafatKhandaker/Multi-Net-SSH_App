@@ -38,13 +38,31 @@
     android:textColorHint="#00FFFF"
     android:textAlignment="center"/>
 
+    <android.support.v7.widget.AppCompatSpinner
+        android:id="@+id/complexity_lst_spn"
+        android:layout_below="@id/rsa_display_view"
+        android:layout_width="110dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="15dp"
+        android:text="Cipher"
+        android:background="#D3D3D3"
+        android:layout_alignParentStart="true" />
+    <Button
+        android:id="@+id/paste_btn"
+        android:layout_below="@id/rsa_display_view"
+        android:layout_width="110dp"
+        android:layout_height="50dp"
+        android:text="PASTE KEY"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_horizontal"/>
     <Button
         android:id="@+id/rsa_generate_btn"
         android:layout_below="@id/rsa_display_view"
-        android:layout_width="150dp"
+        android:layout_width="110dp"
         android:layout_height="50dp"
         android:text="Generate KEY"
-        android:layout_centerHorizontal="true"
+        android:layout_marginRight="15dp"
+        android:layout_alignParentEnd="true"
         android:layout_gravity="center_horizontal"/>
 
     <EditText
