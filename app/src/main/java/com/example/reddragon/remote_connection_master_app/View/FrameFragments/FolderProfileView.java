@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
 
 import com.example.reddragon.remote_connection_master_app.R;
@@ -32,12 +33,16 @@ public class FolderProfileView extends Fragment implements AdapterView.OnItemSel
     private RecyclerView.LayoutManager foldProfLayMan;
     private Spinner spinner;
 
+    private int encryptValSelected = 0;
+
     private Button genKeyButton;
     private Button addCommButton;
     private Button editButton;
     private Button removeButton;
     private Button delProfileButton;
     private Button saveProfileButton;
+
+    private EditText rsaViewET;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -50,6 +55,8 @@ public class FolderProfileView extends Fragment implements AdapterView.OnItemSel
         removeButton = (Button) view.findViewById(R.id.remove_list_btn);
         delProfileButton = (Button) view.findViewById(R.id.delete_profile_btn);
         saveProfileButton = (Button) view.findViewById(R.id.save_profile_btn);
+
+        rsaViewET = (EditText) view.findViewById(R.id.rsa_display_view);
 
         folderProfileRV = (RecyclerView) view.findViewById(R.id.profile_command_rv);
 
@@ -65,9 +72,11 @@ public class FolderProfileView extends Fragment implements AdapterView.OnItemSel
 // Apply the adapter to the spinner
         spinner.setAdapter(adapter);
         initiateFolderListRV();
-        createKeyTest();
+//        createKeyTest();
 
-        spinner.getOnItemSelectedListener();
+        spinner.setOnItemSelectedListener(this);
+
+        keyOnClickListener(genKeyButton, R.id.rsa_generate_btn);
 
         return view;
 
@@ -77,6 +86,9 @@ public class FolderProfileView extends Fragment implements AdapterView.OnItemSel
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         // An item was selected. You can retrieve the selected item using
         // parent.getItemAtPosition(pos)
+        encryptValSelected = Integer.valueOf(String.valueOf(parent.getItemAtPosition(position)));
+
+        Log.d("encrypt test: ", "" +encryptValSelected);
     }
 
     @Override
@@ -85,6 +97,17 @@ public class FolderProfileView extends Fragment implements AdapterView.OnItemSel
 
     }
 
+    private void keyOnClickListener(Button button, int r){
+        switch(r){
+            case R.id.rsa_generate_btn:
+                button.setOnClickListener(new Button.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        createKeyTest();
+                    }
+                });
+        }
+    }
     private void initiateFolderListRV() {
         foldProfLayMan = new LinearLayoutManager(getContext());
         folderProfileAdapt = new ConsoleListAdapter();
@@ -95,7 +118,7 @@ public class FolderProfileView extends Fragment implements AdapterView.OnItemSel
     private void createKeyTest() {
         try {
             KeyPairGenerator kpg = KeyPairGenerator.getInstance("RSA");
-            kpg.initialize(4096);
+            kpg.initialize(encryptValSelected);
             KeyPair keyPair = kpg.genKeyPair();
             byte[] pri = keyPair.getPrivate().getEncoded();
             byte[] pub = keyPair.getPublic().getEncoded();
@@ -103,11 +126,14 @@ public class FolderProfileView extends Fragment implements AdapterView.OnItemSel
 //            String privateKey = new String(pri);
 //            String publicKey = new String(pub);
 
+
             String privateKey = keyPair.getPrivate().toString();
             String publicKey = keyPair.getPublic().toString();
 
-            Log.d("SSHKeyManager", "Private Key: " +privateKey);
-            Log.d("SSHLeyManager", "Public Key: " +publicKey);
+            rsaViewET.setText(publicKey);
+
+//            Log.d("SSHKeyManager", "Private Key: " +privateKey);
+//            Log.d("SSHLeyManager", "Public Key: " +publicKey);
         } catch (NoSuchAlgorithmException ex) {
             Log.e("SSHKeyManager", ex.toString());
         }

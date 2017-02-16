@@ -25,7 +25,7 @@
         android:layout_height="40dp"
         android:background="#D3D3D3" />
 
-<TextView
+<EditText
     android:id="@+id/rsa_display_view"
     android:layout_below="@+id/enter_user"
     android:layout_width="match_parent"
