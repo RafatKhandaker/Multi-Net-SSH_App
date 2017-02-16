@@ -61,7 +61,7 @@
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
-        sha1="d5ddc2ae8ad889b6675309236528263093d41c9a">
+        sha1="dad750e59ae5e3ee3caa26080c56c9976ad485c4">
         <dex dex="/Users/RedDragon/Desktop/temp/Remote-Connection-Master_App/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_3b84ad93910d233c944778e7ce11cf8d0e247697/classes.dex" />
     </item>
     <item
@@ -133,7 +133,7 @@
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
-        sha1="844ea57d33356247a06ffd533ce2b16f554ea494">
+        sha1="ce7aa805ca63c9b02c0ddfb8d7a50e88e1757b17">
         <dex dex="/Users/RedDragon/Desktop/temp/Remote-Connection-Master_App/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_b20c519f0f5e7c78c20cd2009facbbb43bcc0b56/classes.dex" />
     </item>
     <item

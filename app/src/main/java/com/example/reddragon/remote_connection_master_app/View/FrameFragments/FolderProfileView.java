@@ -31,8 +31,10 @@ public class FolderProfileView extends Fragment implements AdapterView.OnItemSel
     private RecyclerView folderProfileRV;
     private ConsoleListAdapter folderProfileAdapt;
     private RecyclerView.LayoutManager foldProfLayMan;
-    private Spinner spinner;
+    private Spinner cipherSpn;
+    private Spinner userSpn;
 
+    private View view;
     private int encryptValSelected = 2;
 
     private Button genKeyButton;
@@ -47,7 +49,7 @@ public class FolderProfileView extends Fragment implements AdapterView.OnItemSel
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.secure_folder, container, false);
+        view = inflater.inflate(R.layout.secure_folder, container, false);
 
         genKeyButton = (Button) view.findViewById(R.id.rsa_generate_btn);
         addCommButton = (Button) view.findViewById(R.id.add_command_btn);
@@ -60,21 +62,11 @@ public class FolderProfileView extends Fragment implements AdapterView.OnItemSel
 
         folderProfileRV = (RecyclerView) view.findViewById(R.id.profile_command_rv);
 
-        spinner = (Spinner) view.findViewById(R.id.complexity_lst_spn);
+        cipherSpn = (Spinner) view.findViewById(R.id.complexity_lst_spn);
+        userSpn = (Spinner) view.findViewById(R.id.user_list);
 
-
-
-// Create an ArrayAdapter using the string array and a default spinner layout
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(),
-                R.array.complexity_list_array, android.R.layout.simple_spinner_item);
-// Specify the layout to use when the list of choices appears
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-// Apply the adapter to the spinner
-        spinner.setAdapter(adapter);
-        initiateFolderListRV();
-//        createKeyTest();
-
-        spinner.setOnItemSelectedListener(this);
+        initiateCipherSpinner();
+        cipherSpn.setOnItemSelectedListener(this);
 
         keyOnClickListener(genKeyButton, R.id.rsa_generate_btn);
 
@@ -86,12 +78,22 @@ public class FolderProfileView extends Fragment implements AdapterView.OnItemSel
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         // An item was selected. You can retrieve the selected item using
         // parent.getItemAtPosition(pos)
-        if(position != 0) {
-            encryptValSelected =
-                    Integer.valueOf(String.valueOf(parent.getItemAtPosition(position)));
-        }
 
-        Log.d("encrypt test: ", "" +encryptValSelected);
+        switch(parent.getId()) {
+
+            case R.id.complexity_lst_spn:
+                if (position != 0) {
+                    encryptValSelected =
+                            Integer.valueOf(String.valueOf(parent.getItemAtPosition(position)));
+                }
+
+                Log.d("encrypt test: ", "" + encryptValSelected);
+
+                break;
+
+            case R.id.user_list:
+                break;
+        }
     }
 
     @Override
@@ -116,6 +118,14 @@ public class FolderProfileView extends Fragment implements AdapterView.OnItemSel
         folderProfileAdapt = new ConsoleListAdapter();
         folderProfileRV.setLayoutManager(foldProfLayMan);
         folderProfileRV.setAdapter(folderProfileAdapt);
+    }
+
+    private void initiateCipherSpinner(){
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(),
+                R.array.complexity_list_array, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        cipherSpn.setAdapter(adapter);
+        initiateFolderListRV();
     }
 
     private void createKeyTest() {

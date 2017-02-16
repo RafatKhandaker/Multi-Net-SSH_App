@@ -4,30 +4,31 @@
     android:layout_height="match_parent"
     android:background="@drawable/android_circuit_background">
 
+    <android.support.v7.widget.AppCompatSpinner
+        android:id="@+id/user_list"
+        android:layout_width="100dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:text="Select User From List"
+        android:layout_height="40dp"
+        android:background="#D3D3D3" />
+
     <EditText
-        android:id="@+id/enter_user"
+        android:id="@+id/enter_password"
+        android:layout_toRightOf="@id/user_list"
         android:layout_width="250dp"
         android:layout_height="50dp"
-        android:hint="Enter User"
+        android:hint="Enter Password"
         android:layout_marginTop="5dp"
         android:textColor="#00FF00"
         android:textColorHint="#00FFFF"
         android:background="#000000"
         android:textAlignment="center"/>
 
-    <android.support.v7.widget.AppCompatSpinner
-        android:id="@+id/user_list"
-        android:layout_toRightOf="@id/enter_user"
-        android:layout_width="100dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="10dp"
-        android:text="Select User From List"
-        android:layout_height="40dp"
-        android:background="#D3D3D3" />
-
 <EditText
     android:id="@+id/rsa_display_view"
-    android:layout_below="@+id/enter_user"
+    android:layout_below="@+id/enter_password"
     android:layout_width="match_parent"
     android:layout_height="75dp"
     android:padding="5dp"
