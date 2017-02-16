@@ -28,7 +28,7 @@ import java.security.NoSuchAlgorithmException;
 
 public class FolderProfileView extends Fragment implements AdapterView.OnItemSelectedListener{
 
-    public static final CharSequence[] DAYS_OPTIONS  = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
+    public static final CharSequence[] UserOption  = {"root","user1","user2","user3","user4"};
 
     private RecyclerView folderProfileRV;
     private ConsoleListAdapter folderProfileAdapt;
@@ -134,8 +134,10 @@ public class FolderProfileView extends Fragment implements AdapterView.OnItemSel
     }
 
     private void initiateUserSpinner(){
-        ArrayAdapter<CharSequence> adapter = new ArrayAdapter<CharSequence> (getContext(), android.R.layout.simple_spinner_item, DAYS_OPTIONS);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); // Specify the layout to use when the list of choices appears
+        ArrayAdapter<CharSequence> adapter = new ArrayAdapter<CharSequence> (
+                getContext(), android.R.layout.simple_spinner_item, UserOption);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        // Specify the layout to use when the list of choices appears
         userSpn.setAdapter(adapter); // Apply the adapter to the spinner
     }
 
