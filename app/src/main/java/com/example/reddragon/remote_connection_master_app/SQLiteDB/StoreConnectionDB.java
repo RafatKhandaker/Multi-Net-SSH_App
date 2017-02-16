@@ -71,6 +71,27 @@ public class StoreConnectionDB extends SQLiteOpenHelper {
         return sqLiteDatabase.rawQuery("select * from "+TABLE_NAME,null); }
 
 
+
+    public boolean updateData(String id, String ip, String name, String type, String port, String key,
+                              String password, String username){
+
+        sqLiteDatabase = this.getWritableDatabase();
+        contentValues = new ContentValues();
+
+        contentValues.put(COL_1, id);
+        contentValues.put(COL_2, ip);
+        contentValues.put(COL_3, name);
+        contentValues.put(COL_4, type);
+        contentValues.put(COL_5, port);
+        contentValues.put(COL_6, key);
+        contentValues.put(COL_7, password);
+        contentValues.put(COL_8, username);
+
+        sqLiteDatabase.update(TABLE_NAME, contentValues, "ID = ?", new String[]{ id } );
+
+        return true;
+    }
+
     public Integer deleteData(String id){
         sqLiteDatabase = this.getWritableDatabase();
         return sqLiteDatabase.delete(TABLE_NAME, "ID = ?", new String[]{id});
