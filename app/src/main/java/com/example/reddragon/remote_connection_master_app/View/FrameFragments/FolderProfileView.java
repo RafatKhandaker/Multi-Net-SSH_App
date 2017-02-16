@@ -33,7 +33,7 @@ public class FolderProfileView extends Fragment implements AdapterView.OnItemSel
     private RecyclerView.LayoutManager foldProfLayMan;
     private Spinner spinner;
 
-    private int encryptValSelected = 0;
+    private int encryptValSelected = 2;
 
     private Button genKeyButton;
     private Button addCommButton;
@@ -86,7 +86,10 @@ public class FolderProfileView extends Fragment implements AdapterView.OnItemSel
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         // An item was selected. You can retrieve the selected item using
         // parent.getItemAtPosition(pos)
-        encryptValSelected = Integer.valueOf(String.valueOf(parent.getItemAtPosition(position)));
+        if(position != 0) {
+            encryptValSelected =
+                    Integer.valueOf(String.valueOf(parent.getItemAtPosition(position)));
+        }
 
         Log.d("encrypt test: ", "" +encryptValSelected);
     }
