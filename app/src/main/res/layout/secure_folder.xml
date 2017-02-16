@@ -53,7 +53,7 @@
         android:layout_below="@id/rsa_display_view"
         android:layout_width="110dp"
         android:layout_height="50dp"
-        android:text="PASTE KEY"
+        android:text="COPY KEY"
         android:layout_centerHorizontal="true"
         android:layout_gravity="center_horizontal"/>
     <Button
