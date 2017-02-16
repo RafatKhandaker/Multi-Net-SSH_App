@@ -29,9 +29,9 @@
     android:id="@+id/rsa_display_view"
     android:layout_below="@+id/enter_user"
     android:layout_width="match_parent"
-    android:layout_height="50dp"
+    android:layout_height="75dp"
     android:padding="5dp"
-    android:layout_marginTop="10dp"
+    android:layout_marginTop="5dp"
     android:background="#000000"
     android:textColor="#00FF00"
     android:hint="RSA Public Key"
@@ -75,6 +75,7 @@
         android:textColor="#00FF00"
         android:textColorHint="#00FFFF"
         android:textAlignment="center"
+        android:inputType="textFilter"
         android:hint="Enter SSH Command" />
 
     <Button
@@ -89,20 +90,20 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/profile_command_rv"
         android:layout_below="@id/add_command_btn"
-        android:layout_width="180dp"
-        android:layout_height="180dp"
+        android:layout_width="250dp"
+        android:layout_height="150dp"
         android:layout_marginBottom="10dp"
-        android:layout_marginLeft="10dp"
+        android:layout_marginLeft="15dp"
         android:background="#000000"/>
 
     <Button
         android:id="@+id/edit_list_btn"
         android:layout_toRightOf="@id/profile_command_rv"
         android:layout_below="@id/add_command_btn"
-        android:layout_marginTop="5dp"
-        android:layout_marginLeft="35dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
         android:layout_width="85dp"
-        android:layout_height="85dp"
+        android:layout_height="50dp"
         android:text="Edit"
         android:layout_centerHorizontal="true"
         android:layout_gravity="center_horizontal"/>
@@ -112,9 +113,9 @@
         android:layout_toRightOf="@id/profile_command_rv"
         android:layout_below="@id/edit_list_btn"
         android:layout_marginTop="5dp"
-        android:layout_marginLeft="35dp"
+        android:layout_marginLeft="20dp"
         android:layout_width="85dp"
-        android:layout_height="85dp"
+        android:layout_height="50dp"
         android:text="Remove"
         android:layout_centerHorizontal="true"
         android:layout_gravity="center_horizontal"/>
@@ -128,7 +129,7 @@
         android:textColor="#FFFFFF"
         android:background="#FF0000"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         android:layout_gravity="center_horizontal"/>
 
     <Button
@@ -139,7 +140,7 @@
         android:text="Save Profile"
         android:textColor="#FFFFFF"
         android:background="#40d01f"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         android:layout_marginRight="20dp"
         android:layout_alignParentRight="true"/>
 

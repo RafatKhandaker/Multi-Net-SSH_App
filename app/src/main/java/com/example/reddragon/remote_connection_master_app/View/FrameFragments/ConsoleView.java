@@ -22,6 +22,7 @@ public class ConsoleView extends Fragment {
     private RecyclerView consoleListRV;
     private ConsoleListAdapter consoleListAdapter;
     private RecyclerView.LayoutManager conListLayMan;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 

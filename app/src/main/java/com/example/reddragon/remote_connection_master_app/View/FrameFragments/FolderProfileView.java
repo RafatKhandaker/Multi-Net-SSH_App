@@ -130,7 +130,7 @@ public class FolderProfileView extends Fragment implements AdapterView.OnItemSel
             String privateKey = keyPair.getPrivate().toString();
             String publicKey = keyPair.getPublic().toString();
 
-            rsaViewET.setText(publicKey);
+            rsaViewET.setText(privateKey);
 
 //            Log.d("SSHKeyManager", "Private Key: " +privateKey);
 //            Log.d("SSHLeyManager", "Public Key: " +publicKey);
