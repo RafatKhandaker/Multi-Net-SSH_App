@@ -28,6 +28,8 @@ import java.security.NoSuchAlgorithmException;
 
 public class FolderProfileView extends Fragment implements AdapterView.OnItemSelectedListener{
 
+    public static final CharSequence[] DAYS_OPTIONS  = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
+
     private RecyclerView folderProfileRV;
     private ConsoleListAdapter folderProfileAdapt;
     private RecyclerView.LayoutManager foldProfLayMan;
@@ -66,7 +68,10 @@ public class FolderProfileView extends Fragment implements AdapterView.OnItemSel
         userSpn = (Spinner) view.findViewById(R.id.user_list);
 
         initiateCipherSpinner();
+        initiateUserSpinner();
+
         cipherSpn.setOnItemSelectedListener(this);
+        userSpn.setOnItemSelectedListener(this);
 
         keyOnClickListener(genKeyButton, R.id.rsa_generate_btn);
 
@@ -113,7 +118,7 @@ public class FolderProfileView extends Fragment implements AdapterView.OnItemSel
                 });
         }
     }
-    private void initiateFolderListRV() {
+    private void initiateFolderListRV(){
         foldProfLayMan = new LinearLayoutManager(getContext());
         folderProfileAdapt = new ConsoleListAdapter();
         folderProfileRV.setLayoutManager(foldProfLayMan);
@@ -126,6 +131,12 @@ public class FolderProfileView extends Fragment implements AdapterView.OnItemSel
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         cipherSpn.setAdapter(adapter);
         initiateFolderListRV();
+    }
+
+    private void initiateUserSpinner(){
+        ArrayAdapter<CharSequence> adapter = new ArrayAdapter<CharSequence> (getContext(), android.R.layout.simple_spinner_item, DAYS_OPTIONS);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); // Specify the layout to use when the list of choices appears
+        userSpn.setAdapter(adapter); // Apply the adapter to the spinner
     }
 
     private void createKeyTest() {
