@@ -46,12 +46,12 @@ private ImageView folderLockButton;
 
 private static DrawerLayout drawerLayout;
 private static StoreConnectionDB preConDatabase;
-private static StoreCommandsDB commandListDB;
+public static StoreCommandsDB commandListDB;
 
 public static ArrayList<String> commandArrList = new ArrayList<>();
 
 
-    private static final Fragment CONNECTION_SETTINGS = new FolderProfileView();
+private static final Fragment CONNECTION_SETTINGS = new FolderProfileView();
 private static final ConsoleView CONSOLE = new ConsoleView();
 
 

@@ -22,6 +22,8 @@ import java.security.KeyPair;
 import java.security.KeyPairGenerator;
 import java.security.NoSuchAlgorithmException;
 
+import static com.example.reddragon.remote_connection_master_app.MainActivity.commandListDB;
+
 /**
  * Created by RedDragon on 2/7/17.
  */
@@ -47,6 +49,7 @@ public class FolderProfileView extends Fragment implements AdapterView.OnItemSel
     private Button saveProfileButton;
 
     private EditText rsaViewET;
+    private EditText commandViewET;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -61,6 +64,7 @@ public class FolderProfileView extends Fragment implements AdapterView.OnItemSel
         saveProfileButton = (Button) view.findViewById(R.id.save_profile_btn);
 
         rsaViewET = (EditText) view.findViewById(R.id.rsa_display_view);
+        commandViewET = (EditText) view.findViewById(R.id.add_command_et);
 
         folderProfileRV = (RecyclerView) view.findViewById(R.id.profile_command_rv);
 
@@ -116,6 +120,26 @@ public class FolderProfileView extends Fragment implements AdapterView.OnItemSel
                         createKeyTest();
                     }
                 });
+                break;
+            case R.id.add_command_btn:
+                button.setOnClickListener(new Button.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        String s = commandViewET.getText().toString();
+
+                        if (s.contains(",")) {
+                            String[] parts = s.split(",");
+
+                            commandListDB.insertData(parts[1], parts[0]);
+                            folderProfileAdapt.notifyDataSetChanged();
+                            folderProfileRV.invalidate();
+
+                        } else {
+                            throw new IllegalArgumentException("String " + s + " does not contain -");
+                        }
+
+                    }
+                });
         }
     }
     private void initiateFolderListRV(){
@@ -141,8 +165,6 @@ public class FolderProfileView extends Fragment implements AdapterView.OnItemSel
         userSpn.setAdapter(adapter); // Apply the adapter to the spinner
     }
 
-    private void initiateComRVClick(){
-    }
     private void createKeyTest() {
         String sshRsa;
         try {

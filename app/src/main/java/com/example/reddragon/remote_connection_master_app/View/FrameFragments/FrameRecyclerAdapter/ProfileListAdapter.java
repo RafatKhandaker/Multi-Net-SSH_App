@@ -1,5 +1,6 @@
 package com.example.reddragon.remote_connection_master_app.View.FrameFragments.FrameRecyclerAdapter;
 
+import android.database.Cursor;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -7,11 +8,15 @@ import android.view.ViewGroup;
 import com.example.reddragon.remote_connection_master_app.R;
 import com.example.reddragon.remote_connection_master_app.View.FrameFragments.FrameRecyclerAdapter.FrameViewHolder.CommandListViewHolder;
 
+import static com.example.reddragon.remote_connection_master_app.MainActivity.commandListDB;
+
 /**
  * Created by RedDragon on 2/14/17.
  */
 
 public class ProfileListAdapter extends RecyclerView.Adapter{
+
+    private Cursor commViewRes = commandListDB.getAllData();
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -28,6 +33,6 @@ public class ProfileListAdapter extends RecyclerView.Adapter{
 
     @Override
     public int getItemCount() {
-        return 10;   // test
+        return commViewRes.getCount() + 1;   // test
     }
 }

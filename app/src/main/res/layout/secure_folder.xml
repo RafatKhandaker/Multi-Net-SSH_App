@@ -77,7 +77,7 @@
         android:textColorHint="#00FFFF"
         android:textAlignment="center"
         android:inputType="textFilter"
-        android:hint="Enter Command ex(name,command)" />
+        android:hint="Enter Command" />
 
     <Button
         android:id="@+id/add_command_btn"
