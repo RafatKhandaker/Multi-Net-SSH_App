@@ -22,6 +22,7 @@ public class StoreCommandsDB extends SQLiteOpenHelper {
 
     private static final String COL_1 = "ID";
     private static final String COL_2 = "COMMAND";
+    private static final String COL_3 = "NAME";
 
 
     public StoreCommandsDB(Context context){
@@ -31,7 +32,7 @@ public class StoreCommandsDB extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         sqLiteDatabase.execSQL("create table " +TABLE_NAME+ " (ID INTEGER PRIMARY KEY AUTOINCREMENT" +
-                "COMMAND TEXT");
+                ",COMMAND TEXT,NAME TEXT)");
     }
 
     @Override
@@ -40,12 +41,13 @@ public class StoreCommandsDB extends SQLiteOpenHelper {
         onCreate(sqLiteDatabase);
     }
 
-    public boolean insertData( String Command){
+    public boolean insertData( String Command, String Name){
 
         sqLiteDatabase = this.getWritableDatabase();
         contentValues = new ContentValues();
 
         contentValues.put(COL_2, Command);
+        contentValues.put(COL_3, Name);
 
         long result = sqLiteDatabase.insert(TABLE_NAME, null, contentValues);
 
@@ -57,13 +59,14 @@ public class StoreCommandsDB extends SQLiteOpenHelper {
         return sqLiteDatabase.rawQuery("select * from "+TABLE_NAME,null);
     }
 
-    public boolean updateData(String id, String Command){
+    public boolean updateData(String id, String Command, String Name){
 
         sqLiteDatabase = this.getWritableDatabase();
         contentValues = new ContentValues();
 
         contentValues.put(COL_1, id);
         contentValues.put(COL_2, Command);
+        contentValues.put(COL_3, Name);
 
         sqLiteDatabase.update(TABLE_NAME, contentValues, "ID = ?", new String[]{ id } );
 
