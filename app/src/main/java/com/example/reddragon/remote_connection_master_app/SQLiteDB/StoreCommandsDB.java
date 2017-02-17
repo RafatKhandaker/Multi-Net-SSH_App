@@ -14,10 +14,10 @@ public class StoreCommandsDB extends SQLiteOpenHelper {
 
     private SQLiteDatabase sqLiteDatabase;
 
-    private static final String DATABASE_NAME = "Stored_Connections.db";
-    private static final int DATABASE_VERSION = 1;
+    private static final String DATABASE_NAME = "Stored_Commands.db";
+    private static final int DATABASE_VERSION = 2;
 
-    private static final String TABLE_NAME = "connecton_table";
+    private static final String TABLE_NAME = "command_table";
     private ContentValues contentValues;
 
     private static final String COL_1 = "ID";
@@ -31,13 +31,13 @@ public class StoreCommandsDB extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        sqLiteDatabase.execSQL("create table " +TABLE_NAME+ " (ID INTEGER PRIMARY KEY AUTOINCREMENT" +
+        db.execSQL("create table " +TABLE_NAME+ " (ID INTEGER PRIMARY KEY AUTOINCREMENT" +
                 ",COMMAND TEXT,NAME TEXT)");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS "+TABLE_NAME);
+        db.execSQL("DROP TABLE IF EXISTS "+TABLE_NAME);
         onCreate(sqLiteDatabase);
     }
 

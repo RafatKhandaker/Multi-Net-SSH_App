@@ -18,10 +18,13 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 
+import com.example.reddragon.remote_connection_master_app.SQLiteDB.StoreCommandsDB;
 import com.example.reddragon.remote_connection_master_app.SQLiteDB.StoreConnectionDB;
-import com.example.reddragon.remote_connection_master_app.View.FrameFragments.FolderProfileView;
 import com.example.reddragon.remote_connection_master_app.View.FrameFragments.ConsoleView;
+import com.example.reddragon.remote_connection_master_app.View.FrameFragments.FolderProfileView;
 import com.example.reddragon.remote_connection_master_app.View.FrameFragments.RecyclerClass;
+
+import java.util.ArrayList;
 
 /**------------------------------------------------------------------------------------------------->
  * Plan: Everything is written around the android UI thread as the central core of the application /
@@ -43,8 +46,12 @@ private ImageView folderLockButton;
 
 private static DrawerLayout drawerLayout;
 private static StoreConnectionDB preConDatabase;
+private static StoreCommandsDB commandListDB;
 
-private static final Fragment CONNECTION_SETTINGS = new FolderProfileView();
+public static ArrayList<String> commandArrList = new ArrayList<>();
+
+
+    private static final Fragment CONNECTION_SETTINGS = new FolderProfileView();
 private static final ConsoleView CONSOLE = new ConsoleView();
 
 
@@ -74,6 +81,7 @@ private RecyclerClass recyclerClass = new RecyclerClass();
 
         // instantiate database
         preConDatabase = new StoreConnectionDB(this);
+        commandListDB = new StoreCommandsDB(this);
 
         // initiate recycler  * comment this section to test the sliding drawer
         launchContainer(recyclerClass);
@@ -91,6 +99,10 @@ private RecyclerClass recyclerClass = new RecyclerClass();
         initiateTrayClickListener(profileImageButton, R.id.profile_button);
         initiateTrayClickListener(consoleButton, R.id.ssh_button);
         initiateTrayClickListener(folderLockButton, R.id.folder_button);
+
+        // load Stored SQLite Data
+        loadSavedCommandData();
+
 
 
     }
@@ -150,7 +162,7 @@ private RecyclerClass recyclerClass = new RecyclerClass();
     }
 
 
-    private void loadSavedData(){
+    private void loadSavedConnectionData(){
         res = preConDatabase.getAllData();
         if(res.getCount() != 0) {
             bufferValue = new StringBuffer();
@@ -159,7 +171,15 @@ private RecyclerClass recyclerClass = new RecyclerClass();
             }
         }
     }
-
+    private void loadSavedCommandData(){
+        res = commandListDB.getAllData();
+        if(res.getCount() != 0) {
+//            bufferValue = new StringBuffer();
+            while (res.moveToNext()) {
+                commandArrList.add(res.getString(2));
+            }
+        }
+    }
 
     private void launchContainer(Fragment fragment){
         fragMan = getSupportFragmentManager();
