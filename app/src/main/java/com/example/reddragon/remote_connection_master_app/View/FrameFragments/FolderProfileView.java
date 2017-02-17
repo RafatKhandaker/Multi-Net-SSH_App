@@ -144,6 +144,7 @@ public class FolderProfileView extends Fragment implements AdapterView.OnItemSel
     private void initiateComRVClick(){
     }
     private void createKeyTest() {
+        String sshRsa;
         try {
             KeyPairGenerator kpg = KeyPairGenerator.getInstance("RSA");
             kpg.initialize(encryptValSelected);
@@ -158,7 +159,15 @@ public class FolderProfileView extends Fragment implements AdapterView.OnItemSel
             String privateKey = keyPair.getPrivate().toString();
             String publicKey = keyPair.getPublic().toString();
 
-            rsaViewET.setText(privateKey);
+            sshRsa = "ssh-rsa " +privateKey.substring(32);
+
+            if (sshRsa.contains(",")) {
+                String[] parts = sshRsa.split(",");
+                sshRsa = parts[0] +" root@android"; // 004
+            } else {
+                throw new IllegalArgumentException("String " + sshRsa + " does not contain -");
+            }
+            rsaViewET.setText(sshRsa);
 
 //            Log.d("SSHKeyManager", "Private Key: " +privateKey);
 //            Log.d("SSHLeyManager", "Public Key: " +publicKey);
