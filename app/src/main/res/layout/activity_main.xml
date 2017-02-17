@@ -90,21 +90,21 @@
 
     </FrameLayout>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="20dp"
-            android:text="BLACK JACK APPS"
-            android:textColor="#FFFFFF"
-            android:textSize="20dp"
-            android:textStyle="bold|italic"
-            android:fontFamily="cursive"
-            android:gravity="bottom" />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="10dp"
-            android:gravity="bottom|end"
-            android:text="Written By: Rafat Khandaker"
-            android:textColor="#FFFFFF"/>
+        <!--<TextView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="20dp"-->
+            <!--android:text="BLACK JACK APPS"-->
+            <!--android:textColor="#FFFFFF"-->
+            <!--android:textSize="20dp"-->
+            <!--android:textStyle="bold|italic"-->
+            <!--android:fontFamily="cursive"-->
+            <!--android:gravity="bottom" />-->
+        <!--<TextView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="10dp"-->
+            <!--android:gravity="bottom|end"-->
+            <!--android:text="Written By: Rafat Khandaker"-->
+            <!--android:textColor="#FFFFFF"/>-->
 
 </android.support.v4.widget.DrawerLayout>
 

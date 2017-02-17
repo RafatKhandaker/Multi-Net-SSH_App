@@ -141,6 +141,8 @@ public class FolderProfileView extends Fragment implements AdapterView.OnItemSel
         userSpn.setAdapter(adapter); // Apply the adapter to the spinner
     }
 
+    private void initiateComRVClick(){
+    }
     private void createKeyTest() {
         try {
             KeyPairGenerator kpg = KeyPairGenerator.getInstance("RSA");

@@ -20,6 +20,7 @@ public class CommandListViewHolder extends RecyclerView.ViewHolder {
     }
 
     public void onBind(int position){
-         commandListText.getText();
+         commandListText.setText(commandListText.getText());
+
     }
 }
