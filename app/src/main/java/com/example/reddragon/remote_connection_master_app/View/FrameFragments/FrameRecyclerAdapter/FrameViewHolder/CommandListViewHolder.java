@@ -21,7 +21,7 @@ import static com.example.reddragon.remote_connection_master_app.MainActivity.co
 public class CommandListViewHolder extends RecyclerView.ViewHolder {
 
     private EditText commandListText;
-    private Cursor commViewRes = commandListDB.getAllData();
+    private Cursor commViewRes;
 //    private StringBuffer bufferValue;
     private Fragment folderProfileView;
     private ArrayList<String> nameArrList = new ArrayList<>();
@@ -32,21 +32,24 @@ public class CommandListViewHolder extends RecyclerView.ViewHolder {
         super(itemView);
         folderProfileView = new FolderProfileView();
         commandListText = (EditText) itemView.findViewById(R.id.conn_name_txt);
+        commViewRes = commandListDB.getAllData();
+
+        loadSavedCommandData();
+
 
     }
 
     public void onBind(int position){
 //        if(res.getCount() == 0){ commandListText.setText(commandListText.getText()); }
 //        else{
-        if(commViewRes.getCount() == 0){
-            commandListText.setText("+ New Command");
-        }else if(commViewRes == null){
-            commandListText.setText("+ New Command");
-        }
-        else {
+        if(commViewRes.getCount() == 0){ commandListText.setText("+ New Command"); }
+
+        if(commViewRes == null){ commandListText.setText("+ New Command"); }
+
+        if(position < commArrList.size()) {
             commandListDB = new StoreCommandsDB(folderProfileView.getContext());
             loadSavedCommandData();
-            commandListText.setText(nameArrList.get(position));
+            commandListText.setText(commArrList.get(position));
         }
 
     }

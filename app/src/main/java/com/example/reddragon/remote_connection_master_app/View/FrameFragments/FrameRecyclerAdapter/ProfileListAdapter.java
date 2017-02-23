@@ -9,6 +9,7 @@ import com.example.reddragon.remote_connection_master_app.R;
 import com.example.reddragon.remote_connection_master_app.SQLiteDB.StoreCommandsDB;
 import com.example.reddragon.remote_connection_master_app.View.FrameFragments.FrameRecyclerAdapter.FrameViewHolder.CommandListViewHolder;
 
+import static com.example.reddragon.remote_connection_master_app.MainActivity.commandArrList;
 import static com.example.reddragon.remote_connection_master_app.MainActivity.commandListDB;
 
 /**
@@ -36,7 +37,6 @@ public class ProfileListAdapter extends RecyclerView.Adapter{
 
     @Override
     public int getItemCount() {
-        commViewRes = commandListDB.getAllData();
-        return commViewRes.getCount() + 1;   // test
+        return commandArrList.size() + 1;   // test
     }
 }

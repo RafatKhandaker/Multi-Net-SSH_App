@@ -80,6 +80,7 @@ public class FolderProfileView extends Fragment implements AdapterView.OnItemSel
 
         keyOnClickListener(genKeyButton, R.id.rsa_generate_btn);
 
+        keyOnClickListener(addCommButton, R.id.add_command_btn);
         testCommandArrList();
 
         return view;
@@ -129,6 +130,7 @@ public class FolderProfileView extends Fragment implements AdapterView.OnItemSel
                     @Override
                     public void onClick(View v) {
                         String command = commandViewET.getText().toString();
+                        Log.d("command View Test:", " " +command);
 
                             commandListDB.insertData(command, "+ new command");
                             folderProfileAdapt.notifyDataSetChanged();
@@ -196,7 +198,8 @@ public class FolderProfileView extends Fragment implements AdapterView.OnItemSel
 
     private void testCommandArrList(){
         for(int i = 0 ; i < commandArrList.size(); i++) {
-            Log.d("Command Test", "" +commandArrList.get(i));
+            Log.d("Command Test", " " +commandArrList.get(i));
+            System.out.println("Command Test " +commandArrList.get(i));
         }
     }
 
