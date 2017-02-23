@@ -39,7 +39,7 @@ public class FolderProfileView extends Fragment implements AdapterView.OnItemSel
     private Spinner userSpn;
 
     private View view;
-    private int encryptValSelected = 2;
+    private int encryptValSelected = 1024;
 
     private Button genKeyButton;
     private Button addCommButton;
@@ -125,18 +125,11 @@ public class FolderProfileView extends Fragment implements AdapterView.OnItemSel
                 button.setOnClickListener(new Button.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        String s = commandViewET.getText().toString();
+                        String command = commandViewET.getText().toString();
 
-                        if (s.contains(",")) {
-                            String[] parts = s.split(",");
-
-                            commandListDB.insertData(parts[1], parts[0]);
+                            commandListDB.insertData(command, "+ new command");
                             folderProfileAdapt.notifyDataSetChanged();
                             folderProfileRV.invalidate();
-
-                        } else {
-                            throw new IllegalArgumentException("String " + s + " does not contain -");
-                        }
 
                     }
                 });
