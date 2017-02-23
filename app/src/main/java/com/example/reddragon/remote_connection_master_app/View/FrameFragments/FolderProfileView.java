@@ -22,6 +22,7 @@ import java.security.KeyPair;
 import java.security.KeyPairGenerator;
 import java.security.NoSuchAlgorithmException;
 
+import static com.example.reddragon.remote_connection_master_app.MainActivity.commandArrList;
 import static com.example.reddragon.remote_connection_master_app.MainActivity.commandListDB;
 
 /**
@@ -79,6 +80,8 @@ public class FolderProfileView extends Fragment implements AdapterView.OnItemSel
 
         keyOnClickListener(genKeyButton, R.id.rsa_generate_btn);
 
+        testCommandArrList();
+
         return view;
 
     }
@@ -96,7 +99,7 @@ public class FolderProfileView extends Fragment implements AdapterView.OnItemSel
                             Integer.valueOf(String.valueOf(parent.getItemAtPosition(position)));
                 }
 
-                Log.d("encrypt test: ", "" + encryptValSelected);
+                System.out.print("encrypt test " + encryptValSelected);
 
                 break;
 
@@ -188,6 +191,12 @@ public class FolderProfileView extends Fragment implements AdapterView.OnItemSel
 //            Log.d("SSHLeyManager", "Public Key: " +publicKey);
         } catch (NoSuchAlgorithmException ex) {
             Log.e("SSHKeyManager", ex.toString());
+        }
+    }
+
+    private void testCommandArrList(){
+        for(int i = 0 ; i < commandArrList.size(); i++) {
+            Log.d("Command Test", "" +commandArrList.get(i));
         }
     }
 

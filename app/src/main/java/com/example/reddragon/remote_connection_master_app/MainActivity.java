@@ -48,7 +48,7 @@ private static DrawerLayout drawerLayout;
 private static StoreConnectionDB preConDatabase;
 public static StoreCommandsDB commandListDB;
 
-public static ArrayList<String> commandArrList = new ArrayList<>();
+public static ArrayList<String> commandArrList;
 
 
 private static final Fragment CONNECTION_SETTINGS = new FolderProfileView();
@@ -73,6 +73,8 @@ private RecyclerClass recyclerClass = new RecyclerClass();
         setContentView(R.layout.activity_main);
 
         /**  not complete, needs better thread handling.. eventually will overload UI thread**/
+
+        commandArrList = new ArrayList<>();
 
         // create Settings button
         settingsButton = (ImageView)findViewById(R.id.settings_button);
@@ -102,8 +104,6 @@ private RecyclerClass recyclerClass = new RecyclerClass();
 
         // load Stored SQLite Data
         loadSavedCommandData();
-
-
 
     }
 
@@ -171,7 +171,7 @@ private RecyclerClass recyclerClass = new RecyclerClass();
             }
         }
     }
-    private void loadSavedCommandData(){
+    public ArrayList<String> loadSavedCommandData(){
         res = commandListDB.getAllData();
         if(res.getCount() != 0) {
 //            bufferValue = new StringBuffer();
@@ -179,6 +179,7 @@ private RecyclerClass recyclerClass = new RecyclerClass();
                 commandArrList.add(res.getString(2));
             }
         }
+        return commandArrList;
     }
 
     private void launchContainer(Fragment fragment){
