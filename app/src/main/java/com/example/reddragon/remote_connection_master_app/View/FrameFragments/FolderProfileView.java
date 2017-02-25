@@ -24,6 +24,8 @@ import java.security.NoSuchAlgorithmException;
 
 import static com.example.reddragon.remote_connection_master_app.MainActivity.commandArrList;
 import static com.example.reddragon.remote_connection_master_app.MainActivity.commandListDB;
+import static com.example.reddragon.remote_connection_master_app.MainActivity.loadSavedCommandData;
+import static com.example.reddragon.remote_connection_master_app.View.FrameFragments.FrameRecyclerAdapter.ProfileListAdapter.dataArrList;
 
 /**
  * Created by RedDragon on 2/7/17.
@@ -131,10 +133,9 @@ public class FolderProfileView extends Fragment implements AdapterView.OnItemSel
                     public void onClick(View v) {
                         String command = commandViewET.getText().toString();
                         Log.d("command View Test:", " " +command);
-
-                            commandListDB.insertData(command, "+ new command");
-                            folderProfileAdapt.notifyDataSetChanged();
-                            folderProfileRV.invalidate();
+                        commandListDB.insertData(command, "+ new command");
+                        loadSavedCommandData(dataArrList);
+                        folderProfileAdapt.swap(commandArrList);
 
                     }
                 });

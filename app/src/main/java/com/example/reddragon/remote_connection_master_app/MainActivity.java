@@ -58,7 +58,7 @@ private static final ConsoleView CONSOLE = new ConsoleView();
 
 private RecyclerClass recyclerClass = new RecyclerClass();
 
-    private Cursor res;
+    private static Cursor res;
     private StringBuffer bufferValue;
 
     private static FragmentManager fragMan;
@@ -104,7 +104,7 @@ private RecyclerClass recyclerClass = new RecyclerClass();
         initiateTrayClickListener(folderLockButton, R.id.folder_button);
 
         // load Stored SQLite Data
-        loadSavedCommandData();
+        loadSavedCommandData(commandArrList);
 
         Log.d("Test Comm ArrList ", "" +commandArrList.size());
 
@@ -174,12 +174,12 @@ private RecyclerClass recyclerClass = new RecyclerClass();
             }
         }
     }
-    public ArrayList<String> loadSavedCommandData(){
+    public static ArrayList<String> loadSavedCommandData(ArrayList<String> arrList){
         res = commandListDB.getAllData();
         if(res.getCount() != 0) {
 //            bufferValue = new StringBuffer();
             while (res.moveToNext()) {
-                commandArrList.add(res.getString(2));
+                arrList.add(res.getString(1));
             }
         }
         return commandArrList;
