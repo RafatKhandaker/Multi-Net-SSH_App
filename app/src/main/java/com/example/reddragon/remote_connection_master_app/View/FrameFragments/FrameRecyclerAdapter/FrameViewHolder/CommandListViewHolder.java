@@ -2,6 +2,7 @@ package com.example.reddragon.remote_connection_master_app.View.FrameFragments.F
 
 import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -30,9 +31,13 @@ public class CommandListViewHolder extends RecyclerView.ViewHolder {
         connectListLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                Log.d("Test Background Color", " " +v.getSolidColor());
+
                     commandListPosition = getAdapterPosition();
                     v.setBackgroundColor(Color.YELLOW);
                     commandListText.setTextColor(Color.BLACK);
+
             }
         });
 
