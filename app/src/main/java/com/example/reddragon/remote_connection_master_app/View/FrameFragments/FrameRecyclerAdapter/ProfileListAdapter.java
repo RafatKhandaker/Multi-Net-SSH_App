@@ -34,10 +34,10 @@ public class ProfileListAdapter extends RecyclerView.Adapter{
 
     @Override
     public int getItemCount() {
-        return dataArrList.size() + 1;   // test
+        return commandArrList.size() + 1;   // test
     }
 
-    public void swap(ArrayList<String> datas){
+    public void swap(){
         commandArrList.clear();
         commandArrList.addAll(dataArrList);
         notifyDataSetChanged();

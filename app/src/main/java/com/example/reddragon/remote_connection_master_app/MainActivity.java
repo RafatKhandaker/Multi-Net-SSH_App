@@ -46,7 +46,7 @@ private ImageView folderLockButton;
 // setting up Immutable objects for possible thread handling
 
 private static DrawerLayout drawerLayout;
-private static StoreConnectionDB preConDatabase;
+public static StoreConnectionDB preConDatabase;
 public static StoreCommandsDB commandListDB;
 
 public static ArrayList<String> commandArrList;
@@ -104,7 +104,7 @@ private RecyclerClass recyclerClass = new RecyclerClass();
         initiateTrayClickListener(folderLockButton, R.id.folder_button);
 
         // load Stored SQLite Data
-        loadSavedCommandData(commandArrList);
+        commandArrList = loadSavedCommandData(commandArrList);
 
         Log.d("Test Comm ArrList ", "" +commandArrList.size());
 
@@ -182,7 +182,7 @@ private RecyclerClass recyclerClass = new RecyclerClass();
                 arrList.add(res.getString(1));
             }
         }
-        return commandArrList;
+        return arrList;
     }
 
     private void launchContainer(Fragment fragment){
