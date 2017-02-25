@@ -19,19 +19,20 @@ public class CommandListViewHolder extends RecyclerView.ViewHolder {
     private RelativeLayout connectListLayout;
     private TextView commandListText;
 
-    private static int commandListPosition;
+    private static int commandListPosition = -1;
 
     public CommandListViewHolder(View itemView) {
         super(itemView);
-        connectListLayout = (RelativeLayout) itemView.findViewById(R.id.connect_list_layout);
 
+        connectListLayout = (RelativeLayout) itemView.findViewById(R.id.connect_list_layout);
         commandListText = (TextView) itemView.findViewById(R.id.conn_name_txt);
+
         connectListLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                commandListPosition = getAdapterPosition();
-                v.setBackgroundColor(Color.YELLOW);
-                commandListText.setTextColor(Color.BLACK);
+                    commandListPosition = getAdapterPosition();
+                    v.setBackgroundColor(Color.YELLOW);
+                    commandListText.setTextColor(Color.BLACK);
             }
         });
 
