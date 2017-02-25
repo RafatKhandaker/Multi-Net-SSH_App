@@ -133,7 +133,7 @@ public class FolderProfileView extends Fragment implements AdapterView.OnItemSel
                     public void onClick(View v) {
                         String command = commandViewET.getText().toString();
                         Log.d("command View Test:", " " +command);
-                        commandListDB.insertData(command, "+ new command");
+                        commandListDB.insertData(command);
                         dataArrList = loadSavedCommandData(dataArrList);
                         folderProfileAdapt.swap();
 
