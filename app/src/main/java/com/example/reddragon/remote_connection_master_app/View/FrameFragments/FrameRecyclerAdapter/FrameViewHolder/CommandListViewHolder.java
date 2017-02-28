@@ -35,8 +35,9 @@ public class CommandListViewHolder extends RecyclerView.ViewHolder {
             @Override
             public void onClick(View v) {
                 clickVal++;
+
                 if(clickVal%2 == 1) {
-                    commandListPosition = getAdapterPosition();
+                    commandListPosition = getAdapterPosition()+1;
                     v.setBackgroundColor(Color.YELLOW);
                     commandListText.setTextColor(Color.BLACK);
                     commandText = commandListText.getText().toString();

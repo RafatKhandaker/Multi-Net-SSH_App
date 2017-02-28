@@ -58,7 +58,6 @@ private static final ConsoleView CONSOLE = new ConsoleView();
 
 private RecyclerClass recyclerClass = new RecyclerClass();
 
-    private static Cursor res;
     private StringBuffer bufferValue;
 
     private static FragmentManager fragMan;
@@ -166,7 +165,7 @@ private RecyclerClass recyclerClass = new RecyclerClass();
 
 
     private void loadSavedConnectionData(){
-        res = preConDatabase.getAllData();
+        Cursor res = preConDatabase.getAllData();
         if(res.getCount() != 0) {
             bufferValue = new StringBuffer();
             while (res.moveToNext()) {
@@ -175,7 +174,7 @@ private RecyclerClass recyclerClass = new RecyclerClass();
         }
     }
     public static ArrayList<String> loadSavedCommandData(ArrayList<String> arrList){
-        res = commandListDB.getAllData();
+        Cursor res = commandListDB.getAllData();
         if(res.getCount() != 0) {
 //            bufferValue = new StringBuffer();
             while (res.moveToNext()) {

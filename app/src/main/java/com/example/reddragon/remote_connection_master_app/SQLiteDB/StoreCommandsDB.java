@@ -70,9 +70,9 @@ public class StoreCommandsDB extends SQLiteOpenHelper {
         return true;
     }
 
-    public Integer deleteData(String id){
+    public Integer deleteData(String command){
         sqLiteDatabase = this.getWritableDatabase();
-        return sqLiteDatabase.delete(TABLE_NAME, "ID = ?", new String[]{id});
+        return sqLiteDatabase.delete(TABLE_NAME, "COMMAND = ?", new String[]{command});
     }
 
 }

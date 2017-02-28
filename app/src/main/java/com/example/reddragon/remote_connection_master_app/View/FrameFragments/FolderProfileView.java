@@ -127,6 +127,7 @@ public class FolderProfileView extends Fragment implements AdapterView.OnItemSel
     }
 
     private void keyOnClickListener(Button button, int r){
+
         switch(r){
             case R.id.rsa_generate_btn:
                 button.setOnClickListener(new Button.OnClickListener() {
@@ -159,7 +160,8 @@ public class FolderProfileView extends Fragment implements AdapterView.OnItemSel
                                     commandText +" " +commandListPosition);
 
                             commandListDB.deleteData(
-                                    String.valueOf(commandListPosition+1));
+                                    commandText);
+
                             dataArrList.clear();
                             loadSavedCommandData(dataArrList);
 
@@ -169,7 +171,6 @@ public class FolderProfileView extends Fragment implements AdapterView.OnItemSel
                     }
                 }));
                 break;
-
         }
     }
     private void initiateFolderListRV(){
