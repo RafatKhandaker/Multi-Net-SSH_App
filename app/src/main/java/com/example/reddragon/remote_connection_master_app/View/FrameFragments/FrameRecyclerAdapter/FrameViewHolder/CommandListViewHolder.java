@@ -2,7 +2,6 @@ package com.example.reddragon.remote_connection_master_app.View.FrameFragments.F
 
 import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -19,8 +18,11 @@ public class CommandListViewHolder extends RecyclerView.ViewHolder {
 
     private RelativeLayout connectListLayout;
     private TextView commandListText;
+    public static  String commandText = "";
 
-    private static int commandListPosition = -1;
+    private int clickVal = 0;
+    public static int commandListPosition = -1;
+    public CommandListViewHolder(View itemView, int x) {super(itemView);}
 
     public CommandListViewHolder(View itemView) {
         super(itemView);
@@ -28,20 +30,30 @@ public class CommandListViewHolder extends RecyclerView.ViewHolder {
         connectListLayout = (RelativeLayout) itemView.findViewById(R.id.connect_list_layout);
         commandListText = (TextView) itemView.findViewById(R.id.conn_name_txt);
 
+
         connectListLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                Log.d("Test Background Color", " " +v.getSolidColor());
-
+                clickVal++;
+                if(clickVal%2 == 1) {
                     commandListPosition = getAdapterPosition();
                     v.setBackgroundColor(Color.YELLOW);
                     commandListText.setTextColor(Color.BLACK);
+                    commandText = commandListText.getText().toString();
+
+                }else if(clickVal%2 == 0){
+                    commandListPosition = -1;
+                    v.setBackgroundColor(Color.BLACK);
+                    commandListText.setTextColor(Color.WHITE);
+                    commandText = "";
+                }
 
             }
+
         });
 
     }
+
 
     public void onBind(int position){
 
@@ -52,6 +64,8 @@ public class CommandListViewHolder extends RecyclerView.ViewHolder {
         }
 
     }
+
+    public String getCommandText(){ return commandText; }
 
     public static int getCommandListPosition(){ return commandListPosition; }
 

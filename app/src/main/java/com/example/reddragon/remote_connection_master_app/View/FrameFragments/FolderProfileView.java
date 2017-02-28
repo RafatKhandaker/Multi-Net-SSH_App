@@ -16,15 +16,18 @@ import android.widget.EditText;
 import android.widget.Spinner;
 
 import com.example.reddragon.remote_connection_master_app.R;
+import com.example.reddragon.remote_connection_master_app.View.FrameFragments.FrameRecyclerAdapter.FrameViewHolder.CommandListViewHolder;
 import com.example.reddragon.remote_connection_master_app.View.FrameFragments.FrameRecyclerAdapter.ProfileListAdapter;
 
 import java.security.KeyPair;
 import java.security.KeyPairGenerator;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
 
-import static com.example.reddragon.remote_connection_master_app.MainActivity.commandArrList;
 import static com.example.reddragon.remote_connection_master_app.MainActivity.commandListDB;
 import static com.example.reddragon.remote_connection_master_app.MainActivity.loadSavedCommandData;
+import static com.example.reddragon.remote_connection_master_app.View.FrameFragments.FrameRecyclerAdapter.FrameViewHolder.CommandListViewHolder.commandListPosition;
+import static com.example.reddragon.remote_connection_master_app.View.FrameFragments.FrameRecyclerAdapter.FrameViewHolder.CommandListViewHolder.commandText;
 import static com.example.reddragon.remote_connection_master_app.View.FrameFragments.FrameRecyclerAdapter.ProfileListAdapter.dataArrList;
 
 /**
@@ -34,6 +37,8 @@ import static com.example.reddragon.remote_connection_master_app.View.FrameFragm
 public class FolderProfileView extends Fragment implements AdapterView.OnItemSelectedListener{
 
     public static final CharSequence[] UserOption  = {"root","user1","user2","user3","user4"};
+
+    private CommandListViewHolder commandListViewHolder;
 
     private RecyclerView folderProfileRV;
     private ProfileListAdapter folderProfileAdapt;
@@ -59,6 +64,9 @@ public class FolderProfileView extends Fragment implements AdapterView.OnItemSel
 
         view = inflater.inflate(R.layout.secure_folder, container, false);
 
+        // call different constructor or recieve null pointer exception
+        commandListViewHolder = new CommandListViewHolder(view, 0);
+
         genKeyButton = (Button) view.findViewById(R.id.rsa_generate_btn);
         addCommButton = (Button) view.findViewById(R.id.add_command_btn);
         editButton = (Button) view.findViewById(R.id.edit_list_btn);
@@ -83,7 +91,8 @@ public class FolderProfileView extends Fragment implements AdapterView.OnItemSel
         keyOnClickListener(genKeyButton, R.id.rsa_generate_btn);
 
         keyOnClickListener(addCommButton, R.id.add_command_btn);
-        testCommandArrList();
+
+        keyOnClickListener(removeButton, R.id.remove_list_btn);
 
         return view;
 
@@ -134,11 +143,33 @@ public class FolderProfileView extends Fragment implements AdapterView.OnItemSel
                         String command = commandViewET.getText().toString();
                         Log.d("command View Test:", " " +command);
                         commandListDB.insertData(command);
-                        dataArrList = loadSavedCommandData(dataArrList);
+                        loadSavedCommandData(dataArrList);
                         folderProfileAdapt.swap();
 
                     }
                 });
+                break;
+            case R.id.remove_list_btn:
+                button.setOnClickListener((new Button.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if(commandListPosition != -1) {
+
+                            Log.d("Test Remove: ",
+                                    commandText +" " +commandListPosition);
+
+                            commandListDB.deleteData(
+                                    String.valueOf(commandListPosition+1));
+                            dataArrList.clear();
+                            loadSavedCommandData(dataArrList);
+
+                            testArrList(dataArrList);
+                            folderProfileAdapt.swap();
+                        }
+                    }
+                }));
+                break;
+
         }
     }
     private void initiateFolderListRV(){
@@ -197,10 +228,10 @@ public class FolderProfileView extends Fragment implements AdapterView.OnItemSel
         }
     }
 
-    private void testCommandArrList(){
-        for(int i = 0 ; i < commandArrList.size(); i++) {
-            Log.d("Command Test", " " +commandArrList.get(i));
-            System.out.println("Command Test " +commandArrList.get(i));
+    private void testArrList(ArrayList arrList){
+        for(int i = 0 ; i < arrList.size(); i++) {
+            Log.d("Command Test", " " +arrList.get(i));
+            System.out.println("Command Test " +arrList.get(i));
         }
     }
 

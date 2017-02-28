@@ -34,7 +34,8 @@ public class ProfileListAdapter extends RecyclerView.Adapter{
 
     @Override
     public int getItemCount() {
-        return commandArrList.size() + 1;   // test
+        if(commandArrList.size() + 1 > 2){ return commandArrList.size() + 1; }
+        return 3;
     }
 
     public void swap(){
