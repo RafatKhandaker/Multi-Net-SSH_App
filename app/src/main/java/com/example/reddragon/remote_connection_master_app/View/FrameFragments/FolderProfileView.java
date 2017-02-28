@@ -144,6 +144,7 @@ public class FolderProfileView extends Fragment implements AdapterView.OnItemSel
                         String command = commandViewET.getText().toString();
                         Log.d("command View Test:", " " +command);
                         commandListDB.insertData(command);
+                        dataArrList.clear();
                         loadSavedCommandData(dataArrList);
                         folderProfileAdapt.swap();
 
@@ -231,8 +232,7 @@ public class FolderProfileView extends Fragment implements AdapterView.OnItemSel
 
     private void testArrList(ArrayList arrList){
         for(int i = 0 ; i < arrList.size(); i++) {
-            Log.d("Command Test", " " +arrList.get(i));
-            System.out.println("Command Test " +arrList.get(i));
+            Log.d("ArrList Test", " " +arrList.get(i));
         }
     }
 
