@@ -7,13 +7,27 @@ import android.view.ViewGroup;
 import com.example.reddragon.remote_connection_master_app.R;
 import com.example.reddragon.remote_connection_master_app.View.ViewHolder.CardViewHolder;
 
+import java.util.ArrayList;
+
+import static com.example.reddragon.remote_connection_master_app.MainActivity.ipArray;
+import static com.example.reddragon.remote_connection_master_app.MainActivity.portArray;
+
 /**
  * Created by RedDragon on 2/8/17.
  */
 
 public class MainContainerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    public MainContainerAdapter(){}
+    private ArrayList<String> tmpIPArray;
+    private ArrayList<String> tmpPortArray;
+
+    public MainContainerAdapter(
+            ArrayList<String> ipArray,
+            ArrayList<String> portArray )
+    {
+        this.tmpIPArray = ipArray;
+        this.tmpPortArray = portArray;
+    }
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -23,11 +37,14 @@ public class MainContainerAdapter extends RecyclerView.Adapter<RecyclerView.View
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-
     }
 
     @Override
     public int getItemCount() {
         return 10;    // test with
     }
+
+    public void setIPArray(){ ipArray = this.tmpIPArray; }
+    public void setPortArray(){ portArray = this.tmpPortArray; }
+
 }

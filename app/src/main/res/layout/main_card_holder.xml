@@ -5,14 +5,15 @@
     android:orientation="vertical"
     android:layout_width="370dp"
     android:layout_height="match_parent"
-    android:layout_centerInParent="true">
+    android:layout_centerInParent="true"
+    android:id="@+id/main_card_holder">
 
     <!-- A CardView that contains a TextView -->
     <TextView
         android:id="@+id/conn_name_txt"
         android:layout_width="370dp"
         android:layout_height="20dp"
-        android:text="Host Name"
+        android:text="Host Address"
         android:gravity="center_horizontal"
         android:textColor="#FFFFFF"
         android:textStyle="bold"
@@ -26,7 +27,16 @@
         android:padding="5dp"
         android:backgroundTint="#FFFFFF"
         android:layout_gravity="center_horizontal"
-        card_view:cardCornerRadius="4dp">
+        card_view:cardCornerRadius="4dp"
+        >
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="X.X.X.X:22"
+            android:textAlignment="center"
+            android:id="@+id/hostname_et"
+            />
 
     </android.support.v7.widget.CardView>
 </LinearLayout>

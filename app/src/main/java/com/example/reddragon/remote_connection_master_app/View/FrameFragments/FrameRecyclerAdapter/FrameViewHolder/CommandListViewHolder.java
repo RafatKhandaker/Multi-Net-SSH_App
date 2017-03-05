@@ -22,7 +22,7 @@ public class CommandListViewHolder extends RecyclerView.ViewHolder {
 
     private int clickVal = 0;
     public static int commandListPosition = -1;
-    public CommandListViewHolder(View itemView, int x) {super(itemView);}
+
 
     public CommandListViewHolder(View itemView) {
         super(itemView);
@@ -37,7 +37,7 @@ public class CommandListViewHolder extends RecyclerView.ViewHolder {
                 clickVal++;
 
                 if(clickVal%2 == 1) {
-                    commandListPosition = getAdapterPosition()+1;
+                    commandListPosition = getAdapterPosition();
                     v.setBackgroundColor(Color.YELLOW);
                     commandListText.setTextColor(Color.BLACK);
                     commandText = commandListText.getText().toString();

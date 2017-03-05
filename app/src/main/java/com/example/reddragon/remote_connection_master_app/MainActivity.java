@@ -51,6 +51,8 @@ public static StoreCommandsDB commandListDB;
 
 public static ArrayList<String> commandArrList;
 
+   // Connection Variables from SQLite
+public static ArrayList<String> ipArray, userArray, typeArray, portArray, keyArray, passArray;
 
 private static final Fragment CONNECTION_SETTINGS = new FolderProfileView();
 private static final ConsoleView CONSOLE = new ConsoleView();
@@ -103,7 +105,8 @@ private RecyclerClass recyclerClass = new RecyclerClass();
         initiateTrayClickListener(folderLockButton, R.id.folder_button);
 
         // load Stored SQLite Data
-        commandArrList = loadSavedCommandData(commandArrList);
+        loadSavedConnectionData();
+        loadSavedCommandData(commandArrList);
 
         Log.d("Test Comm ArrList ", "" +commandArrList.size());
 
@@ -151,8 +154,19 @@ private RecyclerClass recyclerClass = new RecyclerClass();
     }
 
     @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+    }
+
+    @Override
     public void onBackPressed() {
-//        super.onBackPressed();
+        super.onBackPressed();
         launchContainer(recyclerClass);
     }
 
@@ -169,7 +183,14 @@ private RecyclerClass recyclerClass = new RecyclerClass();
         if(res.getCount() != 0) {
             bufferValue = new StringBuffer();
             while (res.moveToNext()) {
-                // load the data individual from SQLite
+
+                // load the data individual from SQLite]
+                ipArray.add(res.getString(1));
+                userArray.add(res.getString(2));
+                typeArray.add(res.getString(3));
+                portArray.add(res.getString(4));
+                keyArray.add(res.getString(5));
+                passArray.add(res.getString(6));
             }
         }
     }

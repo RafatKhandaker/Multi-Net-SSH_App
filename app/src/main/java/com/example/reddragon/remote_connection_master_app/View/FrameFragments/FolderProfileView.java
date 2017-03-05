@@ -64,9 +64,6 @@ public class FolderProfileView extends Fragment implements AdapterView.OnItemSel
 
         view = inflater.inflate(R.layout.secure_folder, container, false);
 
-        // call different constructor or recieve null pointer exception
-        commandListViewHolder = new CommandListViewHolder(view, 0);
-
         genKeyButton = (Button) view.findViewById(R.id.rsa_generate_btn);
         addCommButton = (Button) view.findViewById(R.id.add_command_btn);
         editButton = (Button) view.findViewById(R.id.edit_list_btn);
@@ -82,8 +79,8 @@ public class FolderProfileView extends Fragment implements AdapterView.OnItemSel
         cipherSpn = (Spinner) view.findViewById(R.id.complexity_lst_spn);
         userSpn = (Spinner) view.findViewById(R.id.user_list);
 
-        initiateCipherSpinner();
         initiateUserSpinner();
+        initiateCipherSpinner();
 
         cipherSpn.setOnItemSelectedListener(this);
         userSpn.setOnItemSelectedListener(this);
@@ -167,6 +164,9 @@ public class FolderProfileView extends Fragment implements AdapterView.OnItemSel
                             loadSavedCommandData(dataArrList);
 
                             testArrList(dataArrList);
+
+//                            dataArrList.set((dataArrList.size() -1), "+New Command");
+
                             folderProfileAdapt.swap();
                         }
                     }

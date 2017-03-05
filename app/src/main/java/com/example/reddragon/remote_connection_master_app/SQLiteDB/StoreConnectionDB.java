@@ -20,12 +20,11 @@ public class StoreConnectionDB extends SQLiteOpenHelper {
 
         private static final String COL_1 = "ID";
         private static final String COL_2 = "IP";
-        private static final String COL_3 = "NAME";
+        private static final String COL_3 = "USERNAME";
         private static final String COL_4 = "TYPE";
         private static final String COL_5 = "PORT";
         private static final String COL_6 = "KEY";
         private static final String COL_7 = "PASSWORD";
-        private static final String COL_8 = "USERNAME";
 
         private static final int DATABASE_VERSION = 1;
 
@@ -47,19 +46,18 @@ public class StoreConnectionDB extends SQLiteOpenHelper {
         onCreate(sqLiteDatabase);
     }
 
-    public boolean insertData( String ip, String name, String type, String port, String key,
-                               String password, String username){
+    public boolean insertData( String ip, String username, String type, String port, String key,
+                               String password){
 
         sqLiteDatabase = this.getWritableDatabase();
         contentValues = new ContentValues();
 
         contentValues.put(COL_2, ip);
-        contentValues.put(COL_3, name);
+        contentValues.put(COL_3, username);
         contentValues.put(COL_4, type);
         contentValues.put(COL_5, port);
         contentValues.put(COL_6, key);
         contentValues.put(COL_7, password);
-        contentValues.put(COL_8, username);
 
         long result = sqLiteDatabase.insert(TABLE_NAME, null, contentValues);
 
@@ -72,20 +70,19 @@ public class StoreConnectionDB extends SQLiteOpenHelper {
 
 
 
-    public boolean updateData(String id, String ip, String name, String type, String port, String key,
-                              String password, String username){
+    public boolean updateData(String id, String ip, String username, String type, String port, String key,
+                              String password){
 
         sqLiteDatabase = this.getWritableDatabase();
         contentValues = new ContentValues();
 
         contentValues.put(COL_1, id);
         contentValues.put(COL_2, ip);
-        contentValues.put(COL_3, name);
+        contentValues.put(COL_3, username);
         contentValues.put(COL_4, type);
         contentValues.put(COL_5, port);
         contentValues.put(COL_6, key);
         contentValues.put(COL_7, password);
-        contentValues.put(COL_8, username);
 
         sqLiteDatabase.update(TABLE_NAME, contentValues, "ID = ?", new String[]{ id } );
 
@@ -96,9 +93,5 @@ public class StoreConnectionDB extends SQLiteOpenHelper {
         sqLiteDatabase = this.getWritableDatabase();
         return sqLiteDatabase.delete(TABLE_NAME, "ID = ?", new String[]{id});
     }
-
-
-
-
 
 }
