@@ -21,13 +21,7 @@ public class MainContainerAdapter extends RecyclerView.Adapter<RecyclerView.View
     private ArrayList<String> tmpIPArray;
     private ArrayList<String> tmpPortArray;
 
-    public MainContainerAdapter(
-            ArrayList<String> ipArray,
-            ArrayList<String> portArray )
-    {
-        this.tmpIPArray = ipArray;
-        this.tmpPortArray = portArray;
-    }
+    public MainContainerAdapter() {}
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
