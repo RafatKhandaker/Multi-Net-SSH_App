@@ -1,6 +1,7 @@
 package com.example.reddragon.remote_connection_master_app.View;
 
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
@@ -31,6 +32,8 @@ public class MainContainerAdapter extends RecyclerView.Adapter<RecyclerView.View
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+        ((CardViewHolder) holder).setHostName(position);
+        Log.d("test Position :", " " +position );
     }
 
     @Override
