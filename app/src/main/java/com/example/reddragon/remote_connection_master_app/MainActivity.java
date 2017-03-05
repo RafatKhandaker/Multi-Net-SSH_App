@@ -166,8 +166,9 @@ private RecyclerClass recyclerClass = new RecyclerClass();
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
         launchContainer(recyclerClass);
+        super.onBackPressed();
+
     }
 
     @Override
