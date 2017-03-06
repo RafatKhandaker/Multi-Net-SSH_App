@@ -6,6 +6,8 @@
     android:layout_width="370dp"
     android:layout_height="match_parent"
     android:layout_centerInParent="true"
+    android:background="#FFFFFF"
+    android:padding="1dp"
     android:id="@+id/main_card_holder">
 
     <!-- A CardView that contains a TextView -->
@@ -16,6 +18,7 @@
         android:layout_height="80dp"
         android:padding="5dp"
         android:backgroundTint="#000000"
+        android:background="#000000"
         android:layout_gravity="center_horizontal"
         card_view:cardCornerRadius="4dp">
 
