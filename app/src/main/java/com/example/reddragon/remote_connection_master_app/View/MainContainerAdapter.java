@@ -23,21 +23,22 @@ public class MainContainerAdapter extends RecyclerView.Adapter<RecyclerView.View
     private ArrayList<String> tmpIPArray;
     private ArrayList<String> tmpPortArray;
 
-    private int dataSize;
+    private int dataSize = 1;
 
     public MainContainerAdapter() {}
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         createDataSize();
-        if(ipArray != null) {
-            if (viewType != ipArray.size()) {
+        Log.d("test view Type: ", "" +viewType +" " +dataSize);
+            if (viewType != dataSize) {
                 return new CardViewHolder(LayoutInflater.from(parent.getContext())
                         .inflate(R.layout.main_card_holder, null));
+            }else {
+
+                return new AddCardViewHolder(LayoutInflater.from(parent.getContext())
+                        .inflate(R.layout.add_newcard_holder, null));
             }
-        }
-        return new AddCardViewHolder(LayoutInflater.from(parent.getContext())
-                    .inflate(R.layout.add_newcard_holder, null));
     }
 
     @Override
@@ -52,7 +53,12 @@ public class MainContainerAdapter extends RecyclerView.Adapter<RecyclerView.View
 
     @Override
     public int getItemViewType(int position) {
-        return super.getItemViewType(position);
+
+        if(position == dataSize+1){
+            Log.d("test item view type: ", "" +dataSize +" " +position);
+            return position; }
+        else{ return position; }
+
     }
 
     @Override
