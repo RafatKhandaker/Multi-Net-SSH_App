@@ -34,8 +34,7 @@
             android:layout_height="match_parent"
             android:hint="X.X.X.X:22"
             android:textAlignment="center"
-            android:id="@+id/hostname_et"
-            android:clickable="false"/>
+            android:id="@+id/hostname_et"/>
 
             <ImageButton
                 android:layout_height="50dp"
