@@ -52,7 +52,8 @@ public static StoreCommandsDB commandListDB;
 public static ArrayList<String> commandArrList;
 
    // Connection Variables from SQLite
-public static ArrayList<String> ipArray, userArray, typeArray, portArray, keyArray, passArray;
+public static ArrayList<String>
+           ipArray, userArray, typeArray, portArray, keyArray, passArray = new ArrayList<>();
 
 private static final Fragment CONNECTION_SETTINGS = new FolderProfileView();
 private static final ConsoleView CONSOLE = new ConsoleView();
