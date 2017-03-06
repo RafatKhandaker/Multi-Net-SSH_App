@@ -131,6 +131,10 @@ private RecyclerClass recyclerClass = new RecyclerClass();
     public boolean onOptionsItemSelected(MenuItem item) {
         switch(item.getItemId()){
 
+            case R.id.main_menu:
+                launchContainer(recyclerClass);
+                return true;
+
             case R.id.settings_menu:
                 launchContainer(CONNECTION_SETTINGS);
                 return true;
