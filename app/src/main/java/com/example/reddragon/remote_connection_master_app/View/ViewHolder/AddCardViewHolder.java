@@ -1,10 +1,10 @@
 package com.example.reddragon.remote_connection_master_app.View.ViewHolder;
 
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.ImageButton;
 
 import com.example.reddragon.remote_connection_master_app.R;
 import com.example.reddragon.remote_connection_master_app.View.MainContainerAdapter;
@@ -19,7 +19,7 @@ import static com.example.reddragon.remote_connection_master_app.View.MainContai
 
 public class AddCardViewHolder extends RecyclerView.ViewHolder {
 
-    CardView addNewCard;
+    ImageButton addNewCard;
     public static ArrayList<String> changeData = new ArrayList<>();
 
     public AddCardViewHolder(View itemView) {
@@ -28,9 +28,9 @@ public class AddCardViewHolder extends RecyclerView.ViewHolder {
 
         final MainContainerAdapter adapter = new MainContainerAdapter();
 
-        addNewCard = (CardView) itemView.findViewById(R.id.add_card_view);
+        addNewCard = (ImageButton) itemView.findViewById(R.id.add_hostname_btn);
 
-        addNewCard.setOnTouchListener(new View.OnTouchListener() {
+        addNewCard.setOnTouchListener(new ImageButton.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
 
