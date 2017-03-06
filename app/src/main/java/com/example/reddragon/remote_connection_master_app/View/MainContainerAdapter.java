@@ -17,33 +17,33 @@ import static com.example.reddragon.remote_connection_master_app.MainActivity.po
 /**
  * Created by RedDragon on 2/8/17.
  */
-
 public class MainContainerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private ArrayList<String> tmpIPArray;
     private ArrayList<String> tmpPortArray;
 
-    private int dataSize = 1;
+    public static int dataSize = 1;
 
-    public MainContainerAdapter() {}
+    public MainContainerAdapter() {
+    }
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        createDataSize();
-        Log.d("test view Type: ", "" +viewType +" " +dataSize);
-            if (viewType != dataSize) {
-                return new CardViewHolder(LayoutInflater.from(parent.getContext())
-                        .inflate(R.layout.main_card_holder, null));
-            }else {
 
-                return new AddCardViewHolder(LayoutInflater.from(parent.getContext())
-                        .inflate(R.layout.add_newcard_holder, null));
-            }
+        Log.d("test view Type: ", "" + viewType + " " + dataSize);
+        if (viewType != dataSize) {
+            return new CardViewHolder(LayoutInflater.from(parent.getContext())
+                    .inflate(R.layout.main_card_holder, null));
+        } else {
+
+            return new AddCardViewHolder(LayoutInflater.from(parent.getContext())
+                    .inflate(R.layout.add_newcard_holder, null));
+        }
     }
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        if(ipArray != null) {
+        if (ipArray != null) {
             if (position != ipArray.size()) {
                 ((CardViewHolder) holder).setHostName(position);
                 Log.d("test Position :", " " + position);
@@ -54,10 +54,12 @@ public class MainContainerAdapter extends RecyclerView.Adapter<RecyclerView.View
     @Override
     public int getItemViewType(int position) {
 
-        if(position == dataSize+1){
-            Log.d("test item view type: ", "" +dataSize +" " +position);
-            return position; }
-        else{ return position; }
+        if (position == dataSize + 1) {
+            Log.d("test item view type: ", "" + dataSize + " " + position);
+            return position;
+        } else {
+            return position;
+        }
 
     }
 
@@ -66,12 +68,22 @@ public class MainContainerAdapter extends RecyclerView.Adapter<RecyclerView.View
         return dataSize + 1;    // test with
     }
 
-    private int createDataSize(){
-        if(ipArray == null){ return dataSize = 1;}
-        return dataSize = ipArray.size() +1;
+    private int createDataSize() {
+        if (ipArray == null) {
+            return dataSize = 1;
+        }
+        return dataSize = ipArray.size() + 1;
     }
 
-    public void setIPArray(){ ipArray = this.tmpIPArray; }
-    public void setPortArray(){ portArray = this.tmpPortArray; }
+    public void updateData(){
+        notifyDataSetChanged();
+    }
 
+    public void setIPArray() {
+        ipArray = this.tmpIPArray;
+    }
+
+    public void setPortArray() {
+        portArray = this.tmpPortArray;
+    }
 }

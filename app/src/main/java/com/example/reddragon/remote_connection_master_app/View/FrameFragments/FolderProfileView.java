@@ -232,7 +232,6 @@ public class FolderProfileView extends Fragment implements AdapterView.OnItemSel
 
     private void testArrList(ArrayList arrList){
         for(int i = 0 ; i < arrList.size(); i++) {
-            Log.d("ArrList Test", " " +arrList.get(i));
         }
     }
 
