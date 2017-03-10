@@ -27,6 +27,9 @@ import com.example.reddragon.remote_connection_master_app.View.FrameFragments.Re
 
 import java.util.ArrayList;
 
+import static com.example.reddragon.remote_connection_master_app.View.ViewHolder.CardViewHolder.ipAddArray;
+import static com.example.reddragon.remote_connection_master_app.View.ViewHolder.CardViewHolder.portAddArray;
+
 /**------------------------------------------------------------------------------------------------->
  * Plan: Everything is written around the android UI thread as the central core of the application /
  *                                                                                                 \
@@ -161,12 +164,15 @@ private RecyclerClass recyclerClass = new RecyclerClass();
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-
+        outState.putStringArrayList("ip_add_array", ipAddArray);
+        outState.putStringArrayList("port_add_array", portAddArray);
     }
 
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
+        ipAddArray = savedInstanceState.getStringArrayList("ip_add_array");
+        portAddArray = savedInstanceState.getStringArrayList("port_add_array");
     }
 
     @Override

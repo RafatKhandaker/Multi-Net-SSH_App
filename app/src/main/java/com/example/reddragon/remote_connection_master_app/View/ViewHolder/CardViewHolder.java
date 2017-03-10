@@ -8,14 +8,18 @@ import android.widget.ImageButton;
 
 import com.example.reddragon.remote_connection_master_app.R;
 
+import java.util.ArrayList;
+
 /**
  * Created by RedDragon on 2/8/17.
  */
 
 public class CardViewHolder extends RecyclerView.ViewHolder {
 
+    public static ArrayList<String> ipAddArray, portAddArray;
     private EditText editHostName;
     private ImageButton editHostButton;
+
 
     public CardViewHolder(View itemView) {
         super(itemView);
@@ -40,25 +44,32 @@ public class CardViewHolder extends RecyclerView.ViewHolder {
                 v.setEnabled(false);
             }
         });
+
     }
 
-    public void setHostName(int pos){
+    public void addHostName(int pos){
+        ipAddArray = new ArrayList<>();
+        portAddArray = new ArrayList<>();
 
-        String ip, port;
         String hostName = editHostName.getText().toString();
 
         if(hostName.contains(":")) {
             String[] parts = hostName.split(":");
-             ip = parts[0];
-             port = parts[1];
+
+            ipAddArray.add(parts[0]);
+            portAddArray.add(parts[1]);
+
         }else{
-            ip = hostName;
-            port = "22";
+            ipAddArray.add(hostName);
+            portAddArray.add("22");
         }
 
+    }
 
-
-
+    public void setHostAddress(int position){
+        if(ipAddArray.size() > 0){
+            editHostName.setText(ipAddArray.get(position));
+        }
     }
 
 

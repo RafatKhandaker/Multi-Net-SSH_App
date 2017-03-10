@@ -45,7 +45,7 @@ public class MainContainerAdapter extends RecyclerView.Adapter<RecyclerView.View
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         if (ipArray != null) {
             if (position != ipArray.size()) {
-                ((CardViewHolder) holder).setHostName(position);
+                ((CardViewHolder) holder).addHostName(position);
                 Log.d("test Position :", " " + position);
             }
         }
