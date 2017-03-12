@@ -1,12 +1,14 @@
 package com.example.reddragon.remote_connection_master_app.View.ViewHolder;
 
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
 import com.example.reddragon.remote_connection_master_app.R;
+import com.example.reddragon.remote_connection_master_app.View.MainContainerAdapter;
 
 import java.util.ArrayList;
 
@@ -20,12 +22,15 @@ public class CardViewHolder extends RecyclerView.ViewHolder {
     private EditText editHostName;
     private ImageButton editHostButton;
 
+    private MainContainerAdapter adapter = new MainContainerAdapter();
+    private RecyclerView preConnectRecycler;
 
     public CardViewHolder(View itemView) {
         super(itemView);
 
-        editHostName = (EditText)itemView.findViewById(R.id.hostname_et);
-        editHostButton = (ImageButton)itemView.findViewById(R.id.edit_hostname_btn);
+        editHostName = (EditText) itemView.findViewById(R.id.hostname_et);
+        editHostButton = (ImageButton) itemView.findViewById(R.id.edit_hostname_btn);
+        preConnectRecycler = (RecyclerView) itemView.findViewById(R.id.main_recycler);
 
         editHostName.setEnabled(false);
 
@@ -44,6 +49,8 @@ public class CardViewHolder extends RecyclerView.ViewHolder {
                 v.setEnabled(false);
             }
         });
+
+
 
     }
 

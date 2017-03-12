@@ -22,16 +22,15 @@ public class MainContainerAdapter extends RecyclerView.Adapter<RecyclerView.View
     private ArrayList<String> tmpIPArray;
     private ArrayList<String> tmpPortArray;
 
-    public static int dataSize = 1;
+    public static ArrayList<String> mainHostArray = new ArrayList<>(1);
 
-    public MainContainerAdapter() {
-    }
+    public MainContainerAdapter() {}
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-        Log.d("test view Type: ", "" + viewType + " " + dataSize);
-        if (viewType != dataSize) {
+        Log.d("test view Type: ", "" + viewType + " " + mainHostArray.size());
+        if (viewType != mainHostArray.size()) {
             return new CardViewHolder(LayoutInflater.from(parent.getContext())
                     .inflate(R.layout.main_card_holder, null));
         } else {
@@ -54,8 +53,8 @@ public class MainContainerAdapter extends RecyclerView.Adapter<RecyclerView.View
     @Override
     public int getItemViewType(int position) {
 
-        if (position == dataSize + 1) {
-            Log.d("test item view type: ", "" + dataSize + " " + position);
+        if (position == mainHostArray.size() + 1) {
+            Log.d("test item view type: ", "" + mainHostArray.size() + " " + position);
             return position;
         } else {
             return position;
@@ -65,18 +64,12 @@ public class MainContainerAdapter extends RecyclerView.Adapter<RecyclerView.View
 
     @Override
     public int getItemCount() {
-        return dataSize + 1;    // test with
+        return mainHostArray.size() + 1;
     }
 
     private int createDataSize() {
-        if (ipArray == null) {
-            return dataSize = 1;
-        }
-        return dataSize = ipArray.size() + 1;
-    }
-
-    public void updateData(){
-        notifyDataSetChanged();
+        if (ipArray == null) { return 1; }
+        return ipArray.size() + 1;
     }
 
     public void setIPArray() {
@@ -86,4 +79,13 @@ public class MainContainerAdapter extends RecyclerView.Adapter<RecyclerView.View
     public void setPortArray() {
         portArray = this.tmpPortArray;
     }
+
+    public void updateData(){
+        mainHostArray.add("");
+        notifyDataSetChanged();
+    }
+
+    public void removeData(){
+        notifyDataSetChanged();
+    };
 }

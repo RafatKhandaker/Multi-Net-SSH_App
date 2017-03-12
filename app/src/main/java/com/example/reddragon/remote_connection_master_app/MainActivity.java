@@ -78,7 +78,7 @@ private RecyclerClass recyclerClass = new RecyclerClass();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        /**  not complete, needs better thread handling.. eventually will overload UI thread**/
+        /**  not complete, needs better thread handling.. eventually will overload UI thread **/
 
         commandArrList = new ArrayList<>();
 

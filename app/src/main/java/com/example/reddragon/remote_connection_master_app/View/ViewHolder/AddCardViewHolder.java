@@ -2,7 +2,6 @@ package com.example.reddragon.remote_connection_master_app.View.ViewHolder;
 
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageButton;
 
@@ -11,7 +10,6 @@ import com.example.reddragon.remote_connection_master_app.View.MainContainerAdap
 
 import java.util.ArrayList;
 
-import static com.example.reddragon.remote_connection_master_app.View.MainContainerAdapter.dataSize;
 
 /**
  * Created by RedDragon on 3/6/17.
@@ -19,28 +17,25 @@ import static com.example.reddragon.remote_connection_master_app.View.MainContai
 
 public class AddCardViewHolder extends RecyclerView.ViewHolder {
 
+    MainContainerAdapter adapter;
     ImageButton addNewCard;
     public static ArrayList<String> changeData = new ArrayList<>();
 
     public AddCardViewHolder(View itemView) {
         super(itemView);
 
-
-        final MainContainerAdapter adapter = new MainContainerAdapter();
+        adapter = new MainContainerAdapter();
 
         addNewCard = (ImageButton) itemView.findViewById(R.id.add_hostname_btn);
 
-        addNewCard.setOnTouchListener(new ImageButton.OnTouchListener() {
+        addNewCard.setOnClickListener(new ImageButton.OnClickListener() {
+
             @Override
-            public boolean onTouch(View v, MotionEvent event) {
-
+            public void onClick(View v) {
                 Log.d("onTouch pass: ", " pass add Card touch " );
-
-                dataSize++;
                 adapter.updateData();
-
-                return false;
             }
         });
     }
+
 }
