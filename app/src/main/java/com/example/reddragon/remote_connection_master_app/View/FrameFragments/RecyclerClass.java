@@ -63,8 +63,11 @@ public class RecyclerClass extends Fragment {
             public void onSwiped(RecyclerView.ViewHolder viewHolder, int swipeDir) {
                 //Remove swiped item from list and notify the RecyclerView
                 Log.d("test onSwiped: ", "" +mainHostArray.size());
-                mainHostArray.remove(cardViewHolder.getAdapterPosition()+1);
-                recyclerAdapter.notifyDataSetChanged();
+
+                if(mainHostArray.size() > 0) {
+                    mainHostArray.remove(cardViewHolder.getAdapterPosition() + 1);
+                    recyclerAdapter.notifyDataSetChanged();
+                }
 
             }
         };
