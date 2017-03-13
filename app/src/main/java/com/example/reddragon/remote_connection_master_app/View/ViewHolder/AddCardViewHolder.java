@@ -23,6 +23,7 @@ public class AddCardViewHolder extends RecyclerView.ViewHolder {
 
     MainContainerAdapter adapter;
     ImageButton addNewCard;
+    ImageButton saveDataBtn;
 
     public AddCardViewHolder(View itemView) {
         super(itemView);
@@ -30,6 +31,7 @@ public class AddCardViewHolder extends RecyclerView.ViewHolder {
         adapter = new MainContainerAdapter();
 
         addNewCard = (ImageButton) itemView.findViewById(R.id.add_hostname_btn);
+        saveDataBtn = (ImageButton) itemView.findViewById(R.id.save_host_icon);
 
         addNewCard.setOnClickListener(new ImageButton.OnClickListener() {
 
@@ -38,6 +40,13 @@ public class AddCardViewHolder extends RecyclerView.ViewHolder {
                 ipAddArray.add("");
                 portAddArray.add("");
                 adapter.updateData();
+            }
+        });
+
+        saveDataBtn.setOnClickListener(new ImageButton.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
             }
         });
     }

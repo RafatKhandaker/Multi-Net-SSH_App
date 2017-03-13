@@ -1,5 +1,6 @@
 package com.example.reddragon.remote_connection_master_app.View.ViewHolder;
 
+import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -10,9 +11,10 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 
 import com.example.reddragon.remote_connection_master_app.R;
-import com.example.reddragon.remote_connection_master_app.View.MainContainerAdapter;
 
 import java.util.ArrayList;
+
+import static com.example.reddragon.remote_connection_master_app.View.MainContainerAdapter.mainHostArray;
 
 /**
  * Created by RedDragon on 2/8/17.
@@ -71,8 +73,6 @@ public class CardViewHolder extends RecyclerView.ViewHolder {
     }
 
     public void addHostName(int pos){
-
-
         String hostName = editHostName.getText().toString();
 
         if(hostName.contains(":")) {
@@ -89,9 +89,12 @@ public class CardViewHolder extends RecyclerView.ViewHolder {
 
     }
 
-    public void setHostAddress(int position){
-        if(ipAddArray.size() > 0){
-            editHostName.setText(ipAddArray.get(position));
+    public void onBind(int position){
+        if(ipAddArray.size() > 2 && mainHostArray.size() > 1){
+            if(!ipAddArray.get(position).equals("")) {
+                editHostName.setText(ipAddArray.get(position)
+                        + ":" + portAddArray.get(position));
+            }
         }
     }
 

@@ -56,7 +56,7 @@ public static ArrayList<String> commandArrList;
 
    // Connection Variables from SQLite
 public static ArrayList<String>
-           ipArray, userArray, typeArray, portArray, keyArray, passArray = new ArrayList<>();
+           ipArray, userArray, typeArray, portArray, keyArray, passArray;
 
 private static final Fragment CONNECTION_SETTINGS = new FolderProfileView();
 private static final ConsoleView CONSOLE = new ConsoleView();
@@ -80,6 +80,7 @@ private RecyclerClass recyclerClass = new RecyclerClass();
 
         /**  not complete, needs better thread handling.. eventually will overload UI thread **/
 
+        initializeArrayData();
         commandArrList = new ArrayList<>();
 
         // create Settings button
@@ -189,7 +190,16 @@ private RecyclerClass recyclerClass = new RecyclerClass();
         drawerToggle.onConfigurationChanged(newConfig);
     }
 
+    private void initializeArrayData(){
 
+        ipArray = new ArrayList<>();
+        userArray = new ArrayList<>();
+        typeArray = new ArrayList<>();
+        portArray = new ArrayList<>();
+        keyArray = new ArrayList<>();
+        passArray = new ArrayList<>();
+
+    }
     private void loadSavedConnectionData(){
         Cursor res = preConDatabase.getAllData();
         if(res.getCount() != 0) {

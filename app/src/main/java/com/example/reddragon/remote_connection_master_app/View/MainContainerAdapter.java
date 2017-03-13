@@ -42,19 +42,17 @@ public class MainContainerAdapter extends RecyclerView.Adapter<RecyclerView.View
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        if (ipArray != null) {
-            if (position != ipArray.size()) {
-                ((CardViewHolder) holder).addHostName(position);
+            if (position != mainHostArray.size()) {
+                ((CardViewHolder) holder).onBind(position);
                 Log.d("test Position :", " " + position);
             }
-        }
+
     }
 
     @Override
     public int getItemViewType(int position) {
 
         if (position == mainHostArray.size() + 1) {
-            Log.d("test item view type: ", "" + mainHostArray.size() + " " + position);
             return position;
         } else {
             return position;
