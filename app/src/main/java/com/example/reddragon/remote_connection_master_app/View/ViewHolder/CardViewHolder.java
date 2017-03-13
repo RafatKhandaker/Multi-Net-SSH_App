@@ -1,7 +1,7 @@
 package com.example.reddragon.remote_connection_master_app.View.ViewHolder;
 
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.helper.ItemTouchHelper;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.EditText;
@@ -18,7 +18,7 @@ import java.util.ArrayList;
 
 public class CardViewHolder extends RecyclerView.ViewHolder {
 
-    public static ArrayList<String> ipAddArray, portAddArray;
+    public static ArrayList<String> ipAddArray = new ArrayList<>(), portAddArray = new ArrayList<>();
     private EditText editHostName;
     private ImageButton editHostButton;
 
@@ -46,6 +46,11 @@ public class CardViewHolder extends RecyclerView.ViewHolder {
         editHostName.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
+                addHostName(getAdapterPosition());
+                Log.d("test on focus: ", "" +getAdapterPosition()+ " "+ipAddArray.size()
+                        + " " +ipAddArray.get(getAdapterPosition()) +" "
+                        +ipAddArray.get(getAdapterPosition()));
+
                 v.setEnabled(false);
             }
         });
@@ -55,20 +60,19 @@ public class CardViewHolder extends RecyclerView.ViewHolder {
     }
 
     public void addHostName(int pos){
-        ipAddArray = new ArrayList<>();
-        portAddArray = new ArrayList<>();
+
 
         String hostName = editHostName.getText().toString();
 
         if(hostName.contains(":")) {
             String[] parts = hostName.split(":");
 
-            ipAddArray.add(parts[0]);
-            portAddArray.add(parts[1]);
+            ipAddArray.set(pos, parts[0]);
+            portAddArray.set(pos, parts[1]);
 
         }else{
-            ipAddArray.add(hostName);
-            portAddArray.add("22");
+            ipAddArray.set(pos, hostName);
+            portAddArray.set(pos, "22");
         }
 
     }

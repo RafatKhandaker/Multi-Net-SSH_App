@@ -10,6 +10,10 @@ import com.example.reddragon.remote_connection_master_app.View.MainContainerAdap
 
 import java.util.ArrayList;
 
+import static com.example.reddragon.remote_connection_master_app.MainActivity.preConDatabase;
+import static com.example.reddragon.remote_connection_master_app.View.ViewHolder.CardViewHolder.ipAddArray;
+import static com.example.reddragon.remote_connection_master_app.View.ViewHolder.CardViewHolder.portAddArray;
+
 
 /**
  * Created by RedDragon on 3/6/17.
@@ -33,6 +37,8 @@ public class AddCardViewHolder extends RecyclerView.ViewHolder {
             @Override
             public void onClick(View v) {
                 Log.d("onTouch pass: ", " pass add Card touch " );
+                ipAddArray.add("");
+                portAddArray.add("");
                 adapter.updateData();
             }
         });

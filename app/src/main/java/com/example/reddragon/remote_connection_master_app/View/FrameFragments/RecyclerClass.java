@@ -18,6 +18,8 @@ import com.example.reddragon.remote_connection_master_app.View.MainContainerAdap
 import com.example.reddragon.remote_connection_master_app.View.ViewHolder.CardViewHolder;
 
 import static com.example.reddragon.remote_connection_master_app.View.MainContainerAdapter.mainHostArray;
+import static com.example.reddragon.remote_connection_master_app.View.ViewHolder.CardViewHolder.ipAddArray;
+import static com.example.reddragon.remote_connection_master_app.View.ViewHolder.CardViewHolder.portAddArray;
 
 /**
  * Created by RedDragon on 2/11/17.
@@ -65,7 +67,10 @@ public class RecyclerClass extends Fragment {
                 Log.d("test onSwiped: ", "" +mainHostArray.size());
 
                 if(mainHostArray.size() > 0) {
+                    Log.d("card ad position: ", "" +(cardViewHolder.getAdapterPosition()+1));
                     mainHostArray.remove(cardViewHolder.getAdapterPosition() + 1);
+                    ipAddArray.remove(cardViewHolder.getAdapterPosition() + 1);
+                    portAddArray.remove(cardViewHolder.getAdapterPosition() +1);
                     recyclerAdapter.notifyDataSetChanged();
                 }
 

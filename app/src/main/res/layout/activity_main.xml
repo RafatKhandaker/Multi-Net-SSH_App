@@ -60,10 +60,10 @@
     </android.support.v7.widget.Toolbar>
 
     <android.support.v4.widget.DrawerLayout
+        android:id="@+id/drawer_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="70dp"
-        android:id="@+id/drawer_layout">
+        android:layout_marginTop="70dp">
 
         <ListView
             android:id="@+id/drawerList"
@@ -71,41 +71,44 @@
             android:layout_height="match_parent"
             android:layout_gravity="start"
             android:background="#421F21"
-            android:dividerHeight="1dp"
             android:choiceMode="singleChoice"
-            android:divider="@android:color/white" />
+            android:divider="@android:color/white"
+            android:dividerHeight="1dp" />
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/mainframe_container"
-        android:layout_marginBottom="30dp">
-
-        <android.support.v7.widget.RecyclerView
+        <FrameLayout
+            android:id="@+id/mainframe_container"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:padding="5dp"
-            android:id="@+id/main_recycler"
-            android:layout_marginBottom="50dp"/>
+            android:layout_marginBottom="30dp">
 
-    </FrameLayout>
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/main_recycler"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="50dp"
+                android:padding="5dp" />
+
+        </FrameLayout>
+
+
 
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="20dp"
+            android:fontFamily="cursive"
+            android:gravity="bottom"
             android:text="BLACK JACK APPS"
             android:textColor="#FFFFFF"
             android:textSize="20dp"
-            android:textStyle="bold|italic"
-            android:fontFamily="cursive"
-            android:gravity="bottom" />
+            android:textStyle="bold|italic" />
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="10dp"
             android:gravity="bottom|end"
             android:text="Written By: Rafat Khandaker"
-            android:textColor="#FFFFFF"/>
+            android:textColor="#FFFFFF" />
 
-</android.support.v4.widget.DrawerLayout>
+    </android.support.v4.widget.DrawerLayout>
 
 </android.support.design.widget.CoordinatorLayout>

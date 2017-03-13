@@ -33,6 +33,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:hint="X.X.X.X:22"
+            android:textColor="#000000"
             android:textAlignment="center"
             android:id="@+id/hostname_et"/>
 

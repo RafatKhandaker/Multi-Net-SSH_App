@@ -64,6 +64,18 @@ public class StoreConnectionDB extends SQLiteOpenHelper {
         if(result == -1){ return false; } else{ return true; }
     }
 
+    public boolean insertData(String ip, String port){
+
+        sqLiteDatabase = this.getWritableDatabase();
+        contentValues = new ContentValues();
+
+        contentValues.put(COL_2, ip);
+        contentValues.put(COL_5, port);
+
+        long result = sqLiteDatabase.insert(TABLE_NAME, null, contentValues);
+        if(result == -1){ return false; } else { return true; }
+    }
+
     public Cursor getAllData() {
         sqLiteDatabase = this.getWritableDatabase();
         return sqLiteDatabase.rawQuery("select * from "+TABLE_NAME,null); }
