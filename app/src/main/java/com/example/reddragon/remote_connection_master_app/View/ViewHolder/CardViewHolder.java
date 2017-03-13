@@ -1,6 +1,8 @@
 package com.example.reddragon.remote_connection_master_app.View.ViewHolder;
 
 import android.support.v7.widget.RecyclerView;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
@@ -18,19 +20,18 @@ import java.util.ArrayList;
 
 public class CardViewHolder extends RecyclerView.ViewHolder {
 
-    public static ArrayList<String> ipAddArray = new ArrayList<>(), portAddArray = new ArrayList<>();
+    public static ArrayList<String> ipAddArray = new ArrayList<>();
+    public static ArrayList<String> portAddArray = new ArrayList<>();
+
     private EditText editHostName;
     private ImageButton editHostButton;
 
-    private MainContainerAdapter adapter = new MainContainerAdapter();
-    private RecyclerView preConnectRecycler;
 
     public CardViewHolder(View itemView) {
         super(itemView);
 
         editHostName = (EditText) itemView.findViewById(R.id.hostname_et);
         editHostButton = (ImageButton) itemView.findViewById(R.id.edit_hostname_btn);
-        preConnectRecycler = (RecyclerView) itemView.findViewById(R.id.main_recycler);
 
         editHostName.setEnabled(false);
 
@@ -47,15 +48,25 @@ public class CardViewHolder extends RecyclerView.ViewHolder {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 addHostName(getAdapterPosition());
-                Log.d("test on focus: ", "" +getAdapterPosition()+ " "+ipAddArray.size()
-                        + " " +ipAddArray.get(getAdapterPosition()) +" "
-                        +ipAddArray.get(getAdapterPosition()));
-
                 v.setEnabled(false);
             }
         });
 
+        editHostName.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                addHostName(getAdapterPosition());
+            }
 
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                addHostName(getAdapterPosition());
+            }
+        });
 
     }
 
@@ -66,9 +77,10 @@ public class CardViewHolder extends RecyclerView.ViewHolder {
 
         if(hostName.contains(":")) {
             String[] parts = hostName.split(":");
-
-            ipAddArray.set(pos, parts[0]);
-            portAddArray.set(pos, parts[1]);
+            if(parts.length > 1) {
+                ipAddArray.set(pos, parts[0]);
+                portAddArray.set(pos, ("" + parts[1]));
+            }
 
         }else{
             ipAddArray.set(pos, hostName);

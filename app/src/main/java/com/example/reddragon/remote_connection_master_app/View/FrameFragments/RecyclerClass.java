@@ -63,9 +63,8 @@ public class RecyclerClass extends Fragment {
 
             @Override
             public void onSwiped(RecyclerView.ViewHolder viewHolder, int swipeDir) {
-                //Remove swiped item from list and notify the RecyclerView
-                Log.d("test onSwiped: ", "" +mainHostArray.size());
 
+                //Remove swiped item from list and notify the RecyclerView
                 if(mainHostArray.size() > 0) {
                     Log.d("card ad position: ", "" +(cardViewHolder.getAdapterPosition()+1));
                     mainHostArray.remove(cardViewHolder.getAdapterPosition() + 1);

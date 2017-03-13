@@ -23,7 +23,6 @@ public class AddCardViewHolder extends RecyclerView.ViewHolder {
 
     MainContainerAdapter adapter;
     ImageButton addNewCard;
-    public static ArrayList<String> changeData = new ArrayList<>();
 
     public AddCardViewHolder(View itemView) {
         super(itemView);
@@ -36,7 +35,6 @@ public class AddCardViewHolder extends RecyclerView.ViewHolder {
 
             @Override
             public void onClick(View v) {
-                Log.d("onTouch pass: ", " pass add Card touch " );
                 ipAddArray.add("");
                 portAddArray.add("");
                 adapter.updateData();
