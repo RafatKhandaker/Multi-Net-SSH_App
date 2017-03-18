@@ -91,7 +91,7 @@ public class CardViewHolder extends RecyclerView.ViewHolder {
 
     public void onBind(int position){
         Log.d("on Bind", " " +ipAddArray.size() +" " +position);
-        if( Connect_Count > 1 && Connect_Count <= ipAddArray.size()){
+        if( Connect_Count > 0 && position < ipAddArray.size()){
             if(!ipAddArray.get(position).equals("")) {
                 editHostName.setText(ipAddArray.get(position)
                         + ":" + portAddArray.get(position));
