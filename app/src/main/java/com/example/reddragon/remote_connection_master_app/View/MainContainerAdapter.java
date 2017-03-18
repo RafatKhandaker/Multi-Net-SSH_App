@@ -9,28 +9,22 @@ import com.example.reddragon.remote_connection_master_app.R;
 import com.example.reddragon.remote_connection_master_app.View.ViewHolder.AddCardViewHolder;
 import com.example.reddragon.remote_connection_master_app.View.ViewHolder.CardViewHolder;
 
-import java.util.ArrayList;
+import static com.example.reddragon.remote_connection_master_app.MainActivity.Connect_Count;
 
-import static com.example.reddragon.remote_connection_master_app.MainActivity.ipArray;
-import static com.example.reddragon.remote_connection_master_app.MainActivity.portArray;
 
 /**
  * Created by RedDragon on 2/8/17.
  */
 public class MainContainerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    private ArrayList<String> tmpIPArray;
-    private ArrayList<String> tmpPortArray;
-
-    public static ArrayList<String> mainHostArray = new ArrayList<>(1);
 
     public MainContainerAdapter() {}
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-        Log.d("test view Type: ", "" + viewType + " " + mainHostArray.size());
-        if (viewType != mainHostArray.size()) {
+        Log.d("test view Type: ", "" + viewType + " " + Connect_Count);
+        if (viewType != Connect_Count) {
             return new CardViewHolder(LayoutInflater.from(parent.getContext())
                     .inflate(R.layout.main_card_holder, null));
         } else {
@@ -42,7 +36,7 @@ public class MainContainerAdapter extends RecyclerView.Adapter<RecyclerView.View
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-            if (position != mainHostArray.size()) {
+            if (position != Connect_Count) {
                 ((CardViewHolder) holder).onBind(position);
                 Log.d("test Position :", " " + position);
             }
@@ -52,7 +46,7 @@ public class MainContainerAdapter extends RecyclerView.Adapter<RecyclerView.View
     @Override
     public int getItemViewType(int position) {
 
-        if (position == mainHostArray.size() + 1) {
+        if (position == Connect_Count + 1) {
             return position;
         } else {
             return position;
@@ -62,28 +56,13 @@ public class MainContainerAdapter extends RecyclerView.Adapter<RecyclerView.View
 
     @Override
     public int getItemCount() {
-        return mainHostArray.size() + 1;
+        return Connect_Count + 1;
     }
 
-    private int createDataSize() {
-        if (ipArray == null) { return 1; }
-        return ipArray.size() + 1;
-    }
-
-    public void setIPArray() {
-        ipArray = this.tmpIPArray;
-    }
-
-    public void setPortArray() {
-        portArray = this.tmpPortArray;
-    }
 
     public void updateData(){
-        mainHostArray.add("");
+        Connect_Count++;
         notifyDataSetChanged();
     }
 
-    public void removeData(){
-        notifyDataSetChanged();
-    };
 }

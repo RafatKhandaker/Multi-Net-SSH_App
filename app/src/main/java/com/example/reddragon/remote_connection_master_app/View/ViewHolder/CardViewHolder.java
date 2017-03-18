@@ -1,20 +1,22 @@
 package com.example.reddragon.remote_connection_master_app.View.ViewHolder;
 
-import android.os.Bundle;
+
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
 import com.example.reddragon.remote_connection_master_app.R;
+import com.example.reddragon.remote_connection_master_app.View.MainContainerAdapter;
 
-import java.util.ArrayList;
-
-import static com.example.reddragon.remote_connection_master_app.View.MainContainerAdapter.mainHostArray;
+import static com.example.reddragon.remote_connection_master_app.MainActivity.Connect_Count;
+import static com.example.reddragon.remote_connection_master_app.MainActivity.ipAddArray;
+import static com.example.reddragon.remote_connection_master_app.MainActivity.ipArray;
+import static com.example.reddragon.remote_connection_master_app.MainActivity.portAddArray;
+import static com.example.reddragon.remote_connection_master_app.MainActivity.portArray;
 
 /**
  * Created by RedDragon on 2/8/17.
@@ -22,8 +24,7 @@ import static com.example.reddragon.remote_connection_master_app.View.MainContai
 
 public class CardViewHolder extends RecyclerView.ViewHolder {
 
-    public static ArrayList<String> ipAddArray = new ArrayList<>();
-    public static ArrayList<String> portAddArray = new ArrayList<>();
+    MainContainerAdapter adapter;
 
     private EditText editHostName;
     private ImageButton editHostButton;
@@ -31,6 +32,8 @@ public class CardViewHolder extends RecyclerView.ViewHolder {
 
     public CardViewHolder(View itemView) {
         super(itemView);
+
+        adapter = new MainContainerAdapter();
 
         editHostName = (EditText) itemView.findViewById(R.id.hostname_et);
         editHostButton = (ImageButton) itemView.findViewById(R.id.edit_hostname_btn);
@@ -57,11 +60,11 @@ public class CardViewHolder extends RecyclerView.ViewHolder {
         editHostName.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                addHostName(getAdapterPosition());
             }
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
+                addHostName(getAdapterPosition());
             }
 
             @Override
@@ -90,7 +93,7 @@ public class CardViewHolder extends RecyclerView.ViewHolder {
     }
 
     public void onBind(int position){
-        if(ipAddArray.size() > 2 && mainHostArray.size() > 1){
+        if(ipAddArray.size() > 2 && Connect_Count > 1){
             if(!ipAddArray.get(position).equals("")) {
                 editHostName.setText(ipAddArray.get(position)
                         + ":" + portAddArray.get(position));

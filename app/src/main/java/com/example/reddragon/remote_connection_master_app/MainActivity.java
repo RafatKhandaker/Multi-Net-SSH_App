@@ -27,8 +27,6 @@ import com.example.reddragon.remote_connection_master_app.View.FrameFragments.Re
 
 import java.util.ArrayList;
 
-import static com.example.reddragon.remote_connection_master_app.View.ViewHolder.CardViewHolder.ipAddArray;
-import static com.example.reddragon.remote_connection_master_app.View.ViewHolder.CardViewHolder.portAddArray;
 
 /**------------------------------------------------------------------------------------------------->
  * Plan: Everything is written around the android UI thread as the central core of the application /
@@ -54,6 +52,10 @@ public static StoreCommandsDB commandListDB;
 
 public static ArrayList<String> commandArrList;
 
+public static int Connect_Count = 1;
+public static ArrayList<String> ipAddArray = new ArrayList<>();
+public static ArrayList<String> portAddArray = new ArrayList<>();
+
    // Connection Variables from SQLite
 public static ArrayList<String>
            ipArray, userArray, typeArray, portArray, keyArray, passArray;
@@ -78,7 +80,7 @@ private RecyclerClass recyclerClass = new RecyclerClass();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        /**  not complete, needs better thread handling.. eventually will overload UI thread **/
+    /**  not complete, needs better thread handling.. eventually will overload UI thread **/
 
         initializeArrayData();
         commandArrList = new ArrayList<>();
@@ -214,6 +216,11 @@ private RecyclerClass recyclerClass = new RecyclerClass();
                 keyArray.add(res.getString(5));
                 passArray.add(res.getString(6));
             }
+        }
+        if(ipArray.size() != 0){
+            ipAddArray = ipArray;
+            portAddArray = portArray;
+           Connect_Count = ipAddArray.size();
         }
     }
     public static ArrayList<String> loadSavedCommandData(ArrayList<String> arrList){

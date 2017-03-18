@@ -17,9 +17,9 @@ import com.example.reddragon.remote_connection_master_app.R;
 import com.example.reddragon.remote_connection_master_app.View.MainContainerAdapter;
 import com.example.reddragon.remote_connection_master_app.View.ViewHolder.CardViewHolder;
 
-import static com.example.reddragon.remote_connection_master_app.View.MainContainerAdapter.mainHostArray;
-import static com.example.reddragon.remote_connection_master_app.View.ViewHolder.CardViewHolder.ipAddArray;
-import static com.example.reddragon.remote_connection_master_app.View.ViewHolder.CardViewHolder.portAddArray;
+import static com.example.reddragon.remote_connection_master_app.MainActivity.Connect_Count;
+import static com.example.reddragon.remote_connection_master_app.MainActivity.ipAddArray;
+import static com.example.reddragon.remote_connection_master_app.MainActivity.portAddArray;
 
 /**
  * Created by RedDragon on 2/11/17.
@@ -65,11 +65,11 @@ public class RecyclerClass extends Fragment {
             public void onSwiped(RecyclerView.ViewHolder viewHolder, int swipeDir) {
 
                 //Remove swiped item from list and notify the RecyclerView
-                if(mainHostArray.size() > 0) {
+                if(Connect_Count > 0) {
                     Log.d("card ad position: ", "" +(cardViewHolder.getAdapterPosition()+1));
-                    mainHostArray.remove(cardViewHolder.getAdapterPosition() + 1);
                     ipAddArray.remove(cardViewHolder.getAdapterPosition() + 1);
                     portAddArray.remove(cardViewHolder.getAdapterPosition() +1);
+                    Connect_Count--;
                     recyclerAdapter.notifyDataSetChanged();
                 }
 

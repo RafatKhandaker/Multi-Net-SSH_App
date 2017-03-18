@@ -21,6 +21,15 @@
     </item>
     <item
         is-multidex="true"
+        jar="/Users/blackjack/Desktop/temp/SSH-Connection-Master_App/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="c82741bc129dd5f99f11a4ab8666ae24262053b6">
+        <dex dex="/Users/blackjack/Desktop/temp/SSH-Connection-Master_App/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_6a226a541769ebf95e46e61889dd5b1a5f79be09/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
         jar="/Users/blackjack/.android/build-cache/008814af1338a1ef01d0375459b9478ad9d6c7f8/output/jars/classes.jar"
         jumboMode="true"
         optimize="true"
@@ -108,6 +117,24 @@
         revision="25.0.2"
         sha1="3e04ac8ca644ea7baddf6fdcf72e15c79e9df94a">
         <dex dex="/Users/blackjack/Desktop/SSH-Connection-Master_App/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_a8ced9138ae72ca6ae7dbd7ed761210d4228464c/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/blackjack/Desktop/temp/SSH-Connection-Master_App/app/libs/jsch-0.1.54.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="0d7d8aba0d11e8cd2f775f47cd3a6cfbf2837da4">
+        <dex dex="/Users/blackjack/Desktop/temp/SSH-Connection-Master_App/app/build/intermediates/transforms/dex/debug/folders/1000/2/jsch-0.1.54_a89d79597df64e94101db8ed795a6a5a8784d90c/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/blackjack/Desktop/temp/SSH-Connection-Master_App/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="439855a430a7d317168e0415c7a8e5a3649d9866">
+        <dex dex="/Users/blackjack/Desktop/temp/SSH-Connection-Master_App/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_1ab8fbdf9949d4a02c0ddf5a893ffefb25c8f79d/classes.dex" />
     </item>
     <item
         is-multidex="true"

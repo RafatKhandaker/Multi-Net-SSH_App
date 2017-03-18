@@ -8,11 +8,10 @@ import android.widget.ImageButton;
 import com.example.reddragon.remote_connection_master_app.R;
 import com.example.reddragon.remote_connection_master_app.View.MainContainerAdapter;
 
-import java.util.ArrayList;
 
+import static com.example.reddragon.remote_connection_master_app.MainActivity.ipAddArray;
+import static com.example.reddragon.remote_connection_master_app.MainActivity.portAddArray;
 import static com.example.reddragon.remote_connection_master_app.MainActivity.preConDatabase;
-import static com.example.reddragon.remote_connection_master_app.View.ViewHolder.CardViewHolder.ipAddArray;
-import static com.example.reddragon.remote_connection_master_app.View.ViewHolder.CardViewHolder.portAddArray;
 
 
 /**
@@ -46,7 +45,12 @@ public class AddCardViewHolder extends RecyclerView.ViewHolder {
         saveDataBtn.setOnClickListener(new ImageButton.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                int x = 0;
+                while(x < (ipAddArray.size())){
+                    Log.d("Tests insert data: ", "" +ipAddArray.get(x) +" " +portAddArray.get(x));
+                    preConDatabase.insertData(ipAddArray.get(x), portAddArray.get(x));
+                    x++;
+                }
             }
         });
     }
