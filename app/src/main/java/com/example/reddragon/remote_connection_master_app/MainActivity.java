@@ -169,6 +169,8 @@ private RecyclerClass recyclerClass = new RecyclerClass();
         super.onSaveInstanceState(outState);
         outState.putStringArrayList("ip_add_array", ipAddArray);
         outState.putStringArrayList("port_add_array", portAddArray);
+        outState.putInt("count_connect", Connect_Count);
+
     }
 
     @Override
@@ -176,6 +178,7 @@ private RecyclerClass recyclerClass = new RecyclerClass();
         super.onRestoreInstanceState(savedInstanceState);
         ipAddArray = savedInstanceState.getStringArrayList("ip_add_array");
         portAddArray = savedInstanceState.getStringArrayList("port_add_array");
+        Connect_Count = savedInstanceState.getInt("count_connect");
     }
 
     @Override

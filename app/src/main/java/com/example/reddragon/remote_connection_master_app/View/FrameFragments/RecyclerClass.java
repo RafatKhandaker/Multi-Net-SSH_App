@@ -83,11 +83,19 @@ public class RecyclerClass extends Fragment {
     }
 
     @Override
-    public void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-        outState.putStringArrayList("ip_add_array", ipAddArray);
-        outState.putStringArrayList("port_add_array", portAddArray);
+    public void onResume() {
+        super.onResume();
+
     }
+
+//    @Override
+//    public void onSaveInstanceState(Bundle outState) {
+//        super.onSaveInstanceState(outState);
+//        outState.putStringArrayList("ip_add_array", ipAddArray);
+//        outState.putStringArrayList("port_add_array", portAddArray);
+//        outState.putInt("count_connect", Connect_Count);
+//
+//    }
 
     public RecyclerView.Adapter getRecyclerAdapter(){ return recyclerAdapter; }
 
