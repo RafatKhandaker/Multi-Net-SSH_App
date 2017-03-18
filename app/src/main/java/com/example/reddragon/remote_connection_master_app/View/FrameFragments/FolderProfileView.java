@@ -38,7 +38,6 @@ public class FolderProfileView extends Fragment implements AdapterView.OnItemSel
 
     public static final CharSequence[] UserOption  = {"root","user1","user2","user3","user4"};
 
-    private CommandListViewHolder commandListViewHolder;
 
     private RecyclerView folderProfileRV;
     private ProfileListAdapter folderProfileAdapt;

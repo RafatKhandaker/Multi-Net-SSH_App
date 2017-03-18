@@ -52,7 +52,7 @@ public static StoreCommandsDB commandListDB;
 
 public static ArrayList<String> commandArrList;
 
-public static int Connect_Count = 1;
+public static int Connect_Count = 0;
 public static ArrayList<String> ipAddArray = new ArrayList<>();
 public static ArrayList<String> portAddArray = new ArrayList<>();
 
@@ -203,6 +203,7 @@ private RecyclerClass recyclerClass = new RecyclerClass();
 
     }
     private void loadSavedConnectionData(){
+
         Cursor res = preConDatabase.getAllData();
         if(res.getCount() != 0) {
             bufferValue = new StringBuffer();
@@ -217,12 +218,14 @@ private RecyclerClass recyclerClass = new RecyclerClass();
                 passArray.add(res.getString(6));
             }
         }
-        if(ipArray.size() != 0){
+        if(ipArray.size() > 0 && ipAddArray.size() < ipArray.size()){
             ipAddArray = ipArray;
             portAddArray = portArray;
            Connect_Count = ipAddArray.size();
         }
     }
+
+
     public static ArrayList<String> loadSavedCommandData(ArrayList<String> arrList){
         Cursor res = commandListDB.getAllData();
         if(res.getCount() != 0) {

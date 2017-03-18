@@ -66,9 +66,9 @@ public class RecyclerClass extends Fragment {
 
                 //Remove swiped item from list and notify the RecyclerView
                 if(Connect_Count > 0) {
-                    Log.d("card ad position: ", "" +(cardViewHolder.getAdapterPosition()+1));
-                    ipAddArray.remove(cardViewHolder.getAdapterPosition() + 1);
-                    portAddArray.remove(cardViewHolder.getAdapterPosition() +1);
+                    Log.d("card ad position: ", "" +(cardViewHolder.getAdapterPosition()));
+                    ipAddArray.remove(cardViewHolder.getAdapterPosition());
+                    portAddArray.remove(cardViewHolder.getAdapterPosition());
                     Connect_Count--;
                     recyclerAdapter.notifyDataSetChanged();
                 }

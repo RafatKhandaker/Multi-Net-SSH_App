@@ -20,14 +20,12 @@ import static com.example.reddragon.remote_connection_master_app.MainActivity.pr
 
 public class AddCardViewHolder extends RecyclerView.ViewHolder {
 
-    MainContainerAdapter adapter;
+    MainContainerAdapter adapter = new MainContainerAdapter();
     ImageButton addNewCard;
     ImageButton saveDataBtn;
 
     public AddCardViewHolder(View itemView) {
         super(itemView);
-
-        adapter = new MainContainerAdapter();
 
         addNewCard = (ImageButton) itemView.findViewById(R.id.add_hostname_btn);
         saveDataBtn = (ImageButton) itemView.findViewById(R.id.save_host_icon);

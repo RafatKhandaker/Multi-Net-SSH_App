@@ -4,6 +4,7 @@ package com.example.reddragon.remote_connection_master_app.View.ViewHolder;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.EditText;
@@ -14,9 +15,7 @@ import com.example.reddragon.remote_connection_master_app.View.MainContainerAdap
 
 import static com.example.reddragon.remote_connection_master_app.MainActivity.Connect_Count;
 import static com.example.reddragon.remote_connection_master_app.MainActivity.ipAddArray;
-import static com.example.reddragon.remote_connection_master_app.MainActivity.ipArray;
 import static com.example.reddragon.remote_connection_master_app.MainActivity.portAddArray;
-import static com.example.reddragon.remote_connection_master_app.MainActivity.portArray;
 
 /**
  * Created by RedDragon on 2/8/17.
@@ -24,7 +23,7 @@ import static com.example.reddragon.remote_connection_master_app.MainActivity.po
 
 public class CardViewHolder extends RecyclerView.ViewHolder {
 
-    MainContainerAdapter adapter;
+    MainContainerAdapter adapter = new MainContainerAdapter();
 
     private EditText editHostName;
     private ImageButton editHostButton;
@@ -32,8 +31,6 @@ public class CardViewHolder extends RecyclerView.ViewHolder {
 
     public CardViewHolder(View itemView) {
         super(itemView);
-
-        adapter = new MainContainerAdapter();
 
         editHostName = (EditText) itemView.findViewById(R.id.hostname_et);
         editHostButton = (ImageButton) itemView.findViewById(R.id.edit_hostname_btn);
@@ -82,7 +79,7 @@ public class CardViewHolder extends RecyclerView.ViewHolder {
             String[] parts = hostName.split(":");
             if(parts.length > 1) {
                 ipAddArray.set(pos, parts[0]);
-                portAddArray.set(pos, ("" + parts[1]));
+                portAddArray.set(pos, (parts[1]));
             }
 
         }else{
@@ -93,7 +90,8 @@ public class CardViewHolder extends RecyclerView.ViewHolder {
     }
 
     public void onBind(int position){
-        if(ipAddArray.size() > 2 && Connect_Count > 1){
+        Log.d("on Bind", " " +ipAddArray.size() +" " +position);
+        if( Connect_Count > 1 && Connect_Count <= ipAddArray.size()){
             if(!ipAddArray.get(position).equals("")) {
                 editHostName.setText(ipAddArray.get(position)
                         + ":" + portAddArray.get(position));
