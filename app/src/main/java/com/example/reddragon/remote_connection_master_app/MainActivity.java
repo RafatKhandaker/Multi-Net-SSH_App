@@ -9,7 +9,6 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.PopupMenu;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -66,8 +65,6 @@ private static final ConsoleView CONSOLE = new ConsoleView();
 
 private RecyclerClass recyclerClass = new RecyclerClass();
 
-    private StringBuffer bufferValue;
-
     private static FragmentManager fragMan;
 
 
@@ -114,8 +111,6 @@ private RecyclerClass recyclerClass = new RecyclerClass();
         // load Stored SQLite Data
         loadSavedConnectionData();
         loadSavedCommandData(commandArrList);
-
-        Log.d("Test Comm ArrList ", "" +commandArrList.size());
 
     }
 
@@ -184,14 +179,12 @@ private RecyclerClass recyclerClass = new RecyclerClass();
     @Override
     public void onBackPressed() {
         launchContainer(recyclerClass);
-//        super.onBackPressed();
-
     }
 
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
-        // Pass any configuration change to the drawer toggls
+        // Pass any configuration change to the drawer toggles
         drawerToggle.onConfigurationChanged(newConfig);
     }
 
@@ -209,7 +202,7 @@ private RecyclerClass recyclerClass = new RecyclerClass();
 
         Cursor res = preConDatabase.getAllData();
         if(res.getCount() != 0) {
-            bufferValue = new StringBuffer();
+            StringBuffer bufferValue = new StringBuffer();
             while (res.moveToNext()) {
 
                 // load the data individual from SQLite]
