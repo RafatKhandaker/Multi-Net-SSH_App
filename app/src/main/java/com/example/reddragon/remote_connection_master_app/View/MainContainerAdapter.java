@@ -40,7 +40,6 @@ public class MainContainerAdapter extends RecyclerView.Adapter<RecyclerView.View
                 ((CardViewHolder) holder).onBind(position);
                 Log.d("test Position :", " " + position);
             }
-
     }
 
     @Override
@@ -58,7 +57,6 @@ public class MainContainerAdapter extends RecyclerView.Adapter<RecyclerView.View
     public int getItemCount() {
         return Connect_Count + 1;
     }
-
 
     public void updateData(){
         Connect_Count++;

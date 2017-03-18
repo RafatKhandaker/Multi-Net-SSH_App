@@ -66,7 +66,6 @@ public class RecyclerClass extends Fragment {
 
                 //Remove swiped item from list and notify the RecyclerView
                 if(Connect_Count > 0) {
-                    Log.d("card ad position: ", "" +(cardViewHolder.getAdapterPosition()) +1);
                     ipAddArray.remove(cardViewHolder.getAdapterPosition() +1);
                     portAddArray.remove(cardViewHolder.getAdapterPosition() +1);
                     Connect_Count--;
@@ -87,16 +86,5 @@ public class RecyclerClass extends Fragment {
         super.onResume();
 
     }
-
-//    @Override
-//    public void onSaveInstanceState(Bundle outState) {
-//        super.onSaveInstanceState(outState);
-//        outState.putStringArrayList("ip_add_array", ipAddArray);
-//        outState.putStringArrayList("port_add_array", portAddArray);
-//        outState.putInt("count_connect", Connect_Count);
-//
-//    }
-
-    public RecyclerView.Adapter getRecyclerAdapter(){ return recyclerAdapter; }
 
 }

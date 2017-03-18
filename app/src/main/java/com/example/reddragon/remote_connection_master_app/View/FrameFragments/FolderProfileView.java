@@ -96,8 +96,6 @@ public class FolderProfileView extends Fragment implements AdapterView.OnItemSel
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        // An item was selected. You can retrieve the selected item using
-        // parent.getItemAtPosition(pos)
 
         switch(parent.getId()) {
 
@@ -162,9 +160,7 @@ public class FolderProfileView extends Fragment implements AdapterView.OnItemSel
                             dataArrList.clear();
                             loadSavedCommandData(dataArrList);
 
-                            testArrList(dataArrList);
-
-//                            dataArrList.set((dataArrList.size() -1), "+New Command");
+//                            testArrList(dataArrList);
 
                             folderProfileAdapt.swap();
                         }
@@ -205,9 +201,6 @@ public class FolderProfileView extends Fragment implements AdapterView.OnItemSel
             byte[] pri = keyPair.getPrivate().getEncoded();
             byte[] pub = keyPair.getPublic().getEncoded();
 
-//            String privateKey = new String(pri);
-//            String publicKey = new String(pub);
-
 
             String privateKey = keyPair.getPrivate().toString();
             String publicKey = keyPair.getPublic().toString();
@@ -222,8 +215,6 @@ public class FolderProfileView extends Fragment implements AdapterView.OnItemSel
             }
             rsaViewET.setText(sshRsa);
 
-//            Log.d("SSHKeyManager", "Private Key: " +privateKey);
-//            Log.d("SSHLeyManager", "Public Key: " +publicKey);
         } catch (NoSuchAlgorithmException ex) {
             Log.e("SSHKeyManager", ex.toString());
         }

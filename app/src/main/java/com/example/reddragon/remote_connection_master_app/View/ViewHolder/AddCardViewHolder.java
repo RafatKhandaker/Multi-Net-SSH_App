@@ -45,7 +45,6 @@ public class AddCardViewHolder extends RecyclerView.ViewHolder {
             public void onClick(View v) {
                 int x = 0;
                 while(x < (ipAddArray.size())){
-                    Log.d("Tests insert data: ", "" +ipAddArray.get(x) +" " +portAddArray.get(x));
                     preConDatabase.insertData(ipAddArray.get(x), portAddArray.get(x));
                     x++;
                 }
