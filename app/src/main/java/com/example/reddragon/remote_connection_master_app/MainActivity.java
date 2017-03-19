@@ -1,6 +1,6 @@
 package com.example.reddragon.remote_connection_master_app;
 
-import android.content.ClipData;
+
 import android.content.Context;
 import android.content.res.Configuration;
 import android.database.Cursor;
@@ -10,29 +10,23 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.view.menu.MenuView;
 import android.support.v7.widget.PopupMenu;
 import android.util.Log;
-import android.view.Gravity;
-import android.view.LayoutInflater;
+
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.PopupWindow;
 
 import com.example.reddragon.remote_connection_master_app.SQLiteDB.StoreCommandsDB;
 import com.example.reddragon.remote_connection_master_app.SQLiteDB.StoreConnectionDB;
 import com.example.reddragon.remote_connection_master_app.View.FrameFragments.ConsoleView;
 import com.example.reddragon.remote_connection_master_app.View.FrameFragments.FolderProfileView;
 import com.example.reddragon.remote_connection_master_app.View.FrameFragments.RecyclerClass;
-import com.example.reddragon.remote_connection_master_app.View.MainContainerAdapter;
 
 import java.util.ArrayList;
 
@@ -52,48 +46,37 @@ private ImageView settingsButton;
 private ImageView profileImageButton;
 private ImageView consoleButton;
 private ImageView folderLockButton;
-private Button btnClosePopup;
-// setting up Immutable objects for possible thread handling
+
+//-----------------setting up Immutable objects for possible thread handling------------------------
 
 private static DrawerLayout drawerLayout;
 public static StoreConnectionDB preConDatabase;
 public static StoreCommandsDB commandListDB;
 
 public static ArrayList<String> commandArrList;
-
-public static int Connect_Count;
 public static ArrayList<String> ipAddArray = new ArrayList<>();
 public static ArrayList<String> portAddArray = new ArrayList<>();
 
-   // Connection Variables from SQLite
+   //---------------------Connection Variables from SQLite----------------------------
 public static ArrayList<String>
            ipArray, userArray, typeArray, portArray, keyArray, passArray;
+//--------------------------------------------------------------------------------------------------
 
 private static final Fragment CONNECTION_SETTINGS = new FolderProfileView();
 private static final ConsoleView CONSOLE = new ConsoleView();
 
+public static int Connect_Count;
 private static int CHECK_FRAGMENT = 0;
-
-private static final int
-    SSH_FRAG = 1, CONSOLE_FRAG = 2;
+private static final int SSH_FRAG = 1, CONSOLE_FRAG = 2;
 
 
 private RecyclerClass recyclerClass = new RecyclerClass();
-
 private static FragmentManager fragMan;
-
-    private PopupWindow popupWindow;
-
-    private View.OnClickListener cancel_button_click_listener = new View.OnClickListener() {
-        public void onClick(View v) {
-            popupWindow.dismiss();
-
-        }
-    };
 
     private android.support.v4.app.ActionBarDrawerToggle drawerToggle;
     private ListView drawerList;
     private ArrayList<String> userListArray = new ArrayList<>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -103,7 +86,7 @@ private static FragmentManager fragMan;
 
         initializeArrayData();
 
-        // create Settings button
+        // create tray button
         settingsButton = (ImageView)findViewById(R.id.settings_button);
         consoleButton = (ImageView)findViewById(R.id.ssh_button);
         folderLockButton = (ImageView)findViewById(R.id.folder_button);
@@ -249,6 +232,8 @@ private static FragmentManager fragMan;
         return arrList;
     }
 
+//-----------------------------Main Control Methods-------------------------------------------------
+
     private void launchContainer(Fragment fragment){
         fragMan = getSupportFragmentManager();
         fragMan.beginTransaction()
@@ -269,16 +254,18 @@ private static FragmentManager fragMan;
 
                         switch(item.getItemId()){
                             case R.id.main_menu:
-                                Log.d("on menu click pass: ", "main activity");
                                 launchContainer(recyclerClass);
+                                CHECK_FRAGMENT = 0;
                                 return true;
 
                             case R.id.settings_menu:
                                 launchContainer(CONNECTION_SETTINGS);
+                                CHECK_FRAGMENT = SSH_FRAG;
                                 return true;
 
                             case R.id.console_menu:
                                 launchContainer(CONSOLE);
+                                CHECK_FRAGMENT = CONSOLE_FRAG;
                                 return true;
 
                             case R.id.attack_menu:  // incomplete idea for now
@@ -330,6 +317,12 @@ private static FragmentManager fragMan;
 
     }
 
+//------------------------------Constructor---------------------------------------------------------
+
+    public Context getMainContext(){ return this; }
+
+//---------------------------Drawer Methods---------------------------------------------------------
+
     private void initiateSlidingDrawer(){
         drawerLayout.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START);
         drawerList.setAdapter(new ArrayAdapter<>(MainActivity.this,
@@ -364,7 +357,6 @@ private static FragmentManager fragMan;
 
         private void selectItem(int position){
             if(userListArray.get(position).contains("+ Add New Profile")) {
-                initiatePopupWindow();
             }
             switch(position){
                 case 0:
@@ -378,25 +370,4 @@ private static FragmentManager fragMan;
             }
         }
     }
-
-    private void initiatePopupWindow() {
-        try {
-// We need to get the instance of the LayoutInflater
-            LayoutInflater inflater = (LayoutInflater) MainActivity.this
-                    .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            View layout = inflater.inflate(R.layout.screen_popup,
-                    (ViewGroup) findViewById(R.id.popup_element));
-            popupWindow = new PopupWindow(layout, 300, 370, true);
-            popupWindow.showAtLocation(layout, Gravity.CENTER, 0, 0);
-
-            btnClosePopup = (Button) layout.findViewById(R.id.btn_close_popup);
-            btnClosePopup.setOnClickListener(cancel_button_click_listener);
-
-
-        } catch (Exception e) {
-            e.printStackTrace();
-            Log.d("fail Popup Menu", "main");
-        }
-    }
-
 }

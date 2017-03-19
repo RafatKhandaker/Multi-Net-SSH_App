@@ -55,19 +55,12 @@ public class CommandListViewHolder extends RecyclerView.ViewHolder {
 
     }
 
-
     public void onBind(int position){
-
         if(commandArrList.size() == 0){ commandListText.setText("+ New Command"); }
 
         else if(position < commandArrList.size()) {
             commandListText.setText(commandArrList.get(position));
         }
-
     }
-
-    public String getCommandText(){ return commandText; }
-
-    public static int getCommandListPosition(){ return commandListPosition; }
 
 }
