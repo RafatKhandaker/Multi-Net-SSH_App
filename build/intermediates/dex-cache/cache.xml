@@ -3,120 +3,12 @@
 
     <item
         is-multidex="true"
-        jar="/Users/blackjack/.android/build-cache/767ee52bb61df4660b8f6fb4c10371d708492a72/output/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="02741d05d4b697fba5e279e9881aaa1da0ca7c7f">
-        <dex dex="/Users/blackjack/Desktop/SSH-Connection-Master_App/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_6903f6e7f5b483829b4c80e607931b850b3a426c/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/blackjack/.android/build-cache/cebd70bac48b08058792b674d7d47e383cdb3637/output/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="0fb891e8f0cfba0513043a7bb357513d229ca2cd">
-        <dex dex="/Users/blackjack/Desktop/SSH-Connection-Master_App/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_dad5d59043e734898677403d09c38ec2685d2b5f/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
         jar="/Users/blackjack/Desktop/temp/SSH-Connection-Master_App/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
         sha1="c82741bc129dd5f99f11a4ab8666ae24262053b6">
         <dex dex="/Users/blackjack/Desktop/temp/SSH-Connection-Master_App/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_6a226a541769ebf95e46e61889dd5b1a5f79be09/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/blackjack/.android/build-cache/008814af1338a1ef01d0375459b9478ad9d6c7f8/output/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="a07818a1ecabdb149998823429cce555af4b9cba">
-        <dex dex="/Users/blackjack/Desktop/SSH-Connection-Master_App/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_72ebc4f547dab420ca623b2be4cbe09fd6182cc4/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/blackjack/.android/build-cache/3d7275aa6ccf2d13c0b0201215912831e5c969e4/output/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="c03bf57f358aa10d253f21989e93bcf6014b3b17">
-        <dex dex="/Users/blackjack/Desktop/SSH-Connection-Master_App/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_d3bca094c96afad5117c7ca8bf5f6d94467706e8/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/blackjack/.gradle/caches/modules-2/files-2.1/com.jakewharton/butterknife-annotations/8.4.0/ea392375cf9ff59234a82e7928a204215ccc98cd/butterknife-annotations-8.4.0.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="ea392375cf9ff59234a82e7928a204215ccc98cd">
-        <dex dex="/Users/blackjack/Desktop/SSH-Connection-Master_App/app/build/intermediates/transforms/dex/debug/folders/1000/10/butterknife-annotations-8.4.0_f4c1e73989bbf53f977ea9a842847c70b7944f33/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/blackjack/.android/build-cache/643fb633a373ed872392eb6b0b074a9ba79669d1/output/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="cd7951e04cfb9a8bf008d544a478d9a8d8192d38">
-        <dex dex="/Users/blackjack/Desktop/SSH-Connection-Master_App/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_991cb425ebaaeb4cf4290dd2297986fabcc8e303/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/blackjack/Desktop/SSH-Connection-Master_App/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="c82741bc129dd5f99f11a4ab8666ae24262053b6">
-        <dex dex="/Users/blackjack/Desktop/SSH-Connection-Master_App/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_9fd2beed5bbbd90892738e06aff93826baafc404/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/blackjack/.android/build-cache/d73f7cd865a082e36c8bf5012eb9d68359df1f3c/output/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="a8ae156c2726ac9c56daaf4b49452ec2cdb7bba9">
-        <dex dex="/Users/blackjack/Desktop/SSH-Connection-Master_App/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_e61bfd7f14889603f3a1fe8b98afa60b98bb3c2c/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/blackjack/.android/build-cache/2a272230925091a11d80ce9e025b38e839088274/output/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="15b049fedbd8e3926bf99d9e45dfc9b2a1043bb9">
-        <dex dex="/Users/blackjack/Desktop/SSH-Connection-Master_App/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_5d4e85ed51c65b4930705519ed704b050e20a56e/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/blackjack/Desktop/SSH-Connection-Master_App/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="d54c88e29b7a37fb558325860e2d36e826cb9d7b">
-        <dex dex="/Users/blackjack/Desktop/SSH-Connection-Master_App/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_e7100abec80bfe573b6a0c7b41618578d22e4d04/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/blackjack/.android/build-cache/85f784e9dc720341db61e9d7595dc8c602753f8f/output/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="0d191c1a09e4892d059e5ce749e4ad4e08129e35">
-        <dex dex="/Users/blackjack/Desktop/SSH-Connection-Master_App/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_b248e3f1145adbc893029eef687da1ecfe7a2715/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/blackjack/.android/build-cache/352cc1e3ac6257604ffb50e9d9cb49cd65548861/output/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="3e04ac8ca644ea7baddf6fdcf72e15c79e9df94a">
-        <dex dex="/Users/blackjack/Desktop/SSH-Connection-Master_App/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_a8ced9138ae72ca6ae7dbd7ed761210d4228464c/classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -133,71 +25,8 @@
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
-        sha1="439855a430a7d317168e0415c7a8e5a3649d9866">
+        sha1="a927d6218d516022fd55cee858477348e8e06f19">
         <dex dex="/Users/blackjack/Desktop/temp/SSH-Connection-Master_App/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_1ab8fbdf9949d4a02c0ddf5a893ffefb25c8f79d/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/blackjack/.android/build-cache/1d5c3a15999184f039f464f542be35bfd1485e52/output/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
-        <dex dex="/Users/blackjack/Desktop/SSH-Connection-Master_App/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_d8d502f30510fa3404a0b2b7bd188414cbc8032b/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/blackjack/.android/build-cache/6bdff7651c9b38b2070b9eb72ef5025651436d36/output/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="7bde4c34162092e0a77e7f12dc85ed77c484cf5c">
-        <dex dex="/Users/blackjack/Desktop/SSH-Connection-Master_App/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_ee8b1f58376116dd1572b55cac26631779e62879/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/blackjack/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/25.1.1/support-annotations-25.1.1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="b59b6ee8d6ecc03e672d253800430343493a6ed8">
-        <dex dex="/Users/blackjack/Desktop/SSH-Connection-Master_App/app/build/intermediates/transforms/dex/debug/folders/1000/10/support-annotations-25.1.1_7d6abbd158a977d100c2bc917f045e87e5effc3f/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/blackjack/.android/build-cache/2ad81d283b7ff0dd6613fd2d79d76043cf7442bd/output/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="ecb496cc08dd52551fc5ec6db3bc0632e95a89bb">
-        <dex dex="/Users/blackjack/Desktop/SSH-Connection-Master_App/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_f93e0d5d2350acca48c4f9bad4d4e83ac706b7d3/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/blackjack/Desktop/SSH-Connection-Master_App/app/libs/jsch-0.1.54.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="0d7d8aba0d11e8cd2f775f47cd3a6cfbf2837da4">
-        <dex dex="/Users/blackjack/Desktop/SSH-Connection-Master_App/app/build/intermediates/transforms/dex/debug/folders/1000/2/jsch-0.1.54_481d645bef951b4779a8466f6aace81a301fee91/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/blackjack/.android/build-cache/1334b41079c488eb512853c9429a3697dede7e0a/output/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="e2719c102dca3a7a5b02ce07f769362da6ddb4ab">
-        <dex dex="/Users/blackjack/Desktop/SSH-Connection-Master_App/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_179e841637eaa9e5960816ac79be9114d2c43138/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/blackjack/.android/build-cache/f2348a4324811d7faf273a084153d1ff9db712f8/output/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="c9649557905bf7a80fca9e0d54cbcb7662627860">
-        <dex dex="/Users/blackjack/Desktop/SSH-Connection-Master_App/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_63c3e869a93c0d2563314b768e46fafb81bdaa7f/classes.dex" />
     </item>
 
 </items>

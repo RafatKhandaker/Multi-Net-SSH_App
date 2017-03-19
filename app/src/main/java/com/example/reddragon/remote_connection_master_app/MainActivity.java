@@ -9,6 +9,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.PopupMenu;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -51,7 +52,7 @@ public static StoreCommandsDB commandListDB;
 
 public static ArrayList<String> commandArrList;
 
-public static int Connect_Count = 0;
+public static int Connect_Count;
 public static ArrayList<String> ipAddArray = new ArrayList<>();
 public static ArrayList<String> portAddArray = new ArrayList<>();
 
@@ -62,6 +63,11 @@ public static ArrayList<String>
 private static final Fragment CONNECTION_SETTINGS = new FolderProfileView();
 private static final ConsoleView CONSOLE = new ConsoleView();
 
+private static int CHECK_FRAGMENT = 0;
+
+private static final int
+    SSH_FRAG = 1, CONSOLE_FRAG = 2;
+
 
 private RecyclerClass recyclerClass = new RecyclerClass();
 
@@ -70,17 +76,15 @@ private RecyclerClass recyclerClass = new RecyclerClass();
 
     private android.support.v4.app.ActionBarDrawerToggle drawerToggle;
     private ListView drawerList;
-    String[] userListArray;
+    private ArrayList<String> userListArray = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
     /**  not complete, needs better thread handling.. eventually will overload UI thread **/
 
         initializeArrayData();
-        commandArrList = new ArrayList<>();
 
         // create Settings button
         settingsButton = (ImageView)findViewById(R.id.settings_button);
@@ -92,7 +96,8 @@ private RecyclerClass recyclerClass = new RecyclerClass();
         commandListDB = new StoreCommandsDB(this);
 
         // initiate recycler  * comment this section to test the sliding drawer
-        launchContainer(recyclerClass);
+
+        checkOnRestoreContainer();
 
         // initiate menu
         initiateSettingsClick(settingsButton);
@@ -131,9 +136,12 @@ private RecyclerClass recyclerClass = new RecyclerClass();
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        Log.d("on menu click pass: ", "1st pass");
+
         switch(item.getItemId()){
 
             case R.id.main_menu:
+                Log.d("on menu click pass: ", "main activity");
                 launchContainer(recyclerClass);
                 return true;
 
@@ -147,6 +155,7 @@ private RecyclerClass recyclerClass = new RecyclerClass();
 
             case R.id.attack_menu:  // incomplete idea for now
                 return true;
+
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -165,7 +174,7 @@ private RecyclerClass recyclerClass = new RecyclerClass();
         outState.putStringArrayList("ip_add_array", ipAddArray);
         outState.putStringArrayList("port_add_array", portAddArray);
         outState.putInt("count_connect", Connect_Count);
-
+        outState.putInt("check_fragment", CHECK_FRAGMENT);
     }
 
     @Override
@@ -174,11 +183,13 @@ private RecyclerClass recyclerClass = new RecyclerClass();
         ipAddArray = savedInstanceState.getStringArrayList("ip_add_array");
         portAddArray = savedInstanceState.getStringArrayList("port_add_array");
         Connect_Count = savedInstanceState.getInt("count_connect");
+        CHECK_FRAGMENT = savedInstanceState.getInt("check_fragment");
     }
 
     @Override
     public void onBackPressed() {
         launchContainer(recyclerClass);
+        CHECK_FRAGMENT = 0;
     }
 
     @Override
@@ -197,8 +208,26 @@ private RecyclerClass recyclerClass = new RecyclerClass();
         keyArray = new ArrayList<>();
         passArray = new ArrayList<>();
 
+        commandArrList = new ArrayList<>();
+
     }
+
+    private void checkOnRestoreContainer(){
+        switch(CHECK_FRAGMENT) {
+
+            case SSH_FRAG:
+                launchContainer(CONNECTION_SETTINGS);
+                break;
+            case CONSOLE_FRAG:
+                launchContainer(CONSOLE);
+                break;
+            default:
+                launchContainer(recyclerClass);
+        }
+    }
+
     private void loadSavedConnectionData(){
+        userListArray.add("No Profile");
 
         Cursor res = preConDatabase.getAllData();
         if(res.getCount() != 0) {
@@ -219,6 +248,8 @@ private RecyclerClass recyclerClass = new RecyclerClass();
             portAddArray = portArray;
            Connect_Count = ipAddArray.size();
         }
+
+        if(userArray.size() > 0){ userListArray = userArray; }
     }
 
 
@@ -244,7 +275,7 @@ private RecyclerClass recyclerClass = new RecyclerClass();
         v.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                PopupMenu popup = new PopupMenu(MainActivity.this, settingsButton);
+                PopupMenu popup = new PopupMenu(MainActivity.this, v);
                 MenuInflater inflater = popup.getMenuInflater();
                 inflater.inflate(R.menu.menu, popup.getMenu());
                 popup.show();
@@ -271,6 +302,7 @@ private RecyclerClass recyclerClass = new RecyclerClass();
                     @Override
                     public void onClick(View v) {
                         launchContainer(CONNECTION_SETTINGS);
+                        CHECK_FRAGMENT = SSH_FRAG;
                     }
                 });
                 break;
@@ -279,6 +311,7 @@ private RecyclerClass recyclerClass = new RecyclerClass();
                     @Override
                     public void onClick(View v) {
                         launchContainer(CONSOLE);
+                        CHECK_FRAGMENT = CONSOLE_FRAG;
                     }
                 });
                 break;
@@ -288,9 +321,6 @@ private RecyclerClass recyclerClass = new RecyclerClass();
 
     private void initiateSlidingDrawer(){
         drawerLayout.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START);
-
-        userListArray = new String[] { "root", "user1", "user2", "user3" };
-
         drawerList.setAdapter(new ArrayAdapter<>(MainActivity.this,
                 R.layout.drawer_list_item, userListArray));
 
@@ -319,10 +349,12 @@ private RecyclerClass recyclerClass = new RecyclerClass();
     private class DrawerItemClickListener implements ListView.OnItemClickListener {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-            selectItem();
+            selectItem(position);
         }
 
-        private void selectItem(){}
+        private void selectItem(int position){
+            switch(position){}
+        }
     }
 
 }
