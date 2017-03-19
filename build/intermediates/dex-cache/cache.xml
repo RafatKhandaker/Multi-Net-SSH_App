@@ -3,15 +3,6 @@
 
     <item
         is-multidex="true"
-        jar="/Users/blackjack/Desktop/temp/SSH-Connection-Master_App/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="c82741bc129dd5f99f11a4ab8666ae24262053b6">
-        <dex dex="/Users/blackjack/Desktop/temp/SSH-Connection-Master_App/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_6a226a541769ebf95e46e61889dd5b1a5f79be09/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
         jar="/Users/blackjack/Desktop/temp/SSH-Connection-Master_App/app/libs/jsch-0.1.54.jar"
         jumboMode="true"
         optimize="true"
@@ -25,8 +16,17 @@
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
-        sha1="a927d6218d516022fd55cee858477348e8e06f19">
+        sha1="b98128aabb095bf8250b67d5e58234d48ba72075">
         <dex dex="/Users/blackjack/Desktop/temp/SSH-Connection-Master_App/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_1ab8fbdf9949d4a02c0ddf5a893ffefb25c8f79d/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/blackjack/Desktop/temp/SSH-Connection-Master_App/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="c82741bc129dd5f99f11a4ab8666ae24262053b6">
+        <dex dex="/Users/blackjack/Desktop/temp/SSH-Connection-Master_App/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_6a226a541769ebf95e46e61889dd5b1a5f79be09/classes.dex" />
     </item>
 
 </items>
