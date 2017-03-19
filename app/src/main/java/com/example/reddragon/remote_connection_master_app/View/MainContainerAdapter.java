@@ -23,7 +23,6 @@ public class MainContainerAdapter extends RecyclerView.Adapter<RecyclerView.View
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-        Log.d("test view Type: ", "" + viewType + " " + Connect_Count);
         if (viewType != Connect_Count) {
             return new CardViewHolder(LayoutInflater.from(parent.getContext())
                     .inflate(R.layout.main_card_holder, null));
@@ -38,7 +37,6 @@ public class MainContainerAdapter extends RecyclerView.Adapter<RecyclerView.View
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
             if (position != Connect_Count) {
                 ((CardViewHolder) holder).onBind(position);
-                Log.d("test Position :", " " + position);
             }
     }
 

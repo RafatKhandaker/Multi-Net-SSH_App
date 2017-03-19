@@ -1,5 +1,7 @@
 package com.example.reddragon.remote_connection_master_app;
 
+import android.content.ClipData;
+import android.content.Context;
 import android.content.res.Configuration;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -8,22 +10,29 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.view.menu.MenuView;
 import android.support.v7.widget.PopupMenu;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.PopupWindow;
 
 import com.example.reddragon.remote_connection_master_app.SQLiteDB.StoreCommandsDB;
 import com.example.reddragon.remote_connection_master_app.SQLiteDB.StoreConnectionDB;
 import com.example.reddragon.remote_connection_master_app.View.FrameFragments.ConsoleView;
 import com.example.reddragon.remote_connection_master_app.View.FrameFragments.FolderProfileView;
 import com.example.reddragon.remote_connection_master_app.View.FrameFragments.RecyclerClass;
+import com.example.reddragon.remote_connection_master_app.View.MainContainerAdapter;
 
 import java.util.ArrayList;
 
@@ -43,7 +52,7 @@ private ImageView settingsButton;
 private ImageView profileImageButton;
 private ImageView consoleButton;
 private ImageView folderLockButton;
-
+private Button btnClosePopup;
 // setting up Immutable objects for possible thread handling
 
 private static DrawerLayout drawerLayout;
@@ -71,8 +80,16 @@ private static final int
 
 private RecyclerClass recyclerClass = new RecyclerClass();
 
-    private static FragmentManager fragMan;
+private static FragmentManager fragMan;
 
+    private PopupWindow popupWindow;
+
+    private View.OnClickListener cancel_button_click_listener = new View.OnClickListener() {
+        public void onClick(View v) {
+            popupWindow.dismiss();
+
+        }
+    };
 
     private android.support.v4.app.ActionBarDrawerToggle drawerToggle;
     private ListView drawerList;
@@ -119,12 +136,6 @@ private RecyclerClass recyclerClass = new RecyclerClass();
 
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu, menu);
-        return true;
-    }
 
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
@@ -134,32 +145,6 @@ private RecyclerClass recyclerClass = new RecyclerClass();
         return super.onPrepareOptionsMenu(menu);
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        Log.d("on menu click pass: ", "1st pass");
-
-        switch(item.getItemId()){
-
-            case R.id.main_menu:
-                Log.d("on menu click pass: ", "main activity");
-                launchContainer(recyclerClass);
-                return true;
-
-            case R.id.settings_menu:
-                launchContainer(CONNECTION_SETTINGS);
-                return true;
-
-            case R.id.console_menu:
-                launchContainer(CONSOLE);
-                return true;
-
-            case R.id.attack_menu:  // incomplete idea for now
-                return true;
-
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
 
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
@@ -227,7 +212,7 @@ private RecyclerClass recyclerClass = new RecyclerClass();
     }
 
     private void loadSavedConnectionData(){
-        userListArray.add("No Profile");
+        userListArray.add("+ Add New Profile");
 
         Cursor res = preConDatabase.getAllData();
         if(res.getCount() != 0) {
@@ -278,9 +263,35 @@ private RecyclerClass recyclerClass = new RecyclerClass();
                 PopupMenu popup = new PopupMenu(MainActivity.this, v);
                 MenuInflater inflater = popup.getMenuInflater();
                 inflater.inflate(R.menu.menu, popup.getMenu());
+                popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem item) {
+
+                        switch(item.getItemId()){
+                            case R.id.main_menu:
+                                Log.d("on menu click pass: ", "main activity");
+                                launchContainer(recyclerClass);
+                                return true;
+
+                            case R.id.settings_menu:
+                                launchContainer(CONNECTION_SETTINGS);
+                                return true;
+
+                            case R.id.console_menu:
+                                launchContainer(CONSOLE);
+                                return true;
+
+                            case R.id.attack_menu:  // incomplete idea for now
+                                return true;
+                        }
+                        return false;
+                    }
+                });
                 popup.show();
             }
         });
+
+
     }
 
     private void initiateTrayClickListener(View v, int r){
@@ -325,7 +336,6 @@ private RecyclerClass recyclerClass = new RecyclerClass();
                 R.layout.drawer_list_item, userListArray));
 
         drawerList.setOnItemClickListener(new DrawerItemClickListener());
-
         initiateDrawerToggle();
     }
 
@@ -353,7 +363,39 @@ private RecyclerClass recyclerClass = new RecyclerClass();
         }
 
         private void selectItem(int position){
-            switch(position){}
+            if(userListArray.get(position).contains("+ Add New Profile")) {
+                initiatePopupWindow();
+            }
+            switch(position){
+                case 0:
+                    Log.d("on pass sel item draw: ","" +position);
+                    break;
+                case 1:
+                    Log.d("on pass sel item draw: ","" +position);
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
+
+    private void initiatePopupWindow() {
+        try {
+// We need to get the instance of the LayoutInflater
+            LayoutInflater inflater = (LayoutInflater) MainActivity.this
+                    .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            View layout = inflater.inflate(R.layout.screen_popup,
+                    (ViewGroup) findViewById(R.id.popup_element));
+            popupWindow = new PopupWindow(layout, 300, 370, true);
+            popupWindow.showAtLocation(layout, Gravity.CENTER, 0, 0);
+
+            btnClosePopup = (Button) layout.findViewById(R.id.btn_close_popup);
+            btnClosePopup.setOnClickListener(cancel_button_click_listener);
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            Log.d("fail Popup Menu", "main");
         }
     }
 

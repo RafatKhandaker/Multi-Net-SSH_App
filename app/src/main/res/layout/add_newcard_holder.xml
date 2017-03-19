@@ -27,8 +27,26 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="Add New Host"
-            android:layout_marginLeft="60dp"
+            android:text="Add User"
+            android:layout_marginLeft="35dp"
+            android:textStyle="bold|italic"
+            android:textColor="#FFFFFF"
+            android:id="@+id/add_prof_tv"/>
+
+        <ImageButton
+            android:layout_height="60dp"
+            android:layout_width="60dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="35dp"
+            android:id="@+id/add_prof_btn"
+            android:background="@drawable/add_user_icon"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Add Host"
+            android:gravity="center_horizontal"
             android:textStyle="bold|italic"
             android:textColor="#FFFFFF"
             android:id="@+id/add_host_tv"/>
@@ -37,7 +55,7 @@
             android:layout_height="75dp"
             android:layout_width="75dp"
             android:layout_marginTop="8dp"
-            android:layout_marginLeft="70dp"
+            android:layout_marginLeft="150dp"
             android:id="@+id/add_hostname_btn"
             android:background="@drawable/add_button"
              />
@@ -48,7 +66,7 @@
             android:textStyle="bold|italic"
             android:id="@+id/save_host_text"
             android:gravity="center_horizontal"
-            android:layout_marginLeft="160dp"
+            android:layout_marginLeft="230dp"
             android:text="Save Hosts"
             android:textColor="#FFFFFF" />
 
@@ -57,7 +75,7 @@
             android:layout_height="55dp"
             android:layout_marginTop="15dp"
             android:id="@+id/save_host_icon"
-            android:layout_marginLeft="80dp"
+            android:layout_marginLeft="120dp"
             android:background="@drawable/icon_save_project"
             android:layout_gravity="center_horizontal" />
 
