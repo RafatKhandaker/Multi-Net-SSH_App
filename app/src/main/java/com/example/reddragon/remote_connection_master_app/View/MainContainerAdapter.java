@@ -35,14 +35,14 @@ public class MainContainerAdapter extends RecyclerView.Adapter<RecyclerView.View
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
             if (position != Connect_Count) {
-                ((CardViewHolder) holder).onBind(position);
+//                ((CardViewHolder) holder).onBind(position);
             }
     }
 
     @Override
     public int getItemViewType(int position) {
 
-        if (position == Connect_Count + 1) {
+        if (position == Connect_Count +1) {
             return position;
         } else {
             return position;

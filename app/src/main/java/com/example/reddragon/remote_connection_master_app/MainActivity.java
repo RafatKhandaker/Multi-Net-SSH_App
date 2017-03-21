@@ -58,6 +58,7 @@ public static ArrayList<String> ipAddArray = new ArrayList<>();
 public static ArrayList<String> portAddArray = new ArrayList<>();
 
    //---------------------Connection Variables from SQLite----------------------------
+
 public static ArrayList<String>
            ipArray, userArray, typeArray, portArray, keyArray, passArray;
 //--------------------------------------------------------------------------------------------------
@@ -316,8 +317,7 @@ private static FragmentManager fragMan;
         }
 
     }
-
-//------------------------------Constructor---------------------------------------------------------
+    //-------------------------------------------------------------
 
     public Context getMainContext(){ return this; }
 

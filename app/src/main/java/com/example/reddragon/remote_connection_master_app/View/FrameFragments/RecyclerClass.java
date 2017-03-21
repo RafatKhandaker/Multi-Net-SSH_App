@@ -28,7 +28,7 @@ import static com.example.reddragon.remote_connection_master_app.MainActivity.po
 public class RecyclerClass extends Fragment {
 
     private  RecyclerView preConnectRecycler;
-    private  RecyclerView.Adapter recyclerAdapter;
+    public static RecyclerView.Adapter recyclerClassAdapter;
     private  RecyclerView.LayoutManager recyclerLayoutManager;
 
     private CardViewHolder cardViewHolder;
@@ -47,9 +47,9 @@ public class RecyclerClass extends Fragment {
         // initiate recycler
         preConnectRecycler = (RecyclerView) view.findViewById(R.id.main_recycler);
         recyclerLayoutManager = new LinearLayoutManager(getContext());
-        recyclerAdapter = new MainContainerAdapter();
+        recyclerClassAdapter = new MainContainerAdapter();
         preConnectRecycler.setLayoutManager(recyclerLayoutManager);
-        preConnectRecycler.setAdapter(recyclerAdapter);
+        preConnectRecycler.setAdapter(recyclerClassAdapter);
 
         ItemTouchHelper.SimpleCallback simpleItemTouchCallback = new ItemTouchHelper.SimpleCallback
                 (0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
@@ -69,7 +69,8 @@ public class RecyclerClass extends Fragment {
                     ipAddArray.remove(cardViewHolder.getAdapterPosition() +1);
                     portAddArray.remove(cardViewHolder.getAdapterPosition() +1);
                     Connect_Count--;
-                    recyclerAdapter.notifyDataSetChanged();
+
+                    recyclerClassAdapter.notifyDataSetChanged();
                 }
 
             }

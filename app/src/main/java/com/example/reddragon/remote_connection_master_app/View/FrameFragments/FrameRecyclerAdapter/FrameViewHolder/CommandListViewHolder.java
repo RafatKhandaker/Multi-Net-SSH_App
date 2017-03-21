@@ -52,11 +52,10 @@ public class CommandListViewHolder extends RecyclerView.ViewHolder {
             }
 
         });
-
     }
 
     public void onBind(int position){
-        if(commandArrList.size() == 0){ commandListText.setText("+ New Command"); }
+        if(commandArrList.size() == 0){ commandListText.setText(""); }
 
         else if(position < commandArrList.size()) {
             commandListText.setText(commandArrList.get(position));
