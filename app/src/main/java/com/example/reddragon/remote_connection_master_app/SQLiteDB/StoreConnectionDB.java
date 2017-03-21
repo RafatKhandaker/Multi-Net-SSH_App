@@ -101,9 +101,14 @@ public class StoreConnectionDB extends SQLiteOpenHelper {
         return true;
     }
 
-    public Integer deleteData(String id){
+    public void deleteData(String ip, String port){
         sqLiteDatabase = this.getWritableDatabase();
-        return sqLiteDatabase.delete(TABLE_NAME, "ID = ?", new String[]{id});
+//        sqLiteDatabase.delete(TABLE_NAME, "IP = ?", new String[]{ip});
+
+        sqLiteDatabase.execSQL(
+                String.format("DELETE FROM %s WHERE IP = %s (SELECT IP FROM %s WHERE PORT = %s",
+                TABLE_NAME,ip,ip,port));
+
     }
 
 }
