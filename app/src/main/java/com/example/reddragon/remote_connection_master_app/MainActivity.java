@@ -317,9 +317,6 @@ private static FragmentManager fragMan;
         }
 
     }
-    //-------------------------------------------------------------
-
-    public Context getMainContext(){ return this; }
 
 //---------------------------Drawer Methods---------------------------------------------------------
 

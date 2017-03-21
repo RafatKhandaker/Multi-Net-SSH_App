@@ -8,10 +8,10 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 
 import com.example.reddragon.remote_connection_master_app.R;
 import com.example.reddragon.remote_connection_master_app.View.MainContainerAdapter;
@@ -20,6 +20,7 @@ import com.example.reddragon.remote_connection_master_app.View.ViewHolder.CardVi
 import static com.example.reddragon.remote_connection_master_app.MainActivity.Connect_Count;
 import static com.example.reddragon.remote_connection_master_app.MainActivity.ipAddArray;
 import static com.example.reddragon.remote_connection_master_app.MainActivity.portAddArray;
+import static com.example.reddragon.remote_connection_master_app.MainActivity.preConDatabase;
 
 /**
  * Created by RedDragon on 2/11/17.
@@ -30,6 +31,10 @@ public class RecyclerClass extends Fragment {
     private  RecyclerView preConnectRecycler;
     public static RecyclerView.Adapter recyclerClassAdapter;
     private  RecyclerView.LayoutManager recyclerLayoutManager;
+
+    ImageButton addNewCard;
+    ImageButton saveDataBtn;
+    ImageButton addUserBtn;
 
     private CardViewHolder cardViewHolder;
 
@@ -79,6 +84,39 @@ public class RecyclerClass extends Fragment {
         ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleItemTouchCallback);
         itemTouchHelper.attachToRecyclerView(preConnectRecycler);
 
+
+        addNewCard = (ImageButton) view.findViewById(R.id.add_hostname_btn);
+        saveDataBtn = (ImageButton) view.findViewById(R.id.save_host_icon);
+        addUserBtn = (ImageButton) view.findViewById(R.id.add_prof_btn);
+
+        addNewCard.setOnClickListener(new ImageButton.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                ipAddArray.add("");
+                portAddArray.add("");
+                Connect_Count++;
+                recyclerClassAdapter.notifyDataSetChanged();
+            }
+        });
+
+        saveDataBtn.setOnClickListener(new ImageButton.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int x = 0;
+                while(x < (ipAddArray.size())){
+                    preConDatabase.insertData(ipAddArray.get(x), portAddArray.get(x));
+                    x++;
+                }
+            }
+        });
+
+        addUserBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
         return view;
     }
 

@@ -49,7 +49,6 @@ public class CardViewHolder extends RecyclerView.ViewHolder {
         editHostName.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
-                addHostName(getAdapterPosition());
                 v.setEnabled(false);
             }
         });
@@ -83,7 +82,7 @@ public class CardViewHolder extends RecyclerView.ViewHolder {
             }
 
         }else{
-            ipAddArray.set(pos, hostName);
+            ipAddArray.set(pos, ""+hostName);
             portAddArray.set(pos, "22");
         }
 
