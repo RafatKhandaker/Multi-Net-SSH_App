@@ -23,8 +23,6 @@ import static com.example.reddragon.remote_connection_master_app.MainActivity.po
 
 public class CardViewHolder extends RecyclerView.ViewHolder {
 
-    MainContainerAdapter adapter = new MainContainerAdapter();
-
     private EditText editHostName;
     private ImageButton editHostButton;
 

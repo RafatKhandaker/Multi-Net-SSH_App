@@ -1,7 +1,6 @@
 package com.example.reddragon.remote_connection_master_app;
 
 
-import android.content.Context;
 import android.content.res.Configuration;
 import android.database.Cursor;
 import android.os.Bundle;
