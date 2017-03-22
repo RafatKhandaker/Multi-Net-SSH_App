@@ -35,7 +35,7 @@ public class StoreConnectionDB extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        sqLiteDatabase.execSQL("create table " +TABLE_NAME+ " (ID INTEGER" +
+        sqLiteDatabase.execSQL("create table " +TABLE_NAME+ " (ID TEXT" +
                 ",IP TEXT, NAME TEXT, TYPE TEXT, PORT INTEGER, KEY TEXT, PASSWORD TEXT, USERNAME TEXT)");
 
     }
@@ -46,12 +46,13 @@ public class StoreConnectionDB extends SQLiteOpenHelper {
         onCreate(sqLiteDatabase);
     }
 
-    public boolean insertData( String ip, String username, String type, String port, String key,
+    public boolean insertData( String id, String ip, String username, String type, String port, String key,
                                String password){
 
         sqLiteDatabase = this.getWritableDatabase();
         contentValues = new ContentValues();
 
+        contentValues.put(COL_1, id);
         contentValues.put(COL_2, ip);
         contentValues.put(COL_3, username);
         contentValues.put(COL_4, type);
@@ -83,19 +84,31 @@ public class StoreConnectionDB extends SQLiteOpenHelper {
 
 
 
-    public boolean updateData(String id, String ip, String username, String type, String port, String key,
+    public boolean updateData(String id, String newID, String ip, String username, String type, String port, String key,
                               String password){
 
         sqLiteDatabase = this.getWritableDatabase();
         contentValues = new ContentValues();
 
-        contentValues.put(COL_1, id);
+        contentValues.put(COL_1, newID);
         contentValues.put(COL_2, ip);
         contentValues.put(COL_3, username);
         contentValues.put(COL_4, type);
         contentValues.put(COL_5, port);
         contentValues.put(COL_6, key);
         contentValues.put(COL_7, password);
+
+        sqLiteDatabase.update(TABLE_NAME, contentValues, "ID = ?", new String[]{ id } );
+
+        return true;
+    }
+
+    public boolean updateData(String id, String newID){
+
+        sqLiteDatabase = this.getWritableDatabase();
+        contentValues = new ContentValues();
+
+        contentValues.put(COL_1, newID);
 
         sqLiteDatabase.update(TABLE_NAME, contentValues, "ID = ?", new String[]{ id } );
 

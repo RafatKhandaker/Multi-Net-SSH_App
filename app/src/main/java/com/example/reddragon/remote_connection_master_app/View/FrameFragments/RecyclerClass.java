@@ -22,6 +22,7 @@ import com.example.reddragon.remote_connection_master_app.View.ViewHolder.CardVi
 import java.util.ArrayList;
 
 import static com.example.reddragon.remote_connection_master_app.MainActivity.Connect_Count;
+import static com.example.reddragon.remote_connection_master_app.MainActivity.idArray;
 import static com.example.reddragon.remote_connection_master_app.MainActivity.ipAddArray;
 import static com.example.reddragon.remote_connection_master_app.MainActivity.ipArray;
 import static com.example.reddragon.remote_connection_master_app.MainActivity.portAddArray;
@@ -37,6 +38,7 @@ public class RecyclerClass extends Fragment {
     private  RecyclerView preConnectRecycler;
     public static RecyclerView.Adapter recyclerClassAdapter;
     private  RecyclerView.LayoutManager recyclerLayoutManager;
+    private int prevCount = Connect_Count;
 
     ImageButton addNewCard;
     ImageButton saveDataBtn;
@@ -57,7 +59,6 @@ public class RecyclerClass extends Fragment {
         addNewCard = (ImageButton) view.findViewById(R.id.add_hostname_btn);
         saveDataBtn = (ImageButton) view.findViewById(R.id.save_host_icon);
         addUserBtn = (ImageButton) view.findViewById(R.id.add_prof_btn);
-
 
         // initiate recycler
         initiateRecycler(view);
@@ -101,6 +102,7 @@ public class RecyclerClass extends Fragment {
 
                 //Remove swiped item from list and notify the RecyclerView
                 if(Connect_Count > 0) {
+
                     storeRemovedIDData.add(cardViewHolder.getAdapterPosition());
 
                     ipAddArray.remove(cardViewHolder.getAdapterPosition()+1);
@@ -137,17 +139,31 @@ public class RecyclerClass extends Fragment {
 
                 if(x == (ipAddArray.size())){
                     for(int i = 0; i < storeRemovedIDData.size(); i++){
-                        preConDatabase.deleteData(String.valueOf(
-                                storeRemovedIDData.get(i)));
+                        int y = storeRemovedIDData.get(i);
+                        Log.d("removed id data: ", "" +storeRemovedIDData.get(i));
+
+                        preConDatabase.deleteData(String.valueOf(y));
+
+                        while(y < prevCount) {
+                            Log.d("update id data: ", "" +y);
+
+                            preConDatabase.updateData(
+                                    String.valueOf(y+1), String.valueOf(y));
+                                    y++;
+                        }
                     }
                     storeRemovedIDData = new ArrayList<Integer>();
                 }
 
 
-                while(x < (ipAddArray.size())){
+                while(x < (ipAddArray.size()) ){
                     preConDatabase.insertData(String.valueOf(x),
                             ipAddArray.get(x), portAddArray.get(x));
                     x++;
+                }
+                for(int i = 0; i < idArray.size() ; i++){
+                    Log.d("RC class id array: ", "" +idArray.get(i));
+
                 }
 
                 Toast.makeText(getActivity(), "Data Saved", Toast.LENGTH_SHORT)

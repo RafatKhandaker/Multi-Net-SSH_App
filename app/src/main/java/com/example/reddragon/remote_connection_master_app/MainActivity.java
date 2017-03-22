@@ -61,7 +61,7 @@ public static ArrayList<String> portAddArray = new ArrayList<>();
     //---------------------Connection Variables from SQLite----------------------------
 
 public static ArrayList<String>
-           ipArray, userArray, typeArray, portArray, keyArray, passArray;
+           idArray, ipArray, userArray, typeArray, portArray, keyArray, passArray;
 //--------------------------------------------------------------------------------------------------
 
 private static final Fragment CONNECTION_SETTINGS = new FolderProfileView();
@@ -171,6 +171,7 @@ private static FragmentManager fragMan;
 
     private void initializeArrayData(){
 
+        idArray = new ArrayList<>();
         ipArray = new ArrayList<>();
         userArray = new ArrayList<>();
         typeArray = new ArrayList<>();
@@ -205,6 +206,7 @@ private static FragmentManager fragMan;
             while (res.moveToNext()) {
 
                 // load the data individual from SQLite]
+                idArray.add(res.getString(0));
                 ipArray.add(res.getString(1));
                 userArray.add(res.getString(2));
                 typeArray.add(res.getString(3));
