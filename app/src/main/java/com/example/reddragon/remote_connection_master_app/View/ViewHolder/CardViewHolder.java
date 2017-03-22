@@ -15,6 +15,7 @@ import com.example.reddragon.remote_connection_master_app.View.MainContainerAdap
 
 import static com.example.reddragon.remote_connection_master_app.MainActivity.Connect_Count;
 import static com.example.reddragon.remote_connection_master_app.MainActivity.ipAddArray;
+import static com.example.reddragon.remote_connection_master_app.MainActivity.ipArray;
 import static com.example.reddragon.remote_connection_master_app.MainActivity.portAddArray;
 
 /**
@@ -88,12 +89,11 @@ public class CardViewHolder extends RecyclerView.ViewHolder {
 
     public void onBind(int position){
         Log.d("on Bind", " " +ipAddArray.size() +" " +position);
-        if( Connect_Count > 0 && position < ipAddArray.size()){
             if(!ipAddArray.get(position).equals("")) {
                 editHostName.setText(ipAddArray.get(position)
                         + ":" + portAddArray.get(position));
             }
-        }
+
     }
 
 

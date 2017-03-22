@@ -56,9 +56,7 @@ public static ArrayList<String> commandArrList;
 public static ArrayList<String> ipAddArray = new ArrayList<>();
 public static ArrayList<String> portAddArray = new ArrayList<>();
 
-    public static ArrayList<String> storeRemovedIPData = new ArrayList<>();
-    public static ArrayList<String> storeRemovedPortData = new ArrayList<>();
-
+    public static ArrayList<Integer> storeRemovedIDData = new ArrayList<>();
 
     //---------------------Connection Variables from SQLite----------------------------
 

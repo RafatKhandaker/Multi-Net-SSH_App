@@ -35,7 +35,7 @@ public class StoreConnectionDB extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        sqLiteDatabase.execSQL("create table " +TABLE_NAME+ " (ID INTEGER PRIMARY KEY AUTOINCREMENT" +
+        sqLiteDatabase.execSQL("create table " +TABLE_NAME+ " (ID INTEGER" +
                 ",IP TEXT, NAME TEXT, TYPE TEXT, PORT INTEGER, KEY TEXT, PASSWORD TEXT, USERNAME TEXT)");
 
     }
@@ -64,11 +64,12 @@ public class StoreConnectionDB extends SQLiteOpenHelper {
         if(result == -1){ return false; } else{ return true; }
     }
 
-    public boolean insertData(String ip, String port){
+    public boolean insertData(String id, String ip, String port){
 
         sqLiteDatabase = this.getWritableDatabase();
         contentValues = new ContentValues();
 
+        contentValues.put(COL_1, id);
         contentValues.put(COL_2, ip);
         contentValues.put(COL_5, port);
 
@@ -101,13 +102,13 @@ public class StoreConnectionDB extends SQLiteOpenHelper {
         return true;
     }
 
-    public void deleteData(String ip, String port){
+    public void deleteData(String id){
         sqLiteDatabase = this.getWritableDatabase();
-//        sqLiteDatabase.delete(TABLE_NAME, "IP = ?", new String[]{ip});
+        sqLiteDatabase.delete(TABLE_NAME, "ID = ?", new String[]{id});
 
-        sqLiteDatabase.execSQL(
-                String.format("DELETE FROM %s WHERE IP = %s (SELECT IP FROM %s WHERE PORT = %s",
-                TABLE_NAME,ip,ip,port));
+//        sqLiteDatabase.execSQL(
+//                String.format("DELETE FROM %s WHERE IP = %s (SELECT IP FROM %s WHERE PORT = %s",
+//                TABLE_NAME,ip,ip,port));
 
     }
 
