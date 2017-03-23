@@ -20,6 +20,7 @@ import com.example.reddragon.remote_connection_master_app.View.MainContainerAdap
 import com.example.reddragon.remote_connection_master_app.View.ViewHolder.CardViewHolder;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static com.example.reddragon.remote_connection_master_app.MainActivity.Connect_Count;
 import static com.example.reddragon.remote_connection_master_app.MainActivity.idArray;
@@ -38,13 +39,16 @@ public class RecyclerClass extends Fragment {
     private  RecyclerView preConnectRecycler;
     public static RecyclerView.Adapter recyclerClassAdapter;
     private  RecyclerView.LayoutManager recyclerLayoutManager;
+
     private int prevCount = Connect_Count;
+    private int prevIPArraySize;
 
     ImageButton addNewCard;
     ImageButton saveDataBtn;
     ImageButton addUserBtn;
 
     private CardViewHolder cardViewHolder;
+
 
     public RecyclerClass(){}
 
@@ -56,6 +60,7 @@ public class RecyclerClass extends Fragment {
         cardViewHolder = new CardViewHolder(LayoutInflater.from(getContext())
                 .inflate(R.layout.main_card_holder, null));
 
+        prevIPArraySize = ipArray.size();
         addNewCard = (ImageButton) view.findViewById(R.id.add_hostname_btn);
         saveDataBtn = (ImageButton) view.findViewById(R.id.save_host_icon);
         addUserBtn = (ImageButton) view.findViewById(R.id.add_prof_btn);
@@ -102,11 +107,11 @@ public class RecyclerClass extends Fragment {
 
                 //Remove swiped item from list and notify the RecyclerView
                 if(Connect_Count > 0) {
+                Log.d("adapter position: ", "" +viewHolder.getAdapterPosition());
 
-                    storeRemovedIDData.add(cardViewHolder.getAdapterPosition());
-
-                    ipAddArray.remove(cardViewHolder.getAdapterPosition()+1);
-                    portAddArray.remove(cardViewHolder.getAdapterPosition()+1);
+                    storeRemovedIDData.add(viewHolder.getAdapterPosition());
+                    ipAddArray.remove(viewHolder.getAdapterPosition());
+                    portAddArray.remove(viewHolder.getAdapterPosition());
                     Connect_Count--;
 
                     recyclerClassAdapter.notifyDataSetChanged();
@@ -134,17 +139,19 @@ public class RecyclerClass extends Fragment {
         saveDataBtn.setOnClickListener(new ImageButton.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d("RC class ipArray: ", ""+ipArray.size() + " " +ipAddArray.size());
-                int x = ipArray.size();
+                int x = prevIPArraySize;
 
-                if(x == (ipAddArray.size())){
+                Log.d("RC class ipArray: ", ""+x+ " " +ipAddArray.size());
+
+                if(x > ipAddArray.size()){
+
                     for(int i = 0; i < storeRemovedIDData.size(); i++){
                         int y = storeRemovedIDData.get(i);
                         Log.d("removed id data: ", "" +storeRemovedIDData.get(i));
 
                         preConDatabase.deleteData(String.valueOf(y));
 
-                        while(y < prevCount) {
+                        while(y < (prevCount-1)) {
                             Log.d("update id data: ", "" +y);
 
                             preConDatabase.updateData(
@@ -155,12 +162,12 @@ public class RecyclerClass extends Fragment {
                     storeRemovedIDData = new ArrayList<Integer>();
                 }
 
-
                 while(x < (ipAddArray.size()) ){
                     preConDatabase.insertData(String.valueOf(x),
                             ipAddArray.get(x), portAddArray.get(x));
                     x++;
                 }
+
                 for(int i = 0; i < idArray.size() ; i++){
                     Log.d("RC class id array: ", "" +idArray.get(i));
 
