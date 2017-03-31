@@ -208,11 +208,12 @@ private static FragmentManager fragMan;
                 // load the data individual from SQLite]
                 idArray.add(res.getString(0));
                 ipArray.add(res.getString(1));
-                userArray.add(res.getString(2));
-                typeArray.add(res.getString(3));
-                portArray.add(res.getString(4));
-                keyArray.add(res.getString(5));
-                passArray.add(res.getString(6));
+                portArray.add(res.getString(2));
+
+//                userArray.add(res.getString(2));
+//                typeArray.add(res.getString(3));
+//                keyArray.add(res.getString(5));
+//                passArray.add(res.getString(6));
             }
         }
         if(ipArray.size() > 0 && ipAddArray.size() < ipArray.size()){

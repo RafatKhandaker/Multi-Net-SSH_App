@@ -20,11 +20,7 @@ public class StoreConnectionDB extends SQLiteOpenHelper {
 
         private static final String COL_1 = "ID";
         private static final String COL_2 = "IP";
-        private static final String COL_3 = "USERNAME";
-        private static final String COL_4 = "TYPE";
-        private static final String COL_5 = "PORT";
-        private static final String COL_6 = "KEY";
-        private static final String COL_7 = "PASSWORD";
+        private static final String COL_3 = "PORT";
 
         private static final int DATABASE_VERSION = 1;
 
@@ -35,8 +31,7 @@ public class StoreConnectionDB extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        sqLiteDatabase.execSQL("create table " +TABLE_NAME+ " (ID TEXT" +
-                ",IP TEXT, NAME TEXT, TYPE TEXT, PORT INTEGER, KEY TEXT, PASSWORD TEXT, USERNAME TEXT)");
+        sqLiteDatabase.execSQL("create table " +TABLE_NAME+ " (ID TEXT,IP TEXT, PORT INTEGER)");
 
     }
 
@@ -46,25 +41,6 @@ public class StoreConnectionDB extends SQLiteOpenHelper {
         onCreate(sqLiteDatabase);
     }
 
-    public boolean insertData( String id, String ip, String username, String type, String port, String key,
-                               String password){
-
-        sqLiteDatabase = this.getWritableDatabase();
-        contentValues = new ContentValues();
-
-        contentValues.put(COL_1, id);
-        contentValues.put(COL_2, ip);
-        contentValues.put(COL_3, username);
-        contentValues.put(COL_4, type);
-        contentValues.put(COL_5, port);
-        contentValues.put(COL_6, key);
-        contentValues.put(COL_7, password);
-
-        long result = sqLiteDatabase.insert(TABLE_NAME, null, contentValues);
-
-        if(result == -1){ return false; } else{ return true; }
-    }
-
     public boolean insertData(String id, String ip, String port){
 
         sqLiteDatabase = this.getWritableDatabase();
@@ -72,7 +48,7 @@ public class StoreConnectionDB extends SQLiteOpenHelper {
 
         contentValues.put(COL_1, id);
         contentValues.put(COL_2, ip);
-        contentValues.put(COL_5, port);
+        contentValues.put(COL_3, port);
 
         long result = sqLiteDatabase.insert(TABLE_NAME, null, contentValues);
         if(result == -1){ return false; } else { return true; }
@@ -84,19 +60,15 @@ public class StoreConnectionDB extends SQLiteOpenHelper {
 
 
 
-    public boolean updateData(String id, String newID, String ip, String username, String type, String port, String key,
-                              String password){
+    public boolean updateData(String id, String ip, String port){
 
         sqLiteDatabase = this.getWritableDatabase();
         contentValues = new ContentValues();
 
-        contentValues.put(COL_1, newID);
+        contentValues.put(COL_1, id);
         contentValues.put(COL_2, ip);
-        contentValues.put(COL_3, username);
-        contentValues.put(COL_4, type);
-        contentValues.put(COL_5, port);
-        contentValues.put(COL_6, key);
-        contentValues.put(COL_7, password);
+        contentValues.put(COL_3, port);
+
 
         sqLiteDatabase.update(TABLE_NAME, contentValues, "ID = ?", new String[]{ id } );
 
@@ -110,7 +82,7 @@ public class StoreConnectionDB extends SQLiteOpenHelper {
 
         contentValues.put(COL_1, newID);
 
-        sqLiteDatabase.update(TABLE_NAME, contentValues, "ID = ?", new String[]{ id } );
+        sqLiteDatabase.update(TABLE_NAME, contentValues, "ID = "+id, new String[]{ newID } );
 
         return true;
     }
@@ -118,11 +90,6 @@ public class StoreConnectionDB extends SQLiteOpenHelper {
     public void deleteData(String id){
         sqLiteDatabase = this.getWritableDatabase();
         sqLiteDatabase.delete(TABLE_NAME, "ID = ?", new String[]{id});
-
-//        sqLiteDatabase.execSQL(
-//                String.format("DELETE FROM %s WHERE IP = %s (SELECT IP FROM %s WHERE PORT = %s",
-//                TABLE_NAME,ip,ip,port));
-
     }
 
 }

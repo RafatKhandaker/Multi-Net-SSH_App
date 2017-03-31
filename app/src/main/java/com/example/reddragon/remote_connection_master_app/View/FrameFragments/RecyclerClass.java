@@ -20,7 +20,6 @@ import com.example.reddragon.remote_connection_master_app.View.MainContainerAdap
 import com.example.reddragon.remote_connection_master_app.View.ViewHolder.CardViewHolder;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import static com.example.reddragon.remote_connection_master_app.MainActivity.Connect_Count;
 import static com.example.reddragon.remote_connection_master_app.MainActivity.idArray;
@@ -144,28 +143,22 @@ public class RecyclerClass extends Fragment {
                 Log.d("RC class ipArray: ", ""+x+ " " +ipAddArray.size());
 
                 if(x > ipAddArray.size()){
-
-                    for(int i = 0; i < storeRemovedIDData.size(); i++){
-                        int y = storeRemovedIDData.get(i);
-                        Log.d("removed id data: ", "" +storeRemovedIDData.get(i));
-
-                        preConDatabase.deleteData(String.valueOf(y));
-
-                        while(y < (prevCount-1)) {
-                            Log.d("update id data: ", "" +y);
-
-                            preConDatabase.updateData(
-                                    String.valueOf(y+1), String.valueOf(y));
-                                    y++;
-                        }
-                    }
-                    storeRemovedIDData = new ArrayList<Integer>();
+                    onSaveRemoveItem();
                 }
 
-                while(x < (ipAddArray.size()) ){
-                    preConDatabase.insertData(String.valueOf(x),
-                            ipAddArray.get(x), portAddArray.get(x));
-                    x++;
+                for(int i = x; i < (ipAddArray.size()); i++ ){
+                    preConDatabase.insertData(
+                            String.valueOf(i),
+                            ipAddArray.get(i),
+                            portAddArray.get(i));
+                }
+
+                if(x == (ipAddArray.size())){
+                    for(int i = 0; i < ipAddArray.size() ; i++) {
+                        preConDatabase.updateData(idArray.get(i),
+                                ipAddArray.get(i),
+                                portAddArray.get(i));
+                    }
                 }
 
                 for(int i = 0; i < idArray.size() ; i++){
@@ -187,6 +180,25 @@ public class RecyclerClass extends Fragment {
             }
         });
     }
+
+    private void onSaveRemoveItem(){
+
+        for(int i = 0; i < storeRemovedIDData.size(); i++) {
+            int y = storeRemovedIDData.get(i);
+
+            Log.d("StoreRemovedID: ", "" + y);
+            Log.d("removed id data: ", "" + idArray.get(y));
+
+            preConDatabase.deleteData(String.valueOf(idArray.get(y)));
+
+            Log.d("val at id array: ", "" + idArray.get(y));
+
+
+
+        }
+
+    }
+
 
 }
 

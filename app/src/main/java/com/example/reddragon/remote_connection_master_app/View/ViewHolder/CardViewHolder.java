@@ -11,11 +11,8 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 
 import com.example.reddragon.remote_connection_master_app.R;
-import com.example.reddragon.remote_connection_master_app.View.MainContainerAdapter;
 
-import static com.example.reddragon.remote_connection_master_app.MainActivity.Connect_Count;
 import static com.example.reddragon.remote_connection_master_app.MainActivity.ipAddArray;
-import static com.example.reddragon.remote_connection_master_app.MainActivity.ipArray;
 import static com.example.reddragon.remote_connection_master_app.MainActivity.portAddArray;
 
 /**
