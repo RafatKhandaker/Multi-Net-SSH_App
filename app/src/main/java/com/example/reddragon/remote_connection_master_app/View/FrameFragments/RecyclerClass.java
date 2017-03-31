@@ -193,10 +193,13 @@ public class RecyclerClass extends Fragment {
 
             Log.d("val at id array: ", "" + idArray.get(y));
 
-
-
+            for(int x = 0; x < storeRemovedIDData.size(); x++){
+                if( storeRemovedIDData.get(x) > storeRemovedIDData.get(i) ){
+                    storeRemovedIDData.set(x, (storeRemovedIDData.get(x)-1));
+                }
+            }
         }
-
+        storeRemovedIDData = new ArrayList<>();
     }
 
 
