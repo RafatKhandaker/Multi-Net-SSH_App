@@ -18,7 +18,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.PopupWindow;
-import android.widget.TextView;
+
 import android.widget.Toast;
 
 import com.example.reddragon.remote_connection_master_app.R;
@@ -29,6 +29,7 @@ import java.util.ArrayList;
 
 import static android.R.attr.button;
 import static com.example.reddragon.remote_connection_master_app.MainActivity.Connect_Count;
+import static com.example.reddragon.remote_connection_master_app.MainActivity.drawerArrayAdapt;
 import static com.example.reddragon.remote_connection_master_app.MainActivity.idArray;
 import static com.example.reddragon.remote_connection_master_app.MainActivity.ipAddArray;
 import static com.example.reddragon.remote_connection_master_app.MainActivity.ipArray;
@@ -236,6 +237,7 @@ public class RecyclerClass extends Fragment {
                     if(!addUserEdit.getText().toString().isEmpty()) {
                         profilesDB.insertData(addUserEdit.getText().toString(),"", "", "");
                         userArray.add(addUserEdit.getText().toString());
+                        drawerArrayAdapt.notifyDataSetChanged();
                         Toast.makeText(getActivity(),
                                 ""+addUserEdit.getText()+" Added",
                                 Toast.LENGTH_SHORT)

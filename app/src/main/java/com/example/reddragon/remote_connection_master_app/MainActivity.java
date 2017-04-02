@@ -67,6 +67,8 @@ public static ArrayList<String>
            idArray, ipArray, userArray, typeArray, portArray, keyArray, passArray;
 //--------------------------------------------------------------------------------------------------
 
+public static ArrayAdapter drawerArrayAdapt;
+
 private static final Fragment CONNECTION_SETTINGS = new FolderProfileView();
 private static final ConsoleView CONSOLE = new ConsoleView();
 
@@ -339,10 +341,8 @@ private static FragmentManager fragMan;
     private void initiateSlidingDrawer(){
         drawerLayout.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START);
 
-        ArrayAdapter drawerArrayAdapt =
-                new ArrayAdapter<>(this, R.layout.drawer_list_item, userArray);
+        drawerArrayAdapt = new ArrayAdapter<>(this, R.layout.drawer_list_item, userArray);
 
-        drawerArrayAdapt.notifyDataSetChanged();
         drawerList.setAdapter(drawerArrayAdapt);
 
         drawerList.setOnItemClickListener(new DrawerItemClickListener());
