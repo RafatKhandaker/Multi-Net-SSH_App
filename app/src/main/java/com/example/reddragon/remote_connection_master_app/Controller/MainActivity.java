@@ -57,8 +57,9 @@ public static StoreCommandsDB commandListDB;
 public static StoreProfilesDB profilesDB;
 
 public static ArrayList<String> commandArrList;
-public static ArrayList<String> ipAddArray;
-public static ArrayList<String> portAddArray;
+
+public static ArrayList<String>
+        ipAddArray, portAddArray, userAddArray, typeAddArray, keyAddArray, passAddArray;
 
     public static ArrayList<Integer> storeRemovedIDData = new ArrayList<>();
 
@@ -190,6 +191,9 @@ private static FragmentManager fragMan;
 
         ipAddArray = new ArrayList<>();
         portAddArray = new ArrayList<>();
+        userAddArray = new ArrayList<>();
+        keyAddArray = new ArrayList<>();
+        passAddArray = new ArrayList<>();
 
     }
 
@@ -218,6 +222,12 @@ private static FragmentManager fragMan;
                     keyArray.add(res.getString(2));
                     passArray.add(res.getString(3));
                 }
+                if(!userArray.isEmpty()){ userAddArray = userArray; }
+                if(!typeArray.isEmpty()){ typeAddArray = typeArray; }
+                if(!keyArray.isEmpty()){ keyAddArray = keyArray; }
+                if(!passArray.isEmpty()){ passAddArray = passArray; }
+
+
             }
         }
     }
@@ -231,7 +241,6 @@ private static FragmentManager fragMan;
                 idArray.add(res.getString(0));
                 ipArray.add(res.getString(1));
                 portArray.add(res.getString(2));
-
             }
         }
 

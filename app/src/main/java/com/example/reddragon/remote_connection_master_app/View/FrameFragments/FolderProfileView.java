@@ -14,6 +14,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.example.reddragon.remote_connection_master_app.R;
 import com.example.reddragon.remote_connection_master_app.View.FrameFragments.FrameRecyclerAdapter.ProfileListAdapter;
@@ -24,9 +25,13 @@ import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 
 import static com.example.reddragon.remote_connection_master_app.Controller.MainActivity.commandListDB;
+import static com.example.reddragon.remote_connection_master_app.Controller.MainActivity.keyAddArray;
 import static com.example.reddragon.remote_connection_master_app.Controller.MainActivity.keyArray;
 import static com.example.reddragon.remote_connection_master_app.Controller.MainActivity.loadSavedCommandData;
+import static com.example.reddragon.remote_connection_master_app.Controller.MainActivity.passAddArray;
 import static com.example.reddragon.remote_connection_master_app.Controller.MainActivity.passArray;
+import static com.example.reddragon.remote_connection_master_app.Controller.MainActivity.profilesDB;
+import static com.example.reddragon.remote_connection_master_app.Controller.MainActivity.userAddArray;
 import static com.example.reddragon.remote_connection_master_app.Controller.MainActivity.userArray;
 import static com.example.reddragon.remote_connection_master_app.View.FrameFragments.FrameRecyclerAdapter.FrameViewHolder.CommandListViewHolder.commandListPosition;
 import static com.example.reddragon.remote_connection_master_app.View.FrameFragments.FrameRecyclerAdapter.FrameViewHolder.CommandListViewHolder.commandText;
@@ -61,6 +66,8 @@ public class FolderProfileView extends Fragment implements AdapterView.OnItemSel
     private EditText commandViewET;
     private EditText passwordET;
 
+    private int PROFILE_POSITION = 0;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
@@ -69,7 +76,7 @@ public class FolderProfileView extends Fragment implements AdapterView.OnItemSel
         // converting the userArray to a charSequence to put inside the spinner
         UserOption = userArray.toArray(new CharSequence[userArray.size()]);
 
-        // initialize buttions
+        // initialize buttons
         genKeyButton = (Button) view.findViewById(R.id.rsa_generate_btn);
         addCommButton = (Button) view.findViewById(R.id.add_command_btn);
         editButton = (Button) view.findViewById(R.id.edit_list_btn);
@@ -102,6 +109,8 @@ public class FolderProfileView extends Fragment implements AdapterView.OnItemSel
 
         keyOnClickListener(removeButton, R.id.remove_list_btn);
 
+        keyOnClickListener(saveProfileButton, R.id.save_profile_btn);
+
         return view;
 
     }
@@ -116,8 +125,6 @@ public class FolderProfileView extends Fragment implements AdapterView.OnItemSel
                     encryptValSelected =
                             Integer.valueOf(String.valueOf(parent.getItemAtPosition(position)));
                 }
-
-                System.out.print("encrypt test " + encryptValSelected);
 
                 break;
 
@@ -143,6 +150,7 @@ public class FolderProfileView extends Fragment implements AdapterView.OnItemSel
                     }
                 });
                 break;
+
             case R.id.add_command_btn:
                 button.setOnClickListener(new Button.OnClickListener() {
                     @Override
@@ -153,10 +161,10 @@ public class FolderProfileView extends Fragment implements AdapterView.OnItemSel
                         dataArrList.clear();
                         loadSavedCommandData(dataArrList);
                         folderProfileAdapt.swap();
-
                     }
                 });
                 break;
+
             case R.id.remove_list_btn:
                 button.setOnClickListener((new Button.OnClickListener() {
                     @Override
@@ -178,6 +186,31 @@ public class FolderProfileView extends Fragment implements AdapterView.OnItemSel
                         }
                     }
                 }));
+                break;
+
+            case R.id.save_profile_btn:
+
+                button.setOnClickListener(new Button.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        keyAddArray.set(PROFILE_POSITION, rsaViewET.getText().toString());
+                        passAddArray.set(PROFILE_POSITION, passwordET.getText().toString());
+
+                        profilesDB.updateData(
+                                userAddArray.get(PROFILE_POSITION), "SSH",
+                                keyAddArray.get(PROFILE_POSITION),
+                                passAddArray.get(PROFILE_POSITION)
+                        );
+
+                        Toast.makeText(getActivity(),
+                                ""+userArray.get(PROFILE_POSITION)+" profile saved",
+                                Toast.LENGTH_SHORT).show();
+                    }
+                });
+                break;
+
+            case R.id.delete_profile_btn:
                 break;
         }
     }
@@ -201,10 +234,14 @@ public class FolderProfileView extends Fragment implements AdapterView.OnItemSel
                 getContext(), android.R.layout.simple_spinner_item, UserOption);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         // Specify the layout to use when the list of choices appears
+
         userSpn.setAdapter(adapter); // Apply the adapter to the spinner
+
         userSpn.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                PROFILE_POSITION = position;
+                Log.d("Profile Position: ", ""+position);
                 rsaViewET.setText(keyArray.get(position));
                 passwordET.setText(passArray.get(position));
             }

@@ -33,6 +33,7 @@ public class SSHManager extends AsyncTask<String, Integer, String> {
                 session.setConfig(config);
                 session.setPassword("xxxxxxx");
                 session.connect();
+
             } catch (JSchException e) {
                 asd = "NOT_Executed";
                 System.out.println("NOT_executed");
@@ -40,15 +41,12 @@ public class SSHManager extends AsyncTask<String, Integer, String> {
                 return "NOT_Executed";
             }
 
-
-
             CharSequence text = "Connected to Pi";
             int duration = android.widget.Toast.LENGTH_SHORT;
             System.out.println("executed");
             asd = "executed";
             return "Executed";
 
-            //return null;
         }
 
         @Override

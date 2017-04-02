@@ -31,6 +31,8 @@ import static com.example.reddragon.remote_connection_master_app.Controller.Main
 import static com.example.reddragon.remote_connection_master_app.Controller.MainActivity.idArray;
 import static com.example.reddragon.remote_connection_master_app.Controller.MainActivity.ipAddArray;
 import static com.example.reddragon.remote_connection_master_app.Controller.MainActivity.ipArray;
+import static com.example.reddragon.remote_connection_master_app.Controller.MainActivity.keyAddArray;
+import static com.example.reddragon.remote_connection_master_app.Controller.MainActivity.passAddArray;
 import static com.example.reddragon.remote_connection_master_app.Controller.MainActivity.portAddArray;
 import static com.example.reddragon.remote_connection_master_app.Controller.MainActivity.preConDatabase;
 import static com.example.reddragon.remote_connection_master_app.Controller.MainActivity.profilesDB;
@@ -114,8 +116,8 @@ public class RecyclerClass extends Fragment {
 
             @Override
             public void onSwiped(RecyclerView.ViewHolder viewHolder, int swipeDir) {
-
                 //Remove swiped item from list and notify the RecyclerView
+
                 if(Connect_Count > 0) {
                     storeRemovedIDData.add(viewHolder.getAdapterPosition());
                     ipAddArray.remove(viewHolder.getAdapterPosition());
@@ -219,7 +221,11 @@ public class RecyclerClass extends Fragment {
                 public void onClick(View v) {
                     if(!addUserEdit.getText().toString().isEmpty()) {
                         profilesDB.insertData(addUserEdit.getText().toString(),"", "", "");
+
                         userArray.add(addUserEdit.getText().toString());
+                        keyAddArray.add("");
+                        passAddArray.add("");
+
                         drawerArrayAdapt.notifyDataSetChanged();
                         Toast.makeText(getActivity(),
                                 ""+addUserEdit.getText()+" Added",
