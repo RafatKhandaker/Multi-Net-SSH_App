@@ -4,7 +4,6 @@ package com.example.reddragon.remote_connection_master_app.View.ViewHolder;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.EditText;
@@ -12,8 +11,8 @@ import android.widget.ImageButton;
 
 import com.example.reddragon.remote_connection_master_app.R;
 
-import static com.example.reddragon.remote_connection_master_app.MainActivity.ipAddArray;
-import static com.example.reddragon.remote_connection_master_app.MainActivity.portAddArray;
+import static com.example.reddragon.remote_connection_master_app.Controller.MainActivity.ipAddArray;
+import static com.example.reddragon.remote_connection_master_app.Controller.MainActivity.portAddArray;
 
 /**
  * Created by RedDragon on 2/8/17.
@@ -85,7 +84,6 @@ public class CardViewHolder extends RecyclerView.ViewHolder {
     }
 
     public void onBind(int position){
-        Log.d("on Bind", " " +ipAddArray.size() +" " +position);
             if(!ipAddArray.get(position).equals("")) {
                 editHostName.setText(ipAddArray.get(position)
                         + ":" + portAddArray.get(position));

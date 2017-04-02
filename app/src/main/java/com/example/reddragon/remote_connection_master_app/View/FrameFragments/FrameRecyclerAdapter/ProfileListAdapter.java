@@ -9,7 +9,7 @@ import com.example.reddragon.remote_connection_master_app.View.FrameFragments.Fr
 
 import java.util.ArrayList;
 
-import static com.example.reddragon.remote_connection_master_app.MainActivity.commandArrList;
+import static com.example.reddragon.remote_connection_master_app.Controller.MainActivity.commandArrList;
 
 /**
  * Created by RedDragon on 2/14/17.

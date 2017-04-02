@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import com.example.reddragon.remote_connection_master_app.R;
 import com.example.reddragon.remote_connection_master_app.View.ViewHolder.CardViewHolder;
 
-import static com.example.reddragon.remote_connection_master_app.MainActivity.Connect_Count;
+import static com.example.reddragon.remote_connection_master_app.Controller.MainActivity.Connect_Count;
 
 
 /**

@@ -16,7 +16,6 @@ import android.widget.EditText;
 import android.widget.Spinner;
 
 import com.example.reddragon.remote_connection_master_app.R;
-import com.example.reddragon.remote_connection_master_app.View.FrameFragments.FrameRecyclerAdapter.FrameViewHolder.CommandListViewHolder;
 import com.example.reddragon.remote_connection_master_app.View.FrameFragments.FrameRecyclerAdapter.ProfileListAdapter;
 
 import java.security.KeyPair;
@@ -24,9 +23,11 @@ import java.security.KeyPairGenerator;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 
-import static com.example.reddragon.remote_connection_master_app.MainActivity.commandListDB;
-import static com.example.reddragon.remote_connection_master_app.MainActivity.loadSavedCommandData;
-import static com.example.reddragon.remote_connection_master_app.MainActivity.userArray;
+import static com.example.reddragon.remote_connection_master_app.Controller.MainActivity.commandListDB;
+import static com.example.reddragon.remote_connection_master_app.Controller.MainActivity.keyArray;
+import static com.example.reddragon.remote_connection_master_app.Controller.MainActivity.loadSavedCommandData;
+import static com.example.reddragon.remote_connection_master_app.Controller.MainActivity.passArray;
+import static com.example.reddragon.remote_connection_master_app.Controller.MainActivity.userArray;
 import static com.example.reddragon.remote_connection_master_app.View.FrameFragments.FrameRecyclerAdapter.FrameViewHolder.CommandListViewHolder.commandListPosition;
 import static com.example.reddragon.remote_connection_master_app.View.FrameFragments.FrameRecyclerAdapter.FrameViewHolder.CommandListViewHolder.commandText;
 import static com.example.reddragon.remote_connection_master_app.View.FrameFragments.FrameRecyclerAdapter.ProfileListAdapter.dataArrList;
@@ -58,13 +59,17 @@ public class FolderProfileView extends Fragment implements AdapterView.OnItemSel
 
     private EditText rsaViewET;
     private EditText commandViewET;
+    private EditText passwordET;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         view = inflater.inflate(R.layout.secure_folder, container, false);
 
+        // converting the userArray to a charSequence to put inside the spinner
         UserOption = userArray.toArray(new CharSequence[userArray.size()]);
+
+        // initialize buttions
         genKeyButton = (Button) view.findViewById(R.id.rsa_generate_btn);
         addCommButton = (Button) view.findViewById(R.id.add_command_btn);
         editButton = (Button) view.findViewById(R.id.edit_list_btn);
@@ -72,11 +77,15 @@ public class FolderProfileView extends Fragment implements AdapterView.OnItemSel
         delProfileButton = (Button) view.findViewById(R.id.delete_profile_btn);
         saveProfileButton = (Button) view.findViewById(R.id.save_profile_btn);
 
+        // initialize Edit Texts
         rsaViewET = (EditText) view.findViewById(R.id.rsa_display_view);
         commandViewET = (EditText) view.findViewById(R.id.add_command_et);
+        passwordET = (EditText) view.findViewById(R.id.enter_password);
 
+        // Recycler Views
         folderProfileRV = (RecyclerView) view.findViewById(R.id.profile_command_rv);
 
+        // Spinners
         cipherSpn = (Spinner) view.findViewById(R.id.complexity_lst_spn);
         userSpn = (Spinner) view.findViewById(R.id.user_list);
 
@@ -86,6 +95,7 @@ public class FolderProfileView extends Fragment implements AdapterView.OnItemSel
         cipherSpn.setOnItemSelectedListener(this);
         userSpn.setOnItemSelectedListener(this);
 
+        // set Key listeners
         keyOnClickListener(genKeyButton, R.id.rsa_generate_btn);
 
         keyOnClickListener(addCommButton, R.id.add_command_btn);
@@ -192,6 +202,18 @@ public class FolderProfileView extends Fragment implements AdapterView.OnItemSel
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         // Specify the layout to use when the list of choices appears
         userSpn.setAdapter(adapter); // Apply the adapter to the spinner
+        userSpn.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                rsaViewET.setText(keyArray.get(position));
+                passwordET.setText(passArray.get(position));
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
     }
 
     private void createKeyTest() {

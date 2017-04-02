@@ -8,7 +8,7 @@ import android.widget.TextView;
 
 import com.example.reddragon.remote_connection_master_app.R;
 
-import static com.example.reddragon.remote_connection_master_app.MainActivity.commandArrList;
+import static com.example.reddragon.remote_connection_master_app.Controller.MainActivity.commandArrList;
 
 /**
  * Created by RedDragon on 2/16/17.
