@@ -80,7 +80,6 @@ private static FragmentManager fragMan;
 
     private android.support.v4.app.ActionBarDrawerToggle drawerToggle;
     private ListView drawerList;
-    private ArrayList<String> userListArray = new ArrayList<>();
 
 
     @Override
@@ -206,7 +205,6 @@ private static FragmentManager fragMan;
         Cursor res = profilesDB.getAllData();
 
         if(res.getCount() != 0){
-            StringBuffer bufferValue = new StringBuffer();
             if(res.getCount() != 0 ){
                 while( res.moveToNext()){
                     userArray.add(res.getString(0));
@@ -218,11 +216,9 @@ private static FragmentManager fragMan;
         }
     }
     private void loadSavedConnectionData(){
-        userListArray.add("+ Add New Profile");
 
         Cursor res = preConDatabase.getAllData();
         if(res.getCount() != 0) {
-            StringBuffer bufferValue = new StringBuffer();
             while (res.moveToNext()) {
 
                 // load the data individual from SQLite]
@@ -240,14 +236,12 @@ private static FragmentManager fragMan;
             Connect_Count = ipAddArray.size();
         }
 
-        if(userArray.size() > 0){ userListArray = userArray;}
     }
 
 
     public static ArrayList<String> loadSavedCommandData(ArrayList<String> arrList){
         Cursor res = commandListDB.getAllData();
         if(res.getCount() != 0) {
-//            bufferValue = new StringBuffer();
             while (res.moveToNext()) {
                 arrList.add(res.getString(1));
             }
@@ -344,8 +338,12 @@ private static FragmentManager fragMan;
 
     private void initiateSlidingDrawer(){
         drawerLayout.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START);
-        drawerList.setAdapter(new ArrayAdapter<>(MainActivity.this,
-                R.layout.drawer_list_item, userListArray));
+
+        ArrayAdapter drawerArrayAdapt =
+                new ArrayAdapter<>(this, R.layout.drawer_list_item, userArray);
+
+        drawerArrayAdapt.notifyDataSetChanged();
+        drawerList.setAdapter(drawerArrayAdapt);
 
         drawerList.setOnItemClickListener(new DrawerItemClickListener());
         initiateDrawerToggle();
@@ -375,8 +373,6 @@ private static FragmentManager fragMan;
         }
 
         private void selectItem(int position){
-            if(userListArray.get(position).contains("+ Add New Profile")) {
-            }
             switch(position){
                 case 0:
                     Log.d("on pass sel item draw: ","" +position);

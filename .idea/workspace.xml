@@ -11,6 +11,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="437649cc-ca33-45a3-aaef-09b61c3b221f" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/fileHashes.bin" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/fileSnapshots.bin" afterPath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/fileSnapshots.bin" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/taskArtifacts.bin" afterPath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/taskArtifacts.bin" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/taskArtifacts.lock" afterPath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/taskArtifacts.lock" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/reddragon/remote_connection_master_app/MainActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/reddragon/remote_connection_master_app/MainActivity.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/reddragon/remote_connection_master_app/View/FrameFragments/RecyclerClass.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/reddragon/remote_connection_master_app/View/FrameFragments/RecyclerClass.java" />
     </list>
@@ -44,11 +49,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/reddragon/remote_connection_master_app/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="219" column="47" selection-start-line="219" selection-start-column="47" selection-end-line="219" selection-end-column="47" />
+            <state relative-caret-position="243">
+              <caret line="362" column="51" selection-start-line="362" selection-start-column="51" selection-end-line="362" selection-end-column="51" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -66,23 +71,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RecyclerClass.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="RecyclerClass.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/reddragon/remote_connection_master_app/View/FrameFragments/RecyclerClass.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3078">
-              <caret line="234" column="0" selection-start-line="234" selection-start-column="0" selection-end-line="234" selection-end-column="0" />
+            <state relative-caret-position="108">
+              <caret line="237" column="26" selection-start-line="237" selection-start-column="26" selection-end-line="237" selection-end-column="26" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#5054#5346#0" expanded="true" />
-                <element signature="e#5345#5346#0" expanded="true" />
-                <element signature="e#5450#6652#0" expanded="true" />
-                <element signature="e#6651#6652#0" expanded="true" />
-                <element signature="e#6695#6857#0" expanded="true" />
-                <element signature="e#6856#6857#0" expanded="true" />
-                <element signature="e#8349#8914#0" expanded="true" />
-                <element signature="e#8913#8914#0" expanded="true" />
-                <element signature="e#8966#9108#0" expanded="true" />
-                <element signature="e#9107#9108#0" expanded="true" />
+                <element signature="e#5233#5525#0" expanded="true" />
+                <element signature="e#5524#5525#0" expanded="true" />
+                <element signature="e#5629#6831#0" expanded="true" />
+                <element signature="e#6830#6831#0" expanded="true" />
+                <element signature="e#6874#7036#0" expanded="true" />
+                <element signature="e#7035#7036#0" expanded="true" />
+                <element signature="e#8528#9257#0" expanded="true" />
+                <element signature="e#9256#9257#0" expanded="true" />
+                <element signature="e#9309#9451#0" expanded="true" />
+                <element signature="e#9450#9451#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -2598,7 +2603,7 @@
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3693086" sideWeight="0.32229403" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3693086" sideWeight="0.677706" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.36920223" sideWeight="0.677706" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3294509" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -2674,7 +2679,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/reddragon/remote_connection_master_app/View/FrameFragments/RecyclerClass.java</url>
-          <line>207</line>
+          <line>209</line>
           <properties />
           <option name="timeStamp" value="2" />
         </line-breakpoint>
@@ -2959,8 +2964,8 @@
         <state relative-caret-position="375">
           <caret line="33" column="45" selection-start-line="33" selection-start-column="45" selection-end-line="33" selection-end-column="45" />
           <folding>
-            <element signature="e#1071#1775#0" expanded="true" />
-            <element signature="e#1774#1775#0" expanded="true" />
+            <element signature="e#1071#1775#0" expanded="false" />
+            <element signature="e#1774#1775#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -3033,26 +3038,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/reddragon/remote_connection_master_app/View/FrameFragments/RecyclerClass.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3078">
-          <caret line="234" column="0" selection-start-line="234" selection-start-column="0" selection-end-line="234" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#5054#5346#0" expanded="true" />
-            <element signature="e#5345#5346#0" expanded="true" />
-            <element signature="e#5450#6652#0" expanded="true" />
-            <element signature="e#6651#6652#0" expanded="true" />
-            <element signature="e#6695#6857#0" expanded="true" />
-            <element signature="e#6856#6857#0" expanded="true" />
-            <element signature="e#8349#8914#0" expanded="true" />
-            <element signature="e#8913#8914#0" expanded="true" />
-            <element signature="e#8966#9108#0" expanded="true" />
-            <element signature="e#9107#9108#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/reddragon/remote_connection_master_app/View/MainContainerAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="408">
@@ -3082,10 +3067,30 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/reddragon/remote_connection_master_app/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="219" column="47" selection-start-line="219" selection-start-column="47" selection-end-line="219" selection-end-column="47" />
+        <state relative-caret-position="243">
+          <caret line="362" column="51" selection-start-line="362" selection-start-column="51" selection-end-line="362" selection-end-column="51" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/reddragon/remote_connection_master_app/View/FrameFragments/RecyclerClass.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="237" column="26" selection-start-line="237" selection-start-column="26" selection-end-line="237" selection-end-column="26" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#5233#5525#0" expanded="true" />
+            <element signature="e#5524#5525#0" expanded="true" />
+            <element signature="e#5629#6831#0" expanded="true" />
+            <element signature="e#6830#6831#0" expanded="true" />
+            <element signature="e#6874#7036#0" expanded="true" />
+            <element signature="e#7035#7036#0" expanded="true" />
+            <element signature="e#8528#9257#0" expanded="true" />
+            <element signature="e#9256#9257#0" expanded="true" />
+            <element signature="e#9309#9451#0" expanded="true" />
+            <element signature="e#9450#9451#0" expanded="true" />
           </folding>
         </state>
       </provider>

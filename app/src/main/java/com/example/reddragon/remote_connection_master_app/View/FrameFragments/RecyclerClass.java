@@ -34,7 +34,9 @@ import static com.example.reddragon.remote_connection_master_app.MainActivity.ip
 import static com.example.reddragon.remote_connection_master_app.MainActivity.ipArray;
 import static com.example.reddragon.remote_connection_master_app.MainActivity.portAddArray;
 import static com.example.reddragon.remote_connection_master_app.MainActivity.preConDatabase;
+import static com.example.reddragon.remote_connection_master_app.MainActivity.profilesDB;
 import static com.example.reddragon.remote_connection_master_app.MainActivity.storeRemovedIDData;
+import static com.example.reddragon.remote_connection_master_app.MainActivity.userArray;
 
 /**
  * Created by RedDragon on 2/11/17.
@@ -232,7 +234,8 @@ public class RecyclerClass extends Fragment {
                 @Override
                 public void onClick(View v) {
                     if(!addUserEdit.getText().toString().isEmpty()) {
-
+                        profilesDB.insertData(addUserEdit.getText().toString(),"", "", "");
+                        userArray.add(addUserEdit.getText().toString());
                         Toast.makeText(getActivity(),
                                 ""+addUserEdit.getText()+" Added",
                                 Toast.LENGTH_SHORT)
