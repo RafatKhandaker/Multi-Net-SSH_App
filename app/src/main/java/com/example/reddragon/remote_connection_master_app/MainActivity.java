@@ -56,8 +56,8 @@ public static StoreCommandsDB commandListDB;
 public static StoreProfilesDB profilesDB;
 
 public static ArrayList<String> commandArrList;
-public static ArrayList<String> ipAddArray = new ArrayList<>();
-public static ArrayList<String> portAddArray = new ArrayList<>();
+public static ArrayList<String> ipAddArray;
+public static ArrayList<String> portAddArray;
 
     public static ArrayList<Integer> storeRemovedIDData = new ArrayList<>();
 
@@ -186,6 +186,9 @@ private static FragmentManager fragMan;
         passArray = new ArrayList<>();
 
         commandArrList = new ArrayList<>();
+
+        ipAddArray = new ArrayList<>();
+        portAddArray = new ArrayList<>();
 
     }
 

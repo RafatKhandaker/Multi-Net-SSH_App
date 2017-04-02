@@ -93,6 +93,4 @@ public class CardViewHolder extends RecyclerView.ViewHolder {
 
     }
 
-
-
 }

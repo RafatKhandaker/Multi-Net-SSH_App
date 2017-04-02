@@ -26,6 +26,7 @@ import java.util.ArrayList;
 
 import static com.example.reddragon.remote_connection_master_app.MainActivity.commandListDB;
 import static com.example.reddragon.remote_connection_master_app.MainActivity.loadSavedCommandData;
+import static com.example.reddragon.remote_connection_master_app.MainActivity.userArray;
 import static com.example.reddragon.remote_connection_master_app.View.FrameFragments.FrameRecyclerAdapter.FrameViewHolder.CommandListViewHolder.commandListPosition;
 import static com.example.reddragon.remote_connection_master_app.View.FrameFragments.FrameRecyclerAdapter.FrameViewHolder.CommandListViewHolder.commandText;
 import static com.example.reddragon.remote_connection_master_app.View.FrameFragments.FrameRecyclerAdapter.ProfileListAdapter.dataArrList;
@@ -36,7 +37,7 @@ import static com.example.reddragon.remote_connection_master_app.View.FrameFragm
 
 public class FolderProfileView extends Fragment implements AdapterView.OnItemSelectedListener{
 
-    public static final CharSequence[] UserOption  = {"root","user1","user2","user3","user4"};
+    private static CharSequence[] UserOption;
 
 
     private RecyclerView folderProfileRV;
@@ -63,6 +64,7 @@ public class FolderProfileView extends Fragment implements AdapterView.OnItemSel
 
         view = inflater.inflate(R.layout.secure_folder, container, false);
 
+        UserOption = userArray.toArray(new CharSequence[userArray.size()]);
         genKeyButton = (Button) view.findViewById(R.id.rsa_generate_btn);
         addCommButton = (Button) view.findViewById(R.id.add_command_btn);
         editButton = (Button) view.findViewById(R.id.edit_list_btn);
