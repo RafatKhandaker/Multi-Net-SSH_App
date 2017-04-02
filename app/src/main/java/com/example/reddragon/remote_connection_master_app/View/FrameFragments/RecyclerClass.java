@@ -232,6 +232,7 @@ public class RecyclerClass extends Fragment {
                 @Override
                 public void onClick(View v) {
                     if(!addUserEdit.getText().toString().isEmpty()) {
+
                         Toast.makeText(getActivity(),
                                 ""+addUserEdit.getText()+" Added",
                                 Toast.LENGTH_SHORT)

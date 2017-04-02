@@ -23,6 +23,7 @@ import android.widget.ListView;
 
 import com.example.reddragon.remote_connection_master_app.SQLiteDB.StoreCommandsDB;
 import com.example.reddragon.remote_connection_master_app.SQLiteDB.StoreConnectionDB;
+import com.example.reddragon.remote_connection_master_app.SQLiteDB.StoreProfilesDB;
 import com.example.reddragon.remote_connection_master_app.View.FrameFragments.ConsoleView;
 import com.example.reddragon.remote_connection_master_app.View.FrameFragments.FolderProfileView;
 import com.example.reddragon.remote_connection_master_app.View.FrameFragments.RecyclerClass;
@@ -49,8 +50,10 @@ private ImageView folderLockButton;
 //-----------------setting up Immutable objects for possible thread handling------------------------
 
 private static DrawerLayout drawerLayout;
+
 public static StoreConnectionDB preConDatabase;
 public static StoreCommandsDB commandListDB;
+public static StoreProfilesDB profilesDB;
 
 public static ArrayList<String> commandArrList;
 public static ArrayList<String> ipAddArray = new ArrayList<>();
@@ -96,6 +99,7 @@ private static FragmentManager fragMan;
         // instantiate database
         preConDatabase = new StoreConnectionDB(this);
         commandListDB = new StoreCommandsDB(this);
+        profilesDB = new StoreProfilesDB(this);
 
         // initiate recycler  * comment this section to test the sliding drawer
 
@@ -118,6 +122,7 @@ private static FragmentManager fragMan;
         // load Stored SQLite Data
         loadSavedConnectionData();
         loadSavedCommandData(commandArrList);
+        loadSavedProfileData();
 
     }
 
@@ -197,6 +202,21 @@ private static FragmentManager fragMan;
         }
     }
 
+    private void loadSavedProfileData(){
+        Cursor res = profilesDB.getAllData();
+
+        if(res.getCount() != 0){
+            StringBuffer bufferValue = new StringBuffer();
+            if(res.getCount() != 0 ){
+                while( res.moveToNext()){
+                    userArray.add(res.getString(0));
+                    typeArray.add(res.getString(1));
+                    keyArray.add(res.getString(2));
+                    passArray.add(res.getString(3));
+                }
+            }
+        }
+    }
     private void loadSavedConnectionData(){
         userListArray.add("+ Add New Profile");
 
@@ -210,19 +230,17 @@ private static FragmentManager fragMan;
                 ipArray.add(res.getString(1));
                 portArray.add(res.getString(2));
 
-//                userArray.add(res.getString(2));
-//                typeArray.add(res.getString(3));
-//                keyArray.add(res.getString(5));
-//                passArray.add(res.getString(6));
             }
         }
+
         if(ipArray.size() > 0 && ipAddArray.size() < ipArray.size()){
+
             ipAddArray = ipArray;
             portAddArray = portArray;
-           Connect_Count = ipAddArray.size();
+            Connect_Count = ipAddArray.size();
         }
 
-        if(userArray.size() > 0){ userListArray = userArray; }
+        if(userArray.size() > 0){ userListArray = userArray;}
     }
 
 
