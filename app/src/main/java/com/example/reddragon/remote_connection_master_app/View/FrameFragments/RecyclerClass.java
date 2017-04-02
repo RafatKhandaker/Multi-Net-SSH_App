@@ -15,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.PopupWindow;
 import android.widget.TextView;
@@ -26,6 +27,7 @@ import com.example.reddragon.remote_connection_master_app.View.ViewHolder.CardVi
 
 import java.util.ArrayList;
 
+import static android.R.attr.button;
 import static com.example.reddragon.remote_connection_master_app.MainActivity.Connect_Count;
 import static com.example.reddragon.remote_connection_master_app.MainActivity.idArray;
 import static com.example.reddragon.remote_connection_master_app.MainActivity.ipAddArray;
@@ -222,8 +224,25 @@ public class RecyclerClass extends Fragment {
 
             pw.showAtLocation(layout, Gravity.CENTER, 0, 0);
 
-            Button cancelButton = (Button) layout.findViewById(R.id.cancel_button);
-            cancelButton.setOnClickListener(new Button.OnClickListener() {
+            final EditText addUserEdit = (EditText) layout.findViewById(R.id.add_user_et);
+            Button addUserButton = (Button) layout.findViewById(R.id.save_host_button);
+            Button cancelUserButton = (Button) layout.findViewById(R.id.cancel_host_button);
+
+            addUserButton.setOnClickListener(new Button.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(!addUserEdit.getText().toString().isEmpty()) {
+                        Toast.makeText(getActivity(),
+                                ""+addUserEdit.getText()+" Added",
+                                Toast.LENGTH_SHORT)
+                                .show();
+                    }else{
+                        Toast.makeText(getActivity(), "Blank Field", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
+
+            cancelUserButton.setOnClickListener(new Button.OnClickListener() {
                 public void onClick(View v) {
                     pw.dismiss();
                 }
