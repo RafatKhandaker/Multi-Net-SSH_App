@@ -1,5 +1,6 @@
 package com.example.reddragon.remote_connection_master_app.View.FrameFragments;
 
+import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -9,10 +10,14 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.PopupWindow;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.reddragon.remote_connection_master_app.R;
@@ -46,7 +51,10 @@ public class RecyclerClass extends Fragment {
     ImageButton saveDataBtn;
     ImageButton addUserBtn;
 
+    private View view;
+
     private CardViewHolder cardViewHolder;
+    private PopupWindow pw;
 
 
     public RecyclerClass(){}
@@ -55,7 +63,7 @@ public class RecyclerClass extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.recycler_connect, container, false);
+        view = inflater.inflate(R.layout.recycler_connect, container, false);
         cardViewHolder = new CardViewHolder(LayoutInflater.from(getContext())
                 .inflate(R.layout.main_card_holder, null));
 
@@ -176,7 +184,7 @@ public class RecyclerClass extends Fragment {
         addUserBtn.setOnClickListener(new ImageButton.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                initiatePopupWindow();
             }
         });
     }
@@ -200,6 +208,30 @@ public class RecyclerClass extends Fragment {
             }
         }
         storeRemovedIDData = new ArrayList<>();
+    }
+
+    private void initiatePopupWindow() {
+        try {
+            LayoutInflater inflater = (LayoutInflater) getContext()
+                    .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
+            View layout = inflater.inflate(R.layout.screen_popup,
+                    (ViewGroup) view.findViewById(R.id.popup_element));
+
+            pw = new PopupWindow(layout, 1000, 1200, true);
+
+            pw.showAtLocation(layout, Gravity.CENTER, 0, 0);
+
+            Button cancelButton = (Button) layout.findViewById(R.id.cancel_button);
+            cancelButton.setOnClickListener(new Button.OnClickListener() {
+                public void onClick(View v) {
+                    pw.dismiss();
+                }
+            });
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 
