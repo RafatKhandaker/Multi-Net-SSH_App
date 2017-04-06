@@ -59,6 +59,8 @@ public class CommandListViewHolder extends RecyclerView.ViewHolder {
 
         else if(position < commandArrList.size()) {
             commandListText.setText(commandArrList.get(position));
+        }else{
+            commandListText.setText("");
         }
     }
 
