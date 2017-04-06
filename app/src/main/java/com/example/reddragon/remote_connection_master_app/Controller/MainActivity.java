@@ -227,6 +227,11 @@ private static FragmentManager fragMan;
                 if(!keyArray.isEmpty()){ keyAddArray = keyArray; }
                 if(!passArray.isEmpty()){ passAddArray = passArray; }
 
+                Log.d("Test profile data: ",
+                        "" +userArray.get(0) +
+                        " " +typeArray.get(0) +
+                        " " +keyArray.get(0) +
+                        " " +passArray.get(0));
 
             }
         }
@@ -241,6 +246,7 @@ private static FragmentManager fragMan;
                 idArray.add(res.getString(0));
                 ipArray.add(res.getString(1));
                 portArray.add(res.getString(2));
+
             }
         }
 

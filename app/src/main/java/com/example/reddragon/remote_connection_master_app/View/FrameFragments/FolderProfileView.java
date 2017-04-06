@@ -1,6 +1,7 @@
 package com.example.reddragon.remote_connection_master_app.View.FrameFragments;
 
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -129,6 +130,10 @@ public class FolderProfileView extends Fragment implements AdapterView.OnItemSel
                 break;
 
             case R.id.user_list:
+                PROFILE_POSITION = position;
+                Log.d("Profile Position: ", ""+position);
+                rsaViewET.setText(keyArray.get(position));
+                passwordET.setText(passArray.get(position));
                 break;
         }
     }
@@ -136,7 +141,16 @@ public class FolderProfileView extends Fragment implements AdapterView.OnItemSel
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
         // Another interface callback
+        switch(parent.getId()) {
 
+            case R.id.complexity_lst_spn:
+                Log.d("complex spinner: ", "Nothing selected");
+                break;
+
+            case R.id.user_list:
+                Log.d("user spinner: ", "Nothing selected");
+                break;
+        }
     }
 
     private void keyOnClickListener(Button button, int r){
@@ -236,21 +250,7 @@ public class FolderProfileView extends Fragment implements AdapterView.OnItemSel
         // Specify the layout to use when the list of choices appears
 
         userSpn.setAdapter(adapter); // Apply the adapter to the spinner
-
-        userSpn.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                PROFILE_POSITION = position;
-                Log.d("Profile Position: ", ""+position);
-                rsaViewET.setText(keyArray.get(position));
-                passwordET.setText(passArray.get(position));
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
+        userSpn.setOnItemSelectedListener(this);
     }
 
     private void createKeyTest() {
@@ -285,6 +285,5 @@ public class FolderProfileView extends Fragment implements AdapterView.OnItemSel
         for(int i = 0 ; i < arrList.size(); i++) {
         }
     }
-
 
 }
