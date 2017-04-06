@@ -220,7 +220,7 @@ public class RecyclerClass extends Fragment {
                 @Override
                 public void onClick(View v) {
                     if(!addUserEdit.getText().toString().isEmpty()) {
-                        profilesDB.insertData(addUserEdit.getText().toString(),"", "", "");
+                        profilesDB.insertData(addUserEdit.getText().toString(),"", "", "", "");
 
                         userArray.add(addUserEdit.getText().toString());
                         keyAddArray.add("");

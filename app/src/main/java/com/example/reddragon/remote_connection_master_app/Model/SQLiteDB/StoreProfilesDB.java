@@ -22,6 +22,7 @@ public class StoreProfilesDB extends SQLiteOpenHelper {
     private static final String COL_2 = "TYPE";
     private static final String COL_3 = "KEY";
     private static final String COL_4 = "PASSWORD";
+    private static final String COL_5 = "COMMANDS";
 
     private static final int DATABASE_VERSION = 1;
 
@@ -32,7 +33,7 @@ public class StoreProfilesDB extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         sqLiteDatabase.execSQL("create table " +TABLE_NAME+ " (USERNAME TEXT" +
-                ",TYPE TEXT, KEY TEXT, PASSWORD TEXT)");
+                ",TYPE TEXT, KEY TEXT, PASSWORD TEXT, COMMANDS TEXT)");
     }
 
     @Override
@@ -41,7 +42,8 @@ public class StoreProfilesDB extends SQLiteOpenHelper {
         onCreate(sqLiteDatabase);
     }
 
-    public boolean insertData( String username, String type, String key, String password){
+    public boolean insertData( String username, String type,
+                               String key, String password, String commands){
 
         sqLiteDatabase = this.getWritableDatabase();
         contentValues = new ContentValues();
@@ -50,6 +52,7 @@ public class StoreProfilesDB extends SQLiteOpenHelper {
         contentValues.put(COL_2, type);
         contentValues.put(COL_3, key);
         contentValues.put(COL_4, password);
+        contentValues.put(COL_5, commands);
 
         long result = sqLiteDatabase.insert(TABLE_NAME, null, contentValues);
 
@@ -62,7 +65,8 @@ public class StoreProfilesDB extends SQLiteOpenHelper {
 
 
 
-    public boolean updateData(String username, String type, String key, String password){
+    public boolean updateData(String username, String type,
+                              String key, String password, String commands){
 
         sqLiteDatabase = this.getWritableDatabase();
         contentValues = new ContentValues();
@@ -71,6 +75,7 @@ public class StoreProfilesDB extends SQLiteOpenHelper {
         contentValues.put(COL_2, type);
         contentValues.put(COL_3, key);
         contentValues.put(COL_4, password);
+        contentValues.put(COL_5, commands);
 
         sqLiteDatabase.update(TABLE_NAME, contentValues, "USERNAME = ?", new String[]{ username } );
 

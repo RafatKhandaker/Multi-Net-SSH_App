@@ -31,7 +31,6 @@ import com.example.reddragon.remote_connection_master_app.View.FrameFragments.Re
 
 import java.util.ArrayList;
 
-
 /**------------------------------------------------------------------------------------------------->
  * Plan: Everything is written around the android UI thread as the central core of the application /
  *                                                                                                 \
@@ -59,7 +58,7 @@ public static StoreProfilesDB profilesDB;
 public static ArrayList<String> commandArrList;
 
 public static ArrayList<String>
-        ipAddArray, portAddArray, userAddArray, typeAddArray, keyAddArray, passAddArray;
+        ipAddArray, portAddArray, userAddArray, typeAddArray, keyAddArray, passAddArray, commandArray;
 
     public static ArrayList<Integer> storeRemovedIDData = new ArrayList<>();
 
@@ -124,7 +123,7 @@ private static FragmentManager fragMan;
 
         // load Stored SQLite Data
         loadSavedConnectionData();
-        loadSavedCommandData(commandArrList);
+//        loadSavedCommandData(commandArrList);
         loadSavedProfileData();
 
     }
@@ -186,6 +185,7 @@ private static FragmentManager fragMan;
         portArray = new ArrayList<>();
         keyArray = new ArrayList<>();
         passArray = new ArrayList<>();
+        commandArray = new ArrayList<>();
 
         commandArrList = new ArrayList<>();
 
@@ -221,17 +221,12 @@ private static FragmentManager fragMan;
                     typeArray.add(res.getString(1));
                     keyArray.add(res.getString(2));
                     passArray.add(res.getString(3));
+                    commandArray.add(res.getString(4));
                 }
                 if(!userArray.isEmpty()){ userAddArray = userArray; }
                 if(!typeArray.isEmpty()){ typeAddArray = typeArray; }
                 if(!keyArray.isEmpty()){ keyAddArray = keyArray; }
                 if(!passArray.isEmpty()){ passAddArray = passArray; }
-
-                Log.d("Test profile data: ",
-                        "" +userArray.get(0) +
-                        " " +typeArray.get(0) +
-                        " " +keyArray.get(0) +
-                        " " +passArray.get(0));
 
             }
         }
@@ -258,7 +253,6 @@ private static FragmentManager fragMan;
         }
 
     }
-
 
     public static ArrayList<String> loadSavedCommandData(ArrayList<String> arrList){
         Cursor res = commandListDB.getAllData();
@@ -354,6 +348,7 @@ private static FragmentManager fragMan;
         }
 
     }
+
 
 //---------------------------Drawer Methods---------------------------------------------------------
 

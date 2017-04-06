@@ -16,7 +16,6 @@ import static com.example.reddragon.remote_connection_master_app.Controller.Main
  */
 
 public class ProfileListAdapter extends RecyclerView.Adapter{
-    public static  ArrayList<String> dataArrList = new ArrayList<>();
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -40,8 +39,8 @@ public class ProfileListAdapter extends RecyclerView.Adapter{
 
     public void swap(){
 
-        commandArrList = new ArrayList<>();
-        commandArrList.addAll(dataArrList);
+//        commandArrList = new ArrayList<>();
+//        commandArrList.addAll(dataArrList);
 
         notifyDataSetChanged();
 

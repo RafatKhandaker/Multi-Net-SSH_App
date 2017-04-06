@@ -25,6 +25,8 @@ import java.security.KeyPairGenerator;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 
+import static com.example.reddragon.remote_connection_master_app.Controller.MainActivity.commandArrList;
+import static com.example.reddragon.remote_connection_master_app.Controller.MainActivity.commandArray;
 import static com.example.reddragon.remote_connection_master_app.Controller.MainActivity.commandListDB;
 import static com.example.reddragon.remote_connection_master_app.Controller.MainActivity.keyAddArray;
 import static com.example.reddragon.remote_connection_master_app.Controller.MainActivity.keyArray;
@@ -36,7 +38,6 @@ import static com.example.reddragon.remote_connection_master_app.Controller.Main
 import static com.example.reddragon.remote_connection_master_app.Controller.MainActivity.userArray;
 import static com.example.reddragon.remote_connection_master_app.View.FrameFragments.FrameRecyclerAdapter.FrameViewHolder.CommandListViewHolder.commandListPosition;
 import static com.example.reddragon.remote_connection_master_app.View.FrameFragments.FrameRecyclerAdapter.FrameViewHolder.CommandListViewHolder.commandText;
-import static com.example.reddragon.remote_connection_master_app.View.FrameFragments.FrameRecyclerAdapter.ProfileListAdapter.dataArrList;
 
 /**
  * Created by RedDragon on 2/7/17.
@@ -68,6 +69,8 @@ public class FolderProfileView extends Fragment implements AdapterView.OnItemSel
     private EditText passwordET;
 
     private int PROFILE_POSITION = 0;
+    private ArrayList<String> dataArrList = new ArrayList<>();
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -132,8 +135,14 @@ public class FolderProfileView extends Fragment implements AdapterView.OnItemSel
             case R.id.user_list:
                 PROFILE_POSITION = position;
                 Log.d("Profile Position: ", ""+position);
-                rsaViewET.setText(keyArray.get(position));
-                passwordET.setText(passArray.get(position));
+                rsaViewET.setText(keyAddArray.get(position));
+                passwordET.setText(passAddArray.get(position));
+
+                if(!commandArray.isEmpty()) {
+                    commandArrList = new ArrayList<>();
+                    commandArrList = convertStringToArray(commandArray.get(PROFILE_POSITION));
+                    folderProfileAdapt.swap();
+                }
                 break;
         }
     }
@@ -171,9 +180,9 @@ public class FolderProfileView extends Fragment implements AdapterView.OnItemSel
                     public void onClick(View v) {
                         String command = commandViewET.getText().toString();
                         Log.d("command View Test:", " " +command);
-                        commandListDB.insertData(command);
-                        dataArrList.clear();
-                        loadSavedCommandData(dataArrList);
+                        commandArrList.add(command);
+//                        dataArrList.clear();
+//                        loadSavedCommandData(dataArrList);
                         folderProfileAdapt.swap();
                     }
                 });
@@ -214,7 +223,8 @@ public class FolderProfileView extends Fragment implements AdapterView.OnItemSel
                         profilesDB.updateData(
                                 userAddArray.get(PROFILE_POSITION), "SSH",
                                 keyAddArray.get(PROFILE_POSITION),
-                                passAddArray.get(PROFILE_POSITION)
+                                passAddArray.get(PROFILE_POSITION),
+                                convertArrayToString(commandArrList)
                         );
 
                         Toast.makeText(getActivity(),
@@ -281,9 +291,26 @@ public class FolderProfileView extends Fragment implements AdapterView.OnItemSel
         }
     }
 
-    private void testArrList(ArrayList arrList){
+    private String convertArrayToString(ArrayList arrList){
+        String Result = "";
         for(int i = 0 ; i < arrList.size(); i++) {
+            Result += String.valueOf(arrList.get(i)) + ";";
         }
+
+        Log.d("convert arr to str : ","" +Result);
+
+        return Result;
+    }
+
+    private ArrayList<String> convertStringToArray(String string){
+        ArrayList<String> Result = new ArrayList<>();
+        String[] parts = string.split(";");
+
+        for(int i = 0; i < parts.length ; i++) {
+            Result.add(parts[i]);
+        }
+
+        return Result;
     }
 
 }
