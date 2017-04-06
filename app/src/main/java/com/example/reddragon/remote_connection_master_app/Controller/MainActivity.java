@@ -21,7 +21,6 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 
-import com.example.reddragon.remote_connection_master_app.Model.SQLiteDB.StoreCommandsDB;
 import com.example.reddragon.remote_connection_master_app.Model.SQLiteDB.StoreConnectionDB;
 import com.example.reddragon.remote_connection_master_app.Model.SQLiteDB.StoreProfilesDB;
 import com.example.reddragon.remote_connection_master_app.R;
@@ -52,7 +51,6 @@ private ImageView folderLockButton;
 private static DrawerLayout drawerLayout;
 
 public static StoreConnectionDB preConDatabase;
-public static StoreCommandsDB commandListDB;
 public static StoreProfilesDB profilesDB;
 
 public static ArrayList<String> commandArrList;
@@ -100,7 +98,6 @@ private static FragmentManager fragMan;
 
         // instantiate database
         preConDatabase = new StoreConnectionDB(this);
-        commandListDB = new StoreCommandsDB(this);
         profilesDB = new StoreProfilesDB(this);
 
         // initiate recycler  * comment this section to test the sliding drawer
@@ -123,7 +120,6 @@ private static FragmentManager fragMan;
 
         // load Stored SQLite Data
         loadSavedConnectionData();
-//        loadSavedCommandData(commandArrList);
         loadSavedProfileData();
 
     }
@@ -253,17 +249,6 @@ private static FragmentManager fragMan;
         }
 
     }
-
-    public static ArrayList<String> loadSavedCommandData(ArrayList<String> arrList){
-        Cursor res = commandListDB.getAllData();
-        if(res.getCount() != 0) {
-            while (res.moveToNext()) {
-                arrList.add(res.getString(1));
-            }
-        }
-        return arrList;
-    }
-
 //-----------------------------Main Control Methods-------------------------------------------------
 
     private void launchContainer(Fragment fragment){

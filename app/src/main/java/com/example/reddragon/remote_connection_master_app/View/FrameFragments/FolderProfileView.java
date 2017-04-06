@@ -1,7 +1,6 @@
 package com.example.reddragon.remote_connection_master_app.View.FrameFragments;
 
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -27,17 +26,12 @@ import java.util.ArrayList;
 
 import static com.example.reddragon.remote_connection_master_app.Controller.MainActivity.commandArrList;
 import static com.example.reddragon.remote_connection_master_app.Controller.MainActivity.commandArray;
-import static com.example.reddragon.remote_connection_master_app.Controller.MainActivity.commandListDB;
 import static com.example.reddragon.remote_connection_master_app.Controller.MainActivity.keyAddArray;
-import static com.example.reddragon.remote_connection_master_app.Controller.MainActivity.keyArray;
-import static com.example.reddragon.remote_connection_master_app.Controller.MainActivity.loadSavedCommandData;
 import static com.example.reddragon.remote_connection_master_app.Controller.MainActivity.passAddArray;
-import static com.example.reddragon.remote_connection_master_app.Controller.MainActivity.passArray;
 import static com.example.reddragon.remote_connection_master_app.Controller.MainActivity.profilesDB;
 import static com.example.reddragon.remote_connection_master_app.Controller.MainActivity.userAddArray;
 import static com.example.reddragon.remote_connection_master_app.Controller.MainActivity.userArray;
 import static com.example.reddragon.remote_connection_master_app.View.FrameFragments.FrameRecyclerAdapter.FrameViewHolder.CommandListViewHolder.commandListPosition;
-import static com.example.reddragon.remote_connection_master_app.View.FrameFragments.FrameRecyclerAdapter.FrameViewHolder.CommandListViewHolder.commandText;
 
 /**
  * Created by RedDragon on 2/7/17.
@@ -143,6 +137,7 @@ public class FolderProfileView extends Fragment implements AdapterView.OnItemSel
                     commandArrList = convertStringToArray(commandArray.get(PROFILE_POSITION));
                     folderProfileAdapt.swap();
                 }
+
                 break;
         }
     }
@@ -181,8 +176,6 @@ public class FolderProfileView extends Fragment implements AdapterView.OnItemSel
                         String command = commandViewET.getText().toString();
                         Log.d("command View Test:", " " +command);
                         commandArrList.add(command);
-//                        dataArrList.clear();
-//                        loadSavedCommandData(dataArrList);
                         folderProfileAdapt.swap();
                     }
                 });
@@ -193,18 +186,7 @@ public class FolderProfileView extends Fragment implements AdapterView.OnItemSel
                     @Override
                     public void onClick(View v) {
                         if(commandListPosition != -1) {
-
-                            Log.d("Test Remove: ",
-                                    commandText +" " +commandListPosition);
-
-                            commandListDB.deleteData(
-                                    commandText);
-
-                            dataArrList.clear();
-                            loadSavedCommandData(dataArrList);
-
-//                            testArrList(dataArrList);
-
+                            commandArrList.remove(commandListPosition);
                             folderProfileAdapt.swap();
                         }
                     }

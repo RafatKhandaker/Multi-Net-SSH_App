@@ -38,12 +38,7 @@ public class ProfileListAdapter extends RecyclerView.Adapter{
     }
 
     public void swap(){
-
-//        commandArrList = new ArrayList<>();
-//        commandArrList.addAll(dataArrList);
-
         notifyDataSetChanged();
-
     }
 
 }
