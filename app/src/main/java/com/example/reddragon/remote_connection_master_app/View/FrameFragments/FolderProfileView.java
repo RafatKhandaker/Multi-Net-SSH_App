@@ -109,6 +109,8 @@ public class FolderProfileView extends Fragment implements AdapterView.OnItemSel
 
         keyOnClickListener(saveProfileButton, R.id.save_profile_btn);
 
+        keyOnClickListener(delProfileButton, R.id.delete_profile_btn);
+
         return view;
 
     }
@@ -208,6 +210,7 @@ public class FolderProfileView extends Fragment implements AdapterView.OnItemSel
                                 passAddArray.get(PROFILE_POSITION),
                                 convertArrayToString(commandArrList)
                         );
+                        folderProfileAdapt.notifyDataSetChanged();
 
                         Toast.makeText(getActivity(),
                                 ""+userArray.get(PROFILE_POSITION)+" profile saved",
@@ -217,6 +220,21 @@ public class FolderProfileView extends Fragment implements AdapterView.OnItemSel
                 break;
 
             case R.id.delete_profile_btn:
+                button.setOnClickListener(new Button.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        profilesDB.deleteData(
+                                userAddArray.get(PROFILE_POSITION)
+                        );
+                        commandArrList.remove(PROFILE_POSITION);
+                        folderProfileAdapt.notifyDataSetChanged();
+
+                        Toast.makeText(getActivity(),
+                                ""+userArray.get(PROFILE_POSITION)+" profile deleted",
+                                Toast.LENGTH_SHORT).show();
+                    }
+                });
+
                 break;
         }
     }

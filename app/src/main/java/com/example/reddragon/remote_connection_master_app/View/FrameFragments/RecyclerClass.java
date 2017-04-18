@@ -37,6 +37,7 @@ import static com.example.reddragon.remote_connection_master_app.Controller.Main
 import static com.example.reddragon.remote_connection_master_app.Controller.MainActivity.preConDatabase;
 import static com.example.reddragon.remote_connection_master_app.Controller.MainActivity.profilesDB;
 import static com.example.reddragon.remote_connection_master_app.Controller.MainActivity.storeRemovedIDData;
+import static com.example.reddragon.remote_connection_master_app.Controller.MainActivity.userAddArray;
 import static com.example.reddragon.remote_connection_master_app.Controller.MainActivity.userArray;
 
 /**
@@ -222,7 +223,7 @@ public class RecyclerClass extends Fragment {
                     if(!addUserEdit.getText().toString().isEmpty()) {
                         profilesDB.insertData(addUserEdit.getText().toString(),"", "", "", "");
 
-                        userArray.add(addUserEdit.getText().toString());
+                        userAddArray.add(addUserEdit.getText().toString());
                         keyAddArray.add("");
                         passAddArray.add("");
 
