@@ -27,6 +27,8 @@ import com.example.reddragon.remote_connection_master_app.View.ViewHolder.CardVi
 import java.util.ArrayList;
 
 import static com.example.reddragon.remote_connection_master_app.Controller.MainActivity.Connect_Count;
+import static com.example.reddragon.remote_connection_master_app.Controller.MainActivity.commandArrList;
+import static com.example.reddragon.remote_connection_master_app.Controller.MainActivity.commandArray;
 import static com.example.reddragon.remote_connection_master_app.Controller.MainActivity.drawerArrayAdapt;
 import static com.example.reddragon.remote_connection_master_app.Controller.MainActivity.idArray;
 import static com.example.reddragon.remote_connection_master_app.Controller.MainActivity.ipAddArray;
@@ -226,6 +228,7 @@ public class RecyclerClass extends Fragment {
                         userAddArray.add(addUserEdit.getText().toString());
                         keyAddArray.add("");
                         passAddArray.add("");
+                        commandArrList.add("");
 
                         drawerArrayAdapt.notifyDataSetChanged();
                         Toast.makeText(getActivity(),

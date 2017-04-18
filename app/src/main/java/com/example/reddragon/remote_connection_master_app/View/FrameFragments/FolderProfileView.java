@@ -133,11 +133,12 @@ public class FolderProfileView extends Fragment implements AdapterView.OnItemSel
                 Log.d("Profile Position: ", ""+position);
                 rsaViewET.setText(keyAddArray.get(position));
                 passwordET.setText(passAddArray.get(position));
-
-                if(!commandArray.isEmpty()) {
-                    commandArrList = new ArrayList<>();
-                    commandArrList = convertStringToArray(commandArray.get(PROFILE_POSITION));
-                    folderProfileAdapt.swap();
+                if(PROFILE_POSITION != 0) {
+                    if (!commandArray.get(PROFILE_POSITION -1).isEmpty()) {
+                        commandArrList = new ArrayList<>();
+                        commandArrList = convertStringToArray(commandArray.get(PROFILE_POSITION -1));
+                        folderProfileAdapt.swap();
+                    }
                 }
 
                 break;
@@ -296,9 +297,6 @@ public class FolderProfileView extends Fragment implements AdapterView.OnItemSel
         for(int i = 0 ; i < arrList.size(); i++) {
             Result += String.valueOf(arrList.get(i)) + ";";
         }
-
-        Log.d("convert arr to str : ","" +Result);
-
         return Result;
     }
 
