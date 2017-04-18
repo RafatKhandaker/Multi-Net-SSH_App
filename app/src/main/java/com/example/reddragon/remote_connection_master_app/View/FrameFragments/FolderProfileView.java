@@ -227,7 +227,6 @@ public class FolderProfileView extends Fragment implements AdapterView.OnItemSel
                         profilesDB.deleteData(
                                 userAddArray.get(PROFILE_POSITION)
                         );
-                        commandArrList.remove(PROFILE_POSITION);
                         folderProfileAdapt.notifyDataSetChanged();
 
                         Toast.makeText(getActivity(),
