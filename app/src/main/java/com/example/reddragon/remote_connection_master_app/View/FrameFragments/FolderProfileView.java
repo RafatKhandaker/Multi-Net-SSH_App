@@ -72,7 +72,7 @@ public class FolderProfileView extends Fragment implements AdapterView.OnItemSel
         view = inflater.inflate(R.layout.secure_folder, container, false);
 
         // converting the userArray to a charSequence to put inside the spinner
-        UserOption = userArray.toArray(new CharSequence[userArray.size()]);
+        UserOption = userAddArray.toArray(new CharSequence[userAddArray.size()]);
 
         // initialize buttons
         genKeyButton = (Button) view.findViewById(R.id.rsa_generate_btn);
@@ -133,10 +133,12 @@ public class FolderProfileView extends Fragment implements AdapterView.OnItemSel
                 Log.d("Profile Position: ", ""+position);
                 rsaViewET.setText(keyAddArray.get(position));
                 passwordET.setText(passAddArray.get(position));
+
                 if(PROFILE_POSITION != 0) {
-                    if (!commandArray.get(PROFILE_POSITION -1).isEmpty()) {
+                    Log.d("Test Prof Pos: " , "" +PROFILE_POSITION );
+                    if (!commandArray.get(PROFILE_POSITION).isEmpty()) {
                         commandArrList = new ArrayList<>();
-                        commandArrList = convertStringToArray(commandArray.get(PROFILE_POSITION -1));
+                        commandArrList = convertStringToArray(commandArray.get(PROFILE_POSITION));
                         folderProfileAdapt.swap();
                     }
                 }

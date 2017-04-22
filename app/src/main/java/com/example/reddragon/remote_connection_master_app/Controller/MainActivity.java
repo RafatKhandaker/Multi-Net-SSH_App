@@ -219,11 +219,10 @@ private static FragmentManager fragMan;
                     passArray.add(res.getString(3));
                     commandArray.add(res.getString(4));
                 }
-                if(!userArray.isEmpty()){ userAddArray = userArray; }
-                if(!typeArray.isEmpty()){ typeAddArray = typeArray; }
-                if(!keyArray.isEmpty()){ keyAddArray = keyArray; }
-                if(!passArray.isEmpty()){ passAddArray = passArray; }
-
+                userAddArray = userArray;
+                typeAddArray = typeArray;
+                keyAddArray = keyArray;
+                passAddArray = passArray;
             }
         }
     }
@@ -233,7 +232,7 @@ private static FragmentManager fragMan;
         if(res.getCount() != 0) {
             while (res.moveToNext()) {
 
-                // load the data individual from SQLite]
+                // load the data individual from SQLite
                 idArray.add(res.getString(0));
                 ipArray.add(res.getString(1));
                 portArray.add(res.getString(2));

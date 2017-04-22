@@ -228,9 +228,10 @@ public class RecyclerClass extends Fragment {
                         userAddArray.add(addUserEdit.getText().toString());
                         keyAddArray.add("");
                         passAddArray.add("");
-                        commandArrList.add("");
+
 
                         drawerArrayAdapt.notifyDataSetChanged();
+
                         Toast.makeText(getActivity(),
                                 ""+addUserEdit.getText()+" Added",
                                 Toast.LENGTH_SHORT)
