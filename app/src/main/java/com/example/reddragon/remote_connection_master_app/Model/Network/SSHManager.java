@@ -2,11 +2,17 @@ package com.example.reddragon.remote_connection_master_app.Model.Network;
 
 import android.os.AsyncTask;
 
+import com.jcraft.jsch.Channel;
+import com.jcraft.jsch.ChannelExec;
 import com.jcraft.jsch.JSch;
 import com.jcraft.jsch.JSchException;
 import com.jcraft.jsch.Session;
 
-import java.util.Properties;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 
 /**
  * Created by RedDragon on 2/7/17.
@@ -14,43 +20,146 @@ import java.util.Properties;
 
 public class SSHManager extends AsyncTask<String, Integer, String> {
 
-        String asd;
-        @Override
-        protected String doInBackground(String... arg0) {
+    private static final Logger LOGGER =
+            Logger.getLogger(SSHManager.class.getName());
+    private JSch jschSSHChannel;
+    private String strUserName;
+    private String strConnectionIP;
+    private int intConnectionPort;
+    private String strPassword;
+    private Session sesConnection;
+    private int intTimeOut;
 
-            JSch jsch = new JSch();
-            Properties props = new Properties();
-            props.put("StrictHostKeyChecking", "no");
+    private void doCommonConstructorActions(String userName,
+                                            String password, String connectionIP, String knownHostsFileName)
+    {
+        jschSSHChannel = new JSch();
 
-            Properties config = new Properties();
-            config.put("StrictHostKeyChecking", "no");
-            config.put("compression.s2c", "zlib,none");
-            config.put("compression.c2s", "zlib,none");
+        try
+        {
+            jschSSHChannel.setKnownHosts(knownHostsFileName);
+        }
+        catch(JSchException jschX)
+        {
+            logError(jschX.getMessage());
+        }
 
-            Session session;
-            try {
-                session = jsch.getSession("user", "x.x.x.x",22);
-                session.setConfig(config);
-                session.setPassword("xxxxxxx");
-                session.connect();
+        strUserName = userName;
+        strPassword = password;
+        strConnectionIP = connectionIP;
+    }
 
-            } catch (JSchException e) {
-                asd = "NOT_Executed";
-                System.out.println("NOT_executed");
-                e.printStackTrace();
-                return "NOT_Executed";
+    public SSHManager(String userName, String password,
+                      String connectionIP, String knownHostsFileName)
+    {
+        doCommonConstructorActions(userName, password,
+                connectionIP, knownHostsFileName);
+        intConnectionPort = 22;
+        intTimeOut = 60000;
+    }
+
+    public SSHManager(String userName, String password, String connectionIP,
+                      String knownHostsFileName, int connectionPort)
+    {
+        doCommonConstructorActions(userName, password, connectionIP,
+                knownHostsFileName);
+        intConnectionPort = connectionPort;
+        intTimeOut = 60000;
+    }
+
+    public SSHManager(String userName, String password, String connectionIP,
+                      String knownHostsFileName, int connectionPort, int timeOutMilliseconds)
+    {
+        doCommonConstructorActions(userName, password, connectionIP,
+                knownHostsFileName);
+        intConnectionPort = connectionPort;
+        intTimeOut = timeOutMilliseconds;
+    }
+
+    public String connect()
+    {
+        String errorMessage = null;
+
+        try
+        {
+            sesConnection = jschSSHChannel.getSession(strUserName,
+                    strConnectionIP, intConnectionPort);
+            sesConnection.setPassword(strPassword);
+            // UNCOMMENT THIS FOR TESTING PURPOSES, BUT DO NOT USE IN PRODUCTION
+            // sesConnection.setConfig("StrictHostKeyChecking", "no");
+            sesConnection.connect(intTimeOut);
+        }
+        catch(JSchException jschX)
+        {
+            errorMessage = jschX.getMessage();
+        }
+
+        return errorMessage;
+    }
+
+    private String logError(String errorMessage)
+    {
+        if(errorMessage != null)
+        {
+            LOGGER.log(Level.SEVERE, "{0}:{1} - {2}",
+                    new Object[]{strConnectionIP, intConnectionPort, errorMessage});
+        }
+
+        return errorMessage;
+    }
+
+    private String logWarning(String warnMessage)
+    {
+        if(warnMessage != null)
+        {
+            LOGGER.log(Level.WARNING, "{0}:{1} - {2}",
+                    new Object[]{strConnectionIP, intConnectionPort, warnMessage});
+        }
+
+        return warnMessage;
+    }
+
+    public String sendCommand(String command)
+    {
+        StringBuilder outputBuffer = new StringBuilder();
+
+        try
+        {
+            Channel channel = sesConnection.openChannel("exec");
+            ((ChannelExec)channel).setCommand(command);
+            InputStream commandOutput = channel.getInputStream();
+            channel.connect();
+            int readByte = commandOutput.read();
+
+            while(readByte != 0xffffffff)
+            {
+                outputBuffer.append((char)readByte);
+                readByte = commandOutput.read();
             }
 
-            CharSequence text = "Connected to Pi";
-            int duration = android.widget.Toast.LENGTH_SHORT;
-            System.out.println("executed");
-            asd = "executed";
-            return "Executed";
-
+            channel.disconnect();
+        }
+        catch(IOException ioX)
+        {
+            logWarning(ioX.getMessage());
+            return null;
+        }
+        catch(JSchException jschX)
+        {
+            logWarning(jschX.getMessage());
+            return null;
         }
 
-        @Override
-        protected void onPostExecute(String abc){
-        }
+        return outputBuffer.toString();
+    }
 
+    public void close()
+    {
+        sesConnection.disconnect();
+    }
+
+    @Override
+    protected String doInBackground(String... params) {
+        return null;
+    }
 }

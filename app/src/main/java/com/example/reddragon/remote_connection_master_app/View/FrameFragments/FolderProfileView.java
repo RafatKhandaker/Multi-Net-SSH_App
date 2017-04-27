@@ -140,6 +140,9 @@ public class FolderProfileView extends Fragment implements AdapterView.OnItemSel
                         commandArrList = new ArrayList<>();
                         commandArrList = convertStringToArray(commandArray.get(PROFILE_POSITION));
                         folderProfileAdapt.swap();
+                    }else{
+
+                        folderProfileAdapt.swap();
                     }
                 }
 
@@ -158,6 +161,14 @@ public class FolderProfileView extends Fragment implements AdapterView.OnItemSel
 
             case R.id.user_list:
                 Log.d("user spinner: ", "Nothing selected");
+                if (!commandArray.get(PROFILE_POSITION).isEmpty()) {
+                    commandArrList = new ArrayList<>();
+                    commandArrList = convertStringToArray(commandArray.get(PROFILE_POSITION));
+                    folderProfileAdapt.swap();
+                }else{
+                    folderProfileAdapt.swap();
+                }
+
                 break;
         }
     }

@@ -30,7 +30,6 @@ public class CommandListViewHolder extends RecyclerView.ViewHolder {
         connectListLayout = (RelativeLayout) itemView.findViewById(R.id.connect_list_layout);
         commandListText = (TextView) itemView.findViewById(R.id.conn_name_txt);
 
-
         connectListLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

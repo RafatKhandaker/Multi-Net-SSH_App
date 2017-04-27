@@ -361,13 +361,18 @@ private static FragmentManager fragMan;
                 invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
             }
         };
+
+        DrawerItemClickListener drawClick = new DrawerItemClickListener();
         drawerLayout.setDrawerListener(drawerToggle);
+        drawerList.setOnItemClickListener(new DrawerItemClickListener());
+
     }
 
     private class DrawerItemClickListener implements ListView.OnItemClickListener {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             selectItem(position);
+            Log.d("OnItemClick Pass", "");
         }
 
         private void selectItem(int position){
