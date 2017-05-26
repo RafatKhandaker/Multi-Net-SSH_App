@@ -60,6 +60,9 @@ public class ConsoleView extends Fragment implements AdapterView.OnItemSelectedL
     private Spinner userSpn;
     private static CharSequence[] userOption;
 
+    private String logon = "~root#";
+
+
 
 
 
@@ -118,10 +121,11 @@ public class ConsoleView extends Fragment implements AdapterView.OnItemSelectedL
                 }else{ port = Integer.valueOf(portTxt.getText().toString()); }
 
                 Log.d("Log port value :", "test port: " +port);
-                display.setText( display.getText() +"\n" +sshMan.connect());
+                display.setText( display.getText() + "\n" +logon +"  " +sshMan.connect() );
                 break;
+
             case R.id.send_btn:
-                display.setText(display.getText() + "\n"
+                display.setText(display.getText() + "\n" +logon +"  "
                         +sshMan.sendCommand(entComTxt.getText().toString()) );
                 break;
 
@@ -147,7 +151,10 @@ public class ConsoleView extends Fragment implements AdapterView.OnItemSelectedL
 
         if(!userAddArray.get(position).isEmpty()){
             Log.d("test", " user:" +userAddArray.get(position));
-            username = userAddArray.get(position); }
+            username = userAddArray.get(position);
+            logon = "~" +username +"#";
+            display.setText(logon);
+        }
         if(!passAddArray.get(position).isEmpty()){
             Log.d("test", " pass:" +passAddArray.get(position));
             password = passAddArray.get(position); }
