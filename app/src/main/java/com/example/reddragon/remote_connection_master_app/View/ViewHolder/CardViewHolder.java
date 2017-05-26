@@ -1,6 +1,7 @@
 package com.example.reddragon.remote_connection_master_app.View.ViewHolder;
 
 
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -10,7 +11,9 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 
 import com.example.reddragon.remote_connection_master_app.R;
+import com.example.reddragon.remote_connection_master_app.View.FrameFragments.ConsoleView;
 
+import static com.example.reddragon.remote_connection_master_app.Controller.MainActivity.fragMan;
 import static com.example.reddragon.remote_connection_master_app.Controller.MainActivity.ipAddArray;
 import static com.example.reddragon.remote_connection_master_app.Controller.MainActivity.portAddArray;
 
@@ -22,6 +25,11 @@ public class CardViewHolder extends RecyclerView.ViewHolder {
 
     private EditText editHostName;
     private ImageButton editHostButton;
+    private ConsoleView consoleView;
+
+    public static String preIPTXT;
+    public static String prePortTXT;
+    public static Boolean checkLongClick = false;
 
 
     public CardViewHolder(View itemView) {
@@ -30,6 +38,8 @@ public class CardViewHolder extends RecyclerView.ViewHolder {
         editHostName = (EditText) itemView.findViewById(R.id.hostname_et);
         editHostButton = (ImageButton) itemView.findViewById(R.id.edit_hostname_btn);
 
+
+        consoleView = new ConsoleView();
         editHostName.setEnabled(false);
 
         editHostButton.setOnTouchListener(new ImageButton.OnTouchListener() {
@@ -64,6 +74,19 @@ public class CardViewHolder extends RecyclerView.ViewHolder {
             }
         });
 
+        editHostButton.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                checkLongClick = true;
+                fragMan.beginTransaction()
+                        .replace(R.id.mainframe_container, consoleView)
+                        .commit();
+
+                splitString();
+                return true;
+            }
+        });
+
     }
 
     public void addHostName(int pos){
@@ -89,6 +112,12 @@ public class CardViewHolder extends RecyclerView.ViewHolder {
                         + ":" + portAddArray.get(position));
             }
 
+    }
+
+    private void splitString(){
+        String[] parts = editHostName.getText().toString().split(":");
+        preIPTXT = parts[0];
+        prePortTXT = parts[1];
     }
 
 }

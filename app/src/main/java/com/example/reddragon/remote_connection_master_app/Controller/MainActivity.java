@@ -77,7 +77,7 @@ private static final int SSH_FRAG = 1, CONSOLE_FRAG = 2;
 
 
 private RecyclerClass recyclerClass = new RecyclerClass();
-private static FragmentManager fragMan;
+public static FragmentManager fragMan;
 
     private android.support.v4.app.ActionBarDrawerToggle drawerToggle;
     private ListView drawerList;

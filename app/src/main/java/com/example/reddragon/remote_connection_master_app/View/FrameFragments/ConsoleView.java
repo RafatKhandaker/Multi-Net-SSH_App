@@ -28,6 +28,9 @@ import static com.example.reddragon.remote_connection_master_app.Controller.Main
 import static com.example.reddragon.remote_connection_master_app.Controller.MainActivity.passAddArray;
 import static com.example.reddragon.remote_connection_master_app.Controller.MainActivity.portAddArray;
 import static com.example.reddragon.remote_connection_master_app.Controller.MainActivity.userAddArray;
+import static com.example.reddragon.remote_connection_master_app.View.ViewHolder.CardViewHolder.checkLongClick;
+import static com.example.reddragon.remote_connection_master_app.View.ViewHolder.CardViewHolder.preIPTXT;
+import static com.example.reddragon.remote_connection_master_app.View.ViewHolder.CardViewHolder.prePortTXT;
 
 
 /**
@@ -42,8 +45,8 @@ public class ConsoleView extends Fragment implements AdapterView.OnItemSelectedL
 
     private TextView display;
 
-    private EditText ipTxt;
-    private EditText portTxt;
+    private  EditText ipTxt;
+    private  EditText portTxt;
     private EditText entComTxt;
 
     private Button conBtn;
@@ -96,6 +99,11 @@ public class ConsoleView extends Fragment implements AdapterView.OnItemSelectedL
         initiateButtonAction(sendBtn, R.id.send_btn);
 
         initiateUserSpinner();
+
+        if(checkLongClick.equals(true)){
+            ipTxt.setText(preIPTXT);
+            portTxt.setText(prePortTXT);g
+        }
 
         return view;
     }
