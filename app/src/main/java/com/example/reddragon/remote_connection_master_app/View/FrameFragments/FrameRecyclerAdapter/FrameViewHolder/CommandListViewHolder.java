@@ -18,7 +18,7 @@ public class CommandListViewHolder extends RecyclerView.ViewHolder {
 
     private RelativeLayout connectListLayout;
     private TextView commandListText;
-    public static  String commandText = "";
+    public static String commandText = "";
 
     private int clickVal = 0;
     public static int commandListPosition = -1;

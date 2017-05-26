@@ -30,14 +30,24 @@ public class SSHManager extends AsyncTask<String, Integer, String> {
     private Session sesConnection;
     private int intTimeOut;
 
+    private String username;
+    private String password;
+    private String connectionIP;
+    private String knownHostsFileName;
+    private String connectKey;
+
     private void doCommonConstructorActions(String userName,
-                                            String password, String connectionIP, String knownHostsFileName)
+                                            String password,
+                                            String connectionIP,
+                                            String knownHostsFileName,
+                                            String connectKey)
     {
         jschSSHChannel = new JSch();
 
         try
         {
             jschSSHChannel.setKnownHosts(knownHostsFileName);
+            jschSSHChannel.addIdentity(connectKey);
         }
         catch(JSchException jschX)
         {
@@ -47,31 +57,39 @@ public class SSHManager extends AsyncTask<String, Integer, String> {
         strUserName = userName;
         strPassword = password;
         strConnectionIP = connectionIP;
+
     }
 
     public SSHManager(String userName, String password,
-                      String connectionIP, String knownHostsFileName)
+                      String connectionIP, String knownHostsFileName, String connectKey, int port)
     {
+
+        this.username = userName;
+        this.password = password;
+        this.connectionIP = connectionIP;
+        this.knownHostsFileName = knownHostsFileName;
+        this.connectKey = connectKey;
+
         doCommonConstructorActions(userName, password,
-                connectionIP, knownHostsFileName);
-        intConnectionPort = 22;
+                connectionIP, knownHostsFileName, connectKey);
+        intConnectionPort = port;
         intTimeOut = 60000;
     }
 
     public SSHManager(String userName, String password, String connectionIP,
-                      String knownHostsFileName, int connectionPort)
+                      String knownHostsFileName, int connectionPort, String connectKey)
     {
         doCommonConstructorActions(userName, password, connectionIP,
-                knownHostsFileName);
+                knownHostsFileName, connectKey);
         intConnectionPort = connectionPort;
         intTimeOut = 60000;
     }
 
     public SSHManager(String userName, String password, String connectionIP,
-                      String knownHostsFileName, int connectionPort, int timeOutMilliseconds)
+                      String knownHostsFileName, int connectionPort, int timeOutMilliseconds, String connectKey)
     {
         doCommonConstructorActions(userName, password, connectionIP,
-                knownHostsFileName);
+                knownHostsFileName, connectKey);
         intConnectionPort = connectionPort;
         intTimeOut = timeOutMilliseconds;
     }

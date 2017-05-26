@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +14,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.reddragon.remote_connection_master_app.Model.Network.SSHManager;
 import com.example.reddragon.remote_connection_master_app.R;
 import com.example.reddragon.remote_connection_master_app.View.FrameFragments.FrameRecyclerAdapter.ProfileListAdapter;
 
@@ -35,6 +38,15 @@ public class ConsoleView extends Fragment {
     private Button conBtn;
     private Button sendBtn;
 
+    private SSHManager sshMan;
+
+    private String username = "";
+    private String password = "";
+    private String rsaKey = "";
+    private String connectIP = "";
+    private int port = 22;
+
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -54,6 +66,19 @@ public class ConsoleView extends Fragment {
 
         initiateConListRV();
 
+        // initiate SSH Manager Class
+
+        connectIP = ipTxt.getText().toString();
+
+        if(portTxt.getText().toString().isEmpty()){
+            port = 22;
+        }else{ port = Integer.valueOf(portTxt.getText().toString()); }
+
+        sshMan = new SSHManager(username, password, connectIP, "", rsaKey, port);
+
+        initiateButtonAction(conBtn, R.id.connect_btn);
+        initiateButtonAction(sendBtn, R.id.send_btn);
+
         return view;
     }
 
@@ -63,4 +88,26 @@ public class ConsoleView extends Fragment {
         consoleListRV.setLayoutManager(conListLayMan);
         consoleListRV.setAdapter(profileListAdapter);
     }
+
+    private void initiateButtonAction(View view, final int r){
+
+        view.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+        switch(r){
+
+            case R.id.connect_btn:
+                display.setText( display.getText() +"\n" +sshMan.connect());
+                break;
+            case R.id.send_btn:
+                display.setText(display.getText() + "\n"
+                        +sshMan.sendCommand(entComTxt.getText().toString()) );
+                break;
+
+        }
+            }
+        });
+    }
+
 }
