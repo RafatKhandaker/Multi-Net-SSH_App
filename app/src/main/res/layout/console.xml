@@ -15,7 +15,10 @@
         android:layout_gravity="center_horizontal"
         android:background="#000000"
         android:scrollbarAlwaysDrawVerticalTrack="true"
-        android:id="@+id/console_tv"/>
+        android:id="@+id/console_tv"
+        android:scrollbars="vertical"
+        android:fadeScrollbars="false"
+        android:scrollbarStyle="insideInset" />
 
     <EditText
         android:layout_width="match_parent"
@@ -30,11 +33,22 @@
         android:padding="5dp"
         android:id="@+id/console_et"
         android:layout_below="@id/console_tv"/>
+
+    <android.support.v7.widget.AppCompatSpinner
+        android:layout_width="80dp"
+        android:layout_height="40dp"
+        android:id="@+id/console_host_lv"
+        android:layout_below="@id/console_et"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="15dp"
+        android:background="#D3D3D3" />
+
     <EditText
-        android:layout_width="220dp"
+        android:layout_width="130dp"
         android:layout_height="40dp"
         android:id="@+id/enter_ip_console_et"
         android:layout_below="@id/console_et"
+        android:layout_toRightOf="@id/console_host_lv"
         android:layout_marginTop="15dp"
         android:layout_marginLeft="15dp"
         android:background="#191919"
@@ -42,8 +56,9 @@
         android:hint="IP: X.X.X.X"
         android:textAlignment="center"
         android:textColorHint="#00FFFF"/>
+
     <EditText
-        android:layout_width="100dp"
+        android:layout_width="70dp"
         android:layout_height="40dp"
         android:layout_toRightOf="@id/enter_ip_console_et"
         android:id="@+id/enter_port_console_et"
