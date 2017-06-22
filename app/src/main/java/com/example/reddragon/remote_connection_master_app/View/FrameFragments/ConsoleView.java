@@ -5,8 +5,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.text.Editable;
-import android.text.TextWatcher;
+
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -28,6 +27,9 @@ import static com.example.reddragon.remote_connection_master_app.Controller.Main
 import static com.example.reddragon.remote_connection_master_app.Controller.MainActivity.passAddArray;
 import static com.example.reddragon.remote_connection_master_app.Controller.MainActivity.portAddArray;
 import static com.example.reddragon.remote_connection_master_app.Controller.MainActivity.userAddArray;
+import static com.example.reddragon.remote_connection_master_app.R.color.colorAccent;
+import static com.example.reddragon.remote_connection_master_app.R.color.firebrick;
+import static com.example.reddragon.remote_connection_master_app.R.color.green;
 import static com.example.reddragon.remote_connection_master_app.View.ViewHolder.CardViewHolder.checkLongClick;
 import static com.example.reddragon.remote_connection_master_app.View.ViewHolder.CardViewHolder.preIPTXT;
 import static com.example.reddragon.remote_connection_master_app.View.ViewHolder.CardViewHolder.prePortTXT;
@@ -63,7 +65,7 @@ public class ConsoleView extends Fragment implements AdapterView.OnItemSelectedL
     private Spinner userSpn;
     private static CharSequence[] userOption;
 
-    private String logon = "~root#";
+    private String logon = "~ ";
 
 
 
@@ -102,7 +104,7 @@ public class ConsoleView extends Fragment implements AdapterView.OnItemSelectedL
 
         if(checkLongClick.equals(true)){
             ipTxt.setText(preIPTXT);
-            portTxt.setText(prePortTXT);g
+            portTxt.setText(prePortTXT);
         }
 
         return view;
@@ -129,12 +131,23 @@ public class ConsoleView extends Fragment implements AdapterView.OnItemSelectedL
                 }else{ port = Integer.valueOf(portTxt.getText().toString()); }
 
                 Log.d("Log port value :", "test port: " +port);
-                display.setText( display.getText() + "\n" +logon +"  " +sshMan.connect() );
+                display.setText( display.getText() +sshMan.connect() + "\n" +logon );
                 break;
 
             case R.id.send_btn:
-                display.setText(display.getText() + "\n" +logon +"  "
-                        +sshMan.sendCommand(entComTxt.getText().toString()) );
+
+                if(!entComTxt.getText().toString().isEmpty()) {
+                    display.setText(display.getText() + "\n" +logon+ entComTxt.getText() + "\n"
+                            + sshMan.sendCommand(entComTxt.getText().toString())
+                            + "\n" +logon );
+
+                }
+                else{
+                    entComTxt.setTextColor(getResources().getColor(colorAccent));
+                    entComTxt.setText("CANNOT SEND EMPTY COMMAND !!!");
+                }
+
+
                 break;
 
         }
@@ -160,7 +173,7 @@ public class ConsoleView extends Fragment implements AdapterView.OnItemSelectedL
         if(!userAddArray.get(position).isEmpty()){
             Log.d("test", " user:" +userAddArray.get(position));
             username = userAddArray.get(position);
-            logon = "~" +username +"#";
+            logon = "~" +username +"# ";
             display.setText(logon);
         }
         if(!passAddArray.get(position).isEmpty()){

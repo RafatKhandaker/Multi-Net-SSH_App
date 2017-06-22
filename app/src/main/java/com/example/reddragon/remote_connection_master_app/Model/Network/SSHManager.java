@@ -20,8 +20,7 @@ import java.util.logging.Logger;
 
 public class SSHManager extends AsyncTask<String, Integer, String> {
 
-    private static final Logger LOGGER =
-            Logger.getLogger(SSHManager.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(SSHManager.class.getName());
     private JSch jschSSHChannel;
     private String strUserName;
     private String strConnectionIP;

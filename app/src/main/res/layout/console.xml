@@ -11,7 +11,7 @@
         android:layout_height="250dp"
         android:padding="10dp"
         android:text="~root# "
-        android:textColor="#ff0000"
+        android:textColor="@color/green"
         android:layout_gravity="center_horizontal"
         android:background="#000000"
         android:scrollbarAlwaysDrawVerticalTrack="true"
